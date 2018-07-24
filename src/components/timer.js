@@ -1,48 +1,61 @@
 import React from 'react';
 // import { Button } from 'react-native-elements';
-import {StyleSheet, Text, View, Slider, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Slider, Button} from 'react-native';
 import {Player} from 'react-native-audio-toolkit';
+
+let iBell;
+let mTimeout;
 
 export default class Timer extends React.Component {
   constructor() {
     super();
     this.state = {
       minutes: 0,
-      isTimer: false
+      interval: 0,
+      isTimer: false,
+      isInterval: false
     }
     this.handleTimer = this.handleTimer.bind(this);
     this.handleTimerEnd = this.handleTimerEnd.bind(this);
-    this.handleTimeConvert = this.handleTimeConvert.bind(this);
+    this.handleInterval = this.handleInterval.bind(this);
+
+    componentDidUnmount = () => {
+      clearTimeout(mTimeout);
+      clearInterval(iBell);
+    }
   }
 
   handleTimer = () => {
     let time = this.state.minutes * 60000;
-    setTimeout(this.handleTimerEnd, time);
+    mTimeout = setTimeout(this.handleTimerEnd, time);
     this.setState({ isTimer: true });
+    if (this.state.interval > 0) {
+      this.handleInterval();
+    }
   }
 
-  handleTimeConvert = (t) => {
-    console.log('handleTimeConvert called');
-    // 1- Convert to seconds:
-    let seconds = t / 1000;
-    // 2- Extract hours:
-    let hours = parseInt(seconds / 3600); // 3,600 seconds in 1 hour
-    seconds = seconds % 3600; // seconds remaining after extracting hours
-    // 3- Extract minutes:
-    let minutes = parseInt(seconds / 60); // 60 seconds in 1 minute
-    // 4- Keep only seconds not extracted to minutes:
-    seconds = seconds % 60;
-    console.log(hours + ":" + minutes + ":" + seconds);
+  handleInterval = () => {
+    this.setState({ isInterval: true });
+    let interval = this.state.interval * 60000;
+    iInterval = setInterval(this.handleIntBell, interval);
+  }
+
+  handleIntBell = () => {
+    mBell = new Player('bell.mp3');
+    mBell.play();
   }
 
   handleTimerEnd = () => {
-    console.log('timer end');
-    new Player('bell.mp3').play();
-
+    mBell = new Player('bell.mp3');
+    mBell.play();
     this.setState({
       minutes: 0,
-      isTimer: false
+      interval: 0,
+      isTimer: false,
+      isInterval: false
     });
+    clearTimeout(mTimeout);
+    clearInterval(iBell);
   }
 
   render() {
@@ -50,26 +63,30 @@ export default class Timer extends React.Component {
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <Text>Meditation Time: {this.state.minutes} Mins</Text>
         <Slider
-          value={0}
+          value={1}
           minimumValue={0}
           maximumValue={180}
           step={1}
           onValueChange={(minutes) => this.setState({ minutes })}/>
-        <TouchableOpacity onPress={this.handleTimer}>
-          <Text>
-            Start Meditation
-          </Text>
-        </TouchableOpacity>
+        <Text>Interval: {this.state.interval} Mins</Text>
+        <Slider
+          value={0}
+          minimumValue={0}
+          maximumValue={60}
+          step={1}
+          onValueChange={(interval) => this.setState({ interval })}/>
+        <Button onPress={this.handleTimer} title="Start Meditation"/>
       </View>
     );
   }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const
+  styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
+}
