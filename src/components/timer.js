@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Button } from 'react-native-elements';
 import {StyleSheet, Text, View, Slider, Button} from 'react-native';
 import {Player} from 'react-native-audio-toolkit';
 
@@ -18,6 +17,7 @@ export default class Timer extends React.Component {
     this.handleTimer = this.handleTimer.bind(this);
     this.handleTimerEnd = this.handleTimerEnd.bind(this);
     this.handleInterval = this.handleInterval.bind(this);
+    this.handleTimerReset = this.handleTimerReset.bind(this);
 
     componentDidUnmount = () => {
       clearTimeout(mTimeout);
@@ -26,12 +26,16 @@ export default class Timer extends React.Component {
   }
 
   handleTimer = () => {
+    let currTimer = this.state.isTimer;
+    this.setState({ isTimer: !currTimer }, () => {
+      console.log(this.state.isTimer)
+    });
     let time = this.state.minutes * 60000;
     mTimeout = setTimeout(this.handleTimerEnd, time);
-    this.setState({ isTimer: true });
     if (this.state.interval > 0) {
       this.handleInterval();
     }
+    this.forceUpdate();
   }
 
   handleInterval = () => {
@@ -48,14 +52,19 @@ export default class Timer extends React.Component {
   handleTimerEnd = () => {
     mBell = new Player('bell.mp3');
     mBell.play();
+    this.handleTimerReset();
+    clearTimeout(mTimeout);
+    clearInterval(iBell);
+  }
+
+  handleTimerReset = () => {
+    console.log('handleTimerReset called');
     this.setState({
       minutes: 0,
       interval: 0,
       isTimer: false,
       isInterval: false
     });
-    clearTimeout(mTimeout);
-    clearInterval(iBell);
   }
 
   render() {
@@ -63,24 +72,29 @@ export default class Timer extends React.Component {
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <Text>Meditation Time: {this.state.minutes} Mins</Text>
         <Slider
-          value={1}
+          value={0}
           minimumValue={0}
           maximumValue={180}
           step={1}
-          onValueChange={(minutes) => this.setState({ minutes })}/>
+          onValueChange={(minutes) => this.setState({ minutes })}
+        />
         <Text>Interval: {this.state.interval} Mins</Text>
         <Slider
-          value={0}
+          value={this.state.interval}
           minimumValue={0}
           maximumValue={60}
-          step={1}
-          onValueChange={(interval) => this.setState({ interval })}/>
-        <Button onPress={this.handleTimer} title="Start Meditation"/>
+          step={5}
+          onValueChange={(interval) => this.setState({ interval })}
+        />
+        {
+          this.state.isTimer ?
+            <Button onPress={this.handleTimerReset} title="Stop Meditation"/> :
+            <Button onPress={this.handleTimer} title="Start Meditation"/>
+        }
       </View>
     );
   }
 
-  const
   styles = StyleSheet.create({
     container: {
       flex: 1,
