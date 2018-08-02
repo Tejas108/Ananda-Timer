@@ -1,12 +1,14 @@
 import React from 'react';
-import Timer from './src/components/timer';
-import { StyleSheet, View } from 'react-native';
+import Timer from './src/components/Timer';
+import Home from './src/components/Home';
+import {StyleSheet, View} from 'react-native';
+import {Tabs} from './config/router';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Timer onClick={this.handleTimer}/>
+        <Tabs/>
       </View>
     );
   }
@@ -15,8 +17,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: '#c6d9eb'
+  }
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View, Slider, Button} from 'react-native';
+import {Button, Text, Slider} from 'react-native-elements';
+import {StyleSheet, View} from 'react-native';
 import {Player} from 'react-native-audio-toolkit';
 
 let iBell;
@@ -65,42 +66,70 @@ export default class Timer extends React.Component {
       isTimer: false,
       isInterval: false
     });
+    clearTimeout(mTimeout);
+    clearInterval(iBell);
   }
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center' }}>
-        <Text>Meditation Time: {this.state.minutes} Mins</Text>
+
+      <View style={styles.container}>
+        <Text h4 style={styles.textLabel}>Meditation Time: {this.state.minutes} mins</Text>
         <Slider
           value={0}
           minimumValue={0}
           maximumValue={180}
-          step={1}
+          step={5}
           onValueChange={(minutes) => this.setState({ minutes })}
+          minimumTrackTintColor='#ffffff'
+          maximumTrackTintColor='#ffffff'
+          thumbTintColor='#3C3B85'
+          thumbTouchSize={{ width: 60, height: 60 }}
+          style={{
+            'marginBottom': 60,
+          }}
+          width={330}
+          height={40}
         />
-        <Text>Interval: {this.state.interval} Mins</Text>
+        <Text h4 style={styles.textLabel}>Interval: {this.state.interval} mins</Text>
         <Slider
           value={this.state.interval}
           minimumValue={0}
           maximumValue={60}
           step={5}
+          minimumTrackTintColor='#ffffff'
+          maximumTrackTintColor='#fff'
+          thumbTintColor='#3C3B85'
+          style={{
+            'marginBottom': 40,
+          }}
           onValueChange={(interval) => this.setState({ interval })}
+          width={330}
+          height={40}
         />
         {
           this.state.isTimer ?
-            <Button onPress={this.handleTimerReset} title="Stop Meditation"/> :
-            <Button onPress={this.handleTimer} title="Start Meditation"/>
+            <Button backgroundColor={'#3C3B85'} fontWeight={'bold'} icon={{ name: 'timer' }}
+                    onPress={this.handleTimerReset} title="Stop Meditation"/> :
+            <Button backgroundColor={'#3C3B85'} fontWeight={'bold'} icon={{ name: 'timer' }} onPress={this.handleTimer}
+                    title="Start Meditation"/>
         }
       </View>
     );
   }
-
-  styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#c6d9eb',
+    justifyContent: 'center',
+    alignContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: -5
+  },
+  textLabel: {
+    color: '#3C3B85'
+  }
+
+});
