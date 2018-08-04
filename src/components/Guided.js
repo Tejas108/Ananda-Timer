@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Text} from 'react-native-elements';
 import {StyleSheet, View} from 'react-native';
 
-export default class Guided extends React.Component {
+export default class Guided extends Component {
 
   render() {
     return (

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Button, Text, Slider} from 'react-native-elements';
 import {StyleSheet, View} from 'react-native';
 import {Player} from 'react-native-audio-toolkit';
 
 let iBell;
 let mTimeout;
+const mBell = new Player('bell.mp3');
 
-export default class Timer extends React.Component {
+export default class Timer extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,17 +20,27 @@ export default class Timer extends React.Component {
     this.handleTimerEnd = this.handleTimerEnd.bind(this);
     this.handleInterval = this.handleInterval.bind(this);
     this.handleTimerReset = this.handleTimerReset.bind(this);
+  }
 
-    componentDidUnmount = () => {
-      clearTimeout(mTimeout);
-      clearInterval(iBell);
-    }
+  componentDidMount = () => {
+    this.subs = [
+      this.props.navigation.addListener('didBlur', () => {
+        this.handleTimerReset();
+      }),
+    ];
+  }
+
+  componentWillUnmount = () => {
+    this.subs.forEach((sub) => {
+      sub.remove();
+    });
+    clearTimeout(mTimeout);
+    clearInterval(iBell);
   }
 
   handleTimer = () => {
     let currTimer = this.state.isTimer;
     this.setState({ isTimer: !currTimer }, () => {
-      console.log(this.state.isTimer)
     });
     let time = this.state.minutes * 60000;
     mTimeout = setTimeout(this.handleTimerEnd, time);
@@ -42,16 +53,14 @@ export default class Timer extends React.Component {
   handleInterval = () => {
     this.setState({ isInterval: true });
     let interval = this.state.interval * 60000;
-    iInterval = setInterval(this.handleIntBell, interval);
+    let iInterval = setInterval(this.handleIntBell, interval);
   }
 
   handleIntBell = () => {
-    mBell = new Player('bell.mp3');
     mBell.play();
   }
 
   handleTimerEnd = () => {
-    mBell = new Player('bell.mp3');
     mBell.play();
     this.handleTimerReset();
     clearTimeout(mTimeout);
@@ -66,17 +75,15 @@ export default class Timer extends React.Component {
       isTimer: false,
       isInterval: false
     });
-    clearTimeout(mTimeout);
-    clearInterval(iBell);
   }
 
   render() {
-    return (
 
+    return (
       <View style={styles.container}>
         <Text h4 style={styles.textLabel}>Meditation Time: {this.state.minutes} mins</Text>
         <Slider
-          value={0}
+          value={this.state.minutes}
           minimumValue={0}
           maximumValue={180}
           step={5}
@@ -118,6 +125,10 @@ export default class Timer extends React.Component {
     );
   }
 }
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Text} from 'react-native-elements';
-import {StyleSheet, View} from 'react-native';
+import {Button, StyleSheet, View} from 'react-native';
 
-export default class About extends React.Component {
+export default class About extends Component {
 
   render() {
     return (
-      <Text>I'm about screen</Text>
+      <View style={{flex:1}}>
+        <Text>I'm about screen</Text>
+      </View>
     )
   }
 
