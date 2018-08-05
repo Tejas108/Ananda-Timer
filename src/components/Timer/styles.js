@@ -1,7 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {colors,padding,fonts} from '../../styles/base';
-import {Button} from "react-native-elements";
-import React from "react";
 
 const styles = StyleSheet.create({
   container: {

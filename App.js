@@ -5,7 +5,7 @@ import {createMaterialTopTabNavigator} from 'react-navigation';
 
 import Timer from './src/components/Timer/Timer';
 import Guided from './src/components/Guided';
-import About from './src/components/About';
+import Ashram from './src/components/Ashram/Ashram';
 
 export default class App extends Component {
   render() {
@@ -28,8 +28,8 @@ const Navigator = createMaterialTopTabNavigator({
     screen: Guided,
     navigationOptions: {}
   },
-  About: {
-    screen: About,
+  Ashram: {
+    screen: Ashram,
     navigationOptions: {}
   },
 },{
