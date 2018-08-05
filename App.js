@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import styles from './src/styles/appStyles';
 import {createMaterialTopTabNavigator} from 'react-navigation';
 
-import Timer from './src/components/Timer';
+import Timer from './src/components/Timer/Timer';
 import Guided from './src/components/Guided';
 import About from './src/components/About';
 
 export default class App extends Component {
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignContent: 'center',backgroundColor: '#c6d9eb'}}>
+      <SafeAreaView style={styles.safe}>
         <Navigator/>
       </SafeAreaView>
     );
@@ -46,9 +47,3 @@ const Navigator = createMaterialTopTabNavigator({
   }
 })
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#c6d9eb'
-  }
-});
