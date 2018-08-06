@@ -13,10 +13,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  heading: {
+  guruHeading: {
     marginTop: 10,
     fontFamily: fonts.heading,
-    fontSize: fonts.lg,
+    fontSize: fonts.md,
     color: colors.primary,
     paddingHorizontal: padding.sm,
   }

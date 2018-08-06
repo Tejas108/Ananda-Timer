@@ -6,6 +6,7 @@ import {createMaterialTopTabNavigator} from 'react-navigation';
 import Timer from './src/components/Timer/Timer';
 import Guided from './src/components/Guided';
 import Ashram from './src/components/Ashram/Ashram';
+import Guruji from './src/components/Guruji/Guruji';
 
 export default class App extends Component {
   render() {
@@ -25,12 +26,13 @@ const Navigator = createMaterialTopTabNavigator({
     }
   },
   Guided: {
-    screen: Guided,
-    navigationOptions: {}
+    screen: Guided
+  },
+  Guruji: {
+    screen: Guruji
   },
   Ashram: {
-    screen: Ashram,
-    navigationOptions: {}
+    screen: Ashram
   },
 },{
   initialRouteName: 'Timer',

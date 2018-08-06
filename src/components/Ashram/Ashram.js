@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Text} from 'react-native-elements';
 import {Image, ScrollView, View} from 'react-native';
 import styles from './styles';
 import Images from 'assets/images';
 
-export default class Ashram extends Component {
-  render() {
+const Ashram = () => {
     return (
       <ScrollView style={styles.container}>
         <View style={{flex:1}}>
@@ -14,7 +13,8 @@ export default class Ashram extends Component {
         <Text style={styles.heading}>
           Ananda Ashram
         </Text>
-        <Text style={styles.paragraph}>Ananda Ashram in Monroe, New York, is a Yoga retreat and spiritual-educational center
+        <Text style={styles.paragraph}>
+          Ananda Ashram in Monroe, New York, is a Yoga retreat and spiritual-educational center
           just over one hour from New York City, founded in 1964 by Shri Brahmananda Sarasvati (then Ramamurti S.
           Mishra, M.D.) as the country center of the Yoga Society of New York, Inc.
         </Text>
@@ -76,5 +76,5 @@ export default class Ashram extends Component {
         </Text>
       </ScrollView>
     )
-  }
 }
+export default Ashram;
