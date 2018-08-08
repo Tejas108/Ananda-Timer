@@ -6,10 +6,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.secondary,
     justifyContent: 'space-around',
-    alignContent: 'center',
+    alignContent: 'stretch',
     paddingLeft: padding.md,
     paddingRight: padding.md,
-
   },
   sliderLabel: {
     color: colors.primary,
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 200,
     height: 200,
-    marginTop: 40
+
   },
 
 });

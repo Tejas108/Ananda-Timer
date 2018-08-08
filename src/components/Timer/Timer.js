@@ -1,9 +1,20 @@
 import React, {Component} from 'react';
-import {Button, Text, Slider} from 'react-native-elements';
-import {View, Image} from 'react-native';
+import {Button,
+  Text,
+  Slider,
+  Header,
+  Icon
+} from 'react-native-elements';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {Player} from 'react-native-audio-toolkit';
 import Images from 'assets/images';
 import styles from './styles';
+import {DrawerActions} from 'react-navigation';
+import Burger from '../Burger';
 
 let iBell;
 let mTimeout;
@@ -12,6 +23,7 @@ const mBell = new Player('bell.mp3');
 let count = 0;
 
 export default class Timer extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -95,62 +107,71 @@ export default class Timer extends Component {
   }
 
   render() {
-
     return (
-      <View style={styles.container}>
-        {this.state.isTimer ?
-          <View style={styles.remainingWrap}>
-            <Text h1 style={styles.cntDown}>{this.state.tick}</Text>
-            <Text h4 style={styles.textRemaining}> minutes remaining</Text>
-          </View> :
-          <View style={styles.logoWrap}>
-            <Image source={Images.logo} style={styles.logo}/>
-          </View>
-        }
-        <View style={{ flex: 3 }}>
-          <Text style={styles.sliderLabel}>Meditation Time: {this.state.minutes} mins</Text>
-          <Slider
-            value={this.state.minutes}
-            minimumValue={0}
-            maximumValue={180}
-            step={5}
-            onValueChange={(minutes) => this.setState({ minutes })}
-            minimumTrackTintColor='#ffcd32'
-            maximumTrackTintColor='#ffffff'
-            thumbTintColor='#3C3B85'
-            thumbTouchSize={{ width: 60, height: 60 }}
-            style={{
-              'marginBottom': 40,
-            }}
-            width={330}
-            height={40}
-          />
-          <Text style={styles.sliderLabel}>Interval: {this.state.interval} mins</Text>
-          <Slider
-            value={this.state.interval}
-            minimumValue={0}
-            maximumValue={60}
-            step={5}
-            minimumTrackTintColor='#ffffff'
-            maximumTrackTintColor='#fff'
-            thumbTintColor='#3C3B85'
-            style={{
-              'marginBottom': 40,
-            }}
-            onValueChange={(interval) => this.setState({ interval })}
-            width={330}
-            height={40}
-          />
-          {
-            this.state.isTimer ?
-              <Button backgroundColor={'#3C3B85'} fontWeight={'bold'} fontSize={24} fontFamily={'Helvetica'}
-                      icon={{ name: 'timer' }}
-                      onPress={this.handleTimerReset} title="Stop Meditation"/> :
-              <Button backgroundColor={'#3C3B85'} fontWeight={'bold'} fontSize={24} fontFamily={'Helvetica'}
-                      icon={{ name: 'timer' }}
-                      onPress={this.handleTimer}
-                      title="Start Meditation"/>
+      <View style={{ flex: 1 }}>
+        <View style={{ alignSelf: 'stretch' }}>
+          <Header leftComponent={
+            <TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
+              <Burger/>
+            </TouchableOpacity>
           }
+                  outerContainerStyles={{ backgroundColor: '#c6d9eb' }}/>
+        </View>
+        <View style={styles.container}>
+          {this.state.isTimer ?
+            <View style={styles.remainingWrap}>
+              <Text h1 style={styles.cntDown}>{this.state.tick}</Text>
+              <Text h4 style={styles.textRemaining}> minutes remaining</Text>
+            </View> :
+            <View style={styles.logoWrap}>
+              <Image source={Images.logo} style={styles.logo}/>
+            </View>
+          }
+          <View style={{ flex: 3 }}>
+            <Text style={styles.sliderLabel}>Meditation Time: {this.state.minutes} mins</Text>
+            <Slider
+              value={this.state.minutes}
+              minimumValue={0}
+              maximumValue={180}
+              step={5}
+              onValueChange={(minutes) => this.setState({ minutes })}
+              minimumTrackTintColor='#ffcd32'
+              maximumTrackTintColor='#ffffff'
+              thumbTintColor='#3C3B85'
+              thumbTouchSize={{ width: 60, height: 60 }}
+              style={{
+                'marginBottom': 40,
+              }}
+              width={330}
+              height={40}
+            />
+            <Text style={styles.sliderLabel}>Interval: {this.state.interval} mins</Text>
+            <Slider
+              value={this.state.interval}
+              minimumValue={0}
+              maximumValue={60}
+              step={5}
+              minimumTrackTintColor='#ffffff'
+              maximumTrackTintColor='#fff'
+              thumbTintColor='#3C3B85'
+              style={{
+                'marginBottom': 40,
+              }}
+              onValueChange={(interval) => this.setState({ interval })}
+              width={330}
+              height={40}
+            />
+            {
+              this.state.isTimer ?
+                <Button backgroundColor={'#3C3B85'} fontWeight={'bold'} fontSize={24} fontFamily={'Helvetica'}
+                        icon={{ name: 'timer' }}
+                        onPress={this.handleTimerReset} title="Stop Meditation"/> :
+                <Button backgroundColor={'#3C3B85'} fontWeight={'bold'} fontSize={24} fontFamily={'Helvetica'}
+                        icon={{ name: 'timer' }}
+                        onPress={this.handleTimer}
+                        title="Start Meditation"/>
+            }
+          </View>
         </View>
       </View>
     );
