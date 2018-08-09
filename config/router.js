@@ -1,44 +1,47 @@
 import React from 'react';
 import {createDrawerNavigator, createMaterialTopTabNavigator} from 'react-navigation';
+import {colors} from '../src/styles/base';
+import Home from '../src/components/Home/Home';
 import Timer from '../src/components/Timer/Timer';
 import Guided from '../src/components/Guided';
 import Guruji from '../src/components/Guruji/Guruji';
 import Ashram from '../src/components/Ashram/Ashram';
 import Sidebar from '../src/components/Sidebar/Sidebar';
+import Presets from '../src/components/Presets/Presets';
+import Settings from '../src/components/Settings/Settings';
+import Contact from '../src/components/Contact/Contact';
 
 const Tabs = createMaterialTopTabNavigator({
-  Timer:  Timer,
+  Timer: Timer,
   Guided: Guided,
   Guruji: Guruji,
   Ashram: Ashram,
-},{
+}, {
   initialRouteName: 'Timer',
   tabBarPosition: 'bottom',
-  animationEnabled:false,
+  animationEnabled: false,
   swipeEnabled: false,
   optimizationsEnabled: true,
   showIcon: true,
   tabBarOptions: {
-    activeTintColor: '#fff',
-    inactiveTintColor: '#3C3B85',
+    activeTintColor: colors.light,
+    inactiveTintColor: colors.primary,
     style: {
-      backgroundColor: '#c6d9eb',
+      backgroundColor: colors.secondary,
     },
     indicatorStyle: {
-      backgroundColor: '#ffcd32'
+      backgroundColor: colors.highlight,
     }
   }
 });
 
 const AppNav = createDrawerNavigator({
-    Tabs: {
-      screen: Tabs,
-    },
-    Contact: {
-      screen: Guided,
-    },
-    Guruji: Guruji,
-    Ashram: Ashram,
+    Tabs: Tabs,
+    Home: Home,
+    Timer: Timer,
+    Presets: Presets,
+    Settings: Settings,
+    Contact: Contact,
   },
   {
     contentComponent: Sidebar

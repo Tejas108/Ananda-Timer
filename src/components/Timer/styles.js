@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors,padding,fonts} from '../../styles/base';
+import {colors,padding,fonts,margin} from '../../styles/base';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,7 +28,12 @@ const styles = StyleSheet.create({
   remainingWrap: {
     flex: 2,
     justifyContent: 'center',
-    alignContent: 'center'
+    alignContent: 'center',
+    marginTop: -10
+  },
+  headerWrap: {
+    height: 100,
+    marginTop: 20
   },
   logoWrap: {
     flex: 2,
@@ -37,10 +42,31 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignSelf: 'center',
-    width: 200,
-    height: 200,
-
+    width: 100,
+    height: 100,
+    marginBottom: 20
   },
+  button: {
+    marginBottom: margin.md,
+    borderWidth: 2,
+    borderRadius: 10
+  },
+  presetButton: {
+    marginBottom: margin.md,
+    borderWidth: 1,
+    padding: padding.sm,
+    marginTop: margin.sm,
+    borderRadius: 10
+  },
+  checkbox: {
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    marginBottom: margin.md,
+    marginLeft: -10
+  },
+  checkboxText: {
+    color: colors.primary
+  }
 
 });
 

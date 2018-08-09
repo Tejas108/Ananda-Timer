@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {NavigationActions} from 'react-navigation';
-import {ScrollView, Text, View} from 'react-native';
+import {Text, View,TouchableOpacity} from 'react-native';
+import styles from './styles';
 
 class Sidebar extends Component {
   navigateToScreen = (route) => () => {
@@ -13,23 +14,18 @@ class Sidebar extends Component {
   render() {
     return (
       <View>
-        <ScrollView>
-          <View>
-            <Text onPress={this.navigateToScreen('Presets')}>
-              Presets
-            </Text>
-          </View>
-          <View>
-            <Text onPress={this.navigateToScreen('Settings')}>
-              Settings
-            </Text>
-          </View>
-          <View>
-            <Text onPress={this.navigateToScreen('Contact')}>
-              Contact
-            </Text>
-          </View>
-        </ScrollView>
+        <TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Home')}>
+          <Text style={styles.itemText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Presets')}>
+          <Text style={styles.itemText}>Presets</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Settings')}>
+          <Text style={styles.itemText}>Settings</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Contact')}>
+          <Text style={styles.itemText}>Contact</Text>
+        </TouchableOpacity>
       </View>
     );
   }
