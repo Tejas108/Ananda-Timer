@@ -47,21 +47,21 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   button: {
-    marginBottom: margin.md,
-    borderWidth: 2,
-    borderRadius: 10
+    borderRadius: 8,
+    marginBottom: margin.lg,
+    backgroundColor: '#3C3B85',
+
   },
   presetButton: {
-    marginBottom: margin.md,
-    borderWidth: 1,
+    marginBottom: margin.sm,
     padding: padding.sm,
-    marginTop: margin.sm,
-    borderRadius: 10
+    borderRadius: 8,
+    backgroundColor: '#3C3B85',
   },
   checkbox: {
     backgroundColor: 'transparent',
     borderWidth: 0,
-    marginBottom: margin.md,
+    marginBottom: margin.lg,
     marginLeft: -10
   },
   checkboxText: {

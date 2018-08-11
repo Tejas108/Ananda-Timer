@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Button,
   Text,
@@ -12,10 +12,11 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {Player} from 'react-native-audio-toolkit';
+
+import { Player } from 'react-native-audio-toolkit';
 import Images from 'assets/images';
 import styles from './styles';
-import {DrawerActions} from 'react-navigation';
+import { DrawerActions } from 'react-navigation';
 import Burger from '../Burger';
 
 let iBell;
@@ -111,14 +112,14 @@ export default class Timer extends Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <View style={{ alignSelf: 'stretch' }}>
           <Header leftComponent={
             <TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
-              <Burger/>
+              <Burger />
             </TouchableOpacity>
           }
-                  outerContainerStyles={{ backgroundColor: '#c6d9eb' }}/>
+            outerContainerStyles={{ backgroundColor: '#c6d9eb' }} />
         </View>
         <View style={styles.container}>
           <View style={styles.headerWrap}>
@@ -128,11 +129,11 @@ export default class Timer extends Component {
                 <Text h4 style={styles.textRemaining}> minutes remaining</Text>
               </View> :
               <View style={styles.logoWrap}>
-                <Image source={Images.logo} style={styles.logo}/>
+                <Image source={Images.logo} style={styles.logo} />
               </View>
             }
           </View>
-          <View style={{ flex: 2 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.sliderLabel}>Meditation Time: {this.state.minutes} mins</Text>
             <Slider
               value={this.state.minutes}
@@ -175,24 +176,30 @@ export default class Timer extends Component {
             />
             {
               this.state.isTimer ?
-                <Button buttonStyle={styles.button} color={'#3C3B85'} rounded={true} outline={true} fontWeight={'bold'}
-                        fontSize={24} fontFamily={'Helvetica'}
-                        icon={{ name: 'alarm-off',color: '#3C3B85' }}
-                        onPress={this.handleTimerReset} title="Stop Meditation"/> :
-                <Button buttonStyle={styles.button} color={'#3C3B85'} rounded={true} outline={true} fontWeight={'bold'}
-                        fontSize={24} fontFamily={'Helvetica'}
-                        icon={{ name: 'alarm', color: '#3C3B85'}}
-                        onPress={this.handleTimer}
-                        title="Start Meditation"/>
+                <Button 
+                buttonStyle={styles.button}
+                rounded={true}
+                fontFamily={'Helvetica'}
+                fontSize={24}
+                onPress={this.handleTimerReset}
+                title="Stop Meditation" /> :
+                <Button
+                buttonStyle={styles.button}
+                rounded={true}
+                fontFamily={'Helvetica'}
+                fontSize={24}
+                onPress={this.handleTimer}
+                title="Start Meditation" />
             }
+            <Button
+            buttonStyle={styles.presetButton} 
+            rounded={true} 
+            fontFamily={'Helvetica'}
+            title="Save to Presets" />
           </View>
-          <Button buttonStyle={styles.presetButton} color={'#3C3B85'} rounded={true} outline={true} fontWeight={'bold'}
-                             fontSize={12} fontFamily={'Helvetica'}
-                             icon={{ name: 'add', color: '#3C3B85' }}
-                             title="Save to Presets"/>
         </View>
 
-      </ScrollView>
+      </View>
     );
   }
 }

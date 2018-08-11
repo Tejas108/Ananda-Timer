@@ -4,15 +4,19 @@ import {padding,fonts,colors} from '../../styles/base';
 const styles = StyleSheet.create({
 item:{
   backgroundColor: colors.light,
-  paddingVertical: padding.sm,
+  paddingVertical: padding.md,
   paddingHorizontal: padding.sm,
-  borderBottomColor: '#bbb',
-  borderBottomWidth: StyleSheet.hairlineWidth,
+  borderBottomColor: colors.primary,
+  borderBottomWidth: 1,
+
 },
   itemText: {
-  fontSize: fonts.lg,
-    color: colors.primary
+  fontSize: fonts.sm,
+    color: colors.primary,
+    fontFamily: fonts.copy,
+    fontWeight: 'bold'
   }
 });
 
 export default styles;
+

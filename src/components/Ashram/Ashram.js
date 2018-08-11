@@ -101,3 +101,4 @@ class Ashram extends Component {
 }
 
 export default Ashram;
+
