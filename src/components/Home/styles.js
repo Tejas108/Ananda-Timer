@@ -14,17 +14,6 @@ const styles = StyleSheet.create({
 	},
 	logo: {
 		borderWidth: 1
-	},
-	quote: {
-		fontFamily: fonts.italic,
-		fontSize: fonts.lg,
-		marginBottom: margin.md,
-		color: colors.primary
-	},
-	citation: {
-		fontFamily: fonts.copy,
-		color: colors.primary,
-		textAlign: 'right'
 	}
 });
 
