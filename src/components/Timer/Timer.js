@@ -11,14 +11,14 @@ import Burger from '../Burger';
 let iBell;
 let mTimeout;
 let ticker;
-const mBell = new Player('bell.mp3');
+//const mBell = new Player('bell.mp3');
 let count = 0;
 
 export default class Timer extends Component {
 	constructor() {
 		super();
 		this.state = {
-			minutes: 0,
+			minutes: 1,
 			interval: 0,
 			isTimer: false,
 			isInterval: false,
@@ -74,10 +74,12 @@ export default class Timer extends Component {
 	};
 
 	handleIntBell = () => {
-		mBell.play();
+		const iBell = new Player('bell.mp3');
+		iBell.play();
 	};
 
 	handleTimerEnd = () => {
+		const mBell = new Player('bell.mp3');
 		mBell.play();
 		this.handleTimerReset();
 		clearTimeout(mTimeout);
@@ -87,7 +89,7 @@ export default class Timer extends Component {
 	handleTimerReset = () => {
 		console.log('handleTimerReset called');
 		this.setState({
-			minutes: 0,
+			minutes: 1,
 			interval: 0,
 			isTimer: false,
 			isInterval: false,

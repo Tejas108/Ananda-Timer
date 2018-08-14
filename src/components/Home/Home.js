@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Image } from 'react-native';
 import { Header, Text } from 'react-native-elements';
 import { DrawerActions } from 'react-navigation';
 import Images from 'assets/images';
-import styles from './styles';
+// import styles from './styles';
 import Burger from '../Burger';
 import Quotes from '../Quotes/Quotes';
 
