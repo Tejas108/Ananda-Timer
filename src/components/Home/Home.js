@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image,Dimensions } from 'react-native';
 import { Header, Text } from 'react-native-elements';
 import { DrawerActions } from 'react-navigation';
 import Images from 'assets/images';
-// import styles from './styles';
+import styles from './styles';
 import Burger from '../Burger';
 import Quotes from '../Quotes/Quotes';
+const dimensions = Dimensions.get('window');
+const deviceWidth = dimensions.width;
 
 export default class Home extends Component {
 	render() {
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
 						leftComponent={
@@ -23,15 +25,9 @@ export default class Home extends Component {
 				</View>
 				<Quotes />
 				<View
-					style={{
-						flex: 1,
-						justifyContent: 'center',
-						alignContent: 'center',
-						paddingHorizontal: 10,
-						backgroundColor: '#c6d9eb'
-					}}
+					style={styles.logoWrap}
 				>
-					<Image source={Images.ashramlogo} style={{ height: 100, width: undefined }} resizeMode="contain" />
+					<Image source={Images.ashramlogo} style={{width: deviceWidth-20}} resizeMode={'contain'}/>
 				</View>
 			</View>
 		);

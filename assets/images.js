@@ -7,6 +7,9 @@ const Images = {
 		home: require('./img/home-icn.png'),
 		timer: require('./img/timer-icn.png'),
 		guided: require('./img/guided-icn.png')
+	},
+	Backgrounds: {
+		contact: require('./img/contact-bg.jpg')
 	}
 };
 

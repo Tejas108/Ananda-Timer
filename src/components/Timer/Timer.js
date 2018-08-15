@@ -11,14 +11,13 @@ import Burger from '../Burger';
 let iBell;
 let mTimeout;
 let ticker;
-//const mBell = new Player('bell.mp3');
 let count = 0;
 
 export default class Timer extends Component {
 	constructor() {
 		super();
 		this.state = {
-			minutes: 1,
+			minutes: 0,
 			interval: 0,
 			isTimer: false,
 			isInterval: false,
@@ -40,6 +39,11 @@ export default class Timer extends Component {
 		];
 	};
 
+	componentWillMount() {
+		this.ambPlayer = null;
+		this.reloadPlayer();
+	}
+
 	componentWillUnmount = () => {
 		this.subs.forEach(sub => {
 			sub.remove();
@@ -48,12 +52,26 @@ export default class Timer extends Component {
 		clearInterval(iBell);
 	};
 
+	reloadPlayer() {
+		if (this.ambPlayer) {
+			this.ambPlayer.destroy();
+		}
+		this.ambPlayer = new Player('ambientmp3.mp3');
+		this.ambPlayer.looping = true;
+		this.ambPlayer.volume = 0.5;
+	}
+
 	handleTimer = () => {
 		let currTimer = this.state.isTimer;
 		this.setState({ isTimer: !currTimer, tick: this.state.minutes }, () => {});
 		let time = this.state.minutes * 60000;
 		mTimeout = setTimeout(this.handleTimerEnd, time);
 		ticker = setInterval(this.handleTicker, 60000);
+		if (this.state.ambChecked) {
+			this.reloadPlayer();
+			this.ambPlayer.play();
+		}
+
 		if (this.state.interval > 0) {
 			this.handleInterval();
 		}
@@ -87,15 +105,17 @@ export default class Timer extends Component {
 	};
 
 	handleTimerReset = () => {
-		console.log('handleTimerReset called');
 		this.setState({
-			minutes: 1,
+			minutes: 0,
 			interval: 0,
 			isTimer: false,
 			isInterval: false,
-			tick: 0
+			tick: 0,
+			ambChecked: false
 		});
 		clearInterval(ticker);
+		this.ambPlayer.stop();
+		this.reloadPlayer();
 	};
 
 	render() {
@@ -129,7 +149,7 @@ export default class Timer extends Component {
 							</View>
 						)}
 					</View>
-					<View style={{ flex: 1 }}>
+					<View style={styles.sliderWrap}>
 						<Text style={styles.sliderLabel}>Meditation Time: {this.state.minutes} mins</Text>
 						<Slider
 							value={this.state.minutes}
@@ -141,15 +161,13 @@ export default class Timer extends Component {
 							maximumTrackTintColor="#ffffff"
 							thumbTintColor="#3C3B85"
 							thumbTouchSize={{ width: 60, height: 60 }}
-							style={{
-								marginBottom: 40
-							}}
-							width={330}
+							style={styles.slider1}
+							width={340}
 							height={40}
 						/>
 						<Text style={styles.sliderLabel}>Interval: {this.state.interval} mins</Text>
 						<Slider
-							value={this.state.interval}
+							value={this.state.interval2}
 							minimumValue={0}
 							maximumValue={60}
 							step={5}
@@ -157,7 +175,8 @@ export default class Timer extends Component {
 							maximumTrackTintColor="#fff"
 							thumbTintColor="#3C3B85"
 							onValueChange={interval => this.setState({ interval })}
-							width={330}
+							style={styles.slider}
+							width={340}
 							height={40}
 						/>
 						<CheckBox

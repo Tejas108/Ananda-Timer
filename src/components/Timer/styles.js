@@ -15,6 +15,19 @@ const styles = StyleSheet.create({
     fontFamily: fonts.heading,
     fontSize: fonts.md
   },
+  sliderWrap: {
+    flex: 1,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    flexDirection: 'column',
+    textAlign: 'center'
+  },
+  slider1: {
+    marginBottom: 40,
+  },
+  slider2: {
+    marginBottom: 20,
+  },
   textRemaining: {
     alignSelf: 'center',
     color: colors.primary,
