@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
-import { Button, Text, Slider, Header, CheckBox } from 'react-native-elements';
-import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
-
+import {
+	Button,
+	Text,
+	Slider,
+	Header,
+	CheckBox,
+	FormLabel,
+	FormInput,
+	FormValidationMessage
+} from 'react-native-elements';
+import { View, TouchableOpacity } from 'react-native';
 import { Player } from 'react-native-audio-toolkit';
 import Images from 'assets/images';
 import styles from './styles';
 import { DrawerActions } from 'react-navigation';
 import Burger from '../Burger';
+import * as Animatable from 'react-native-animatable';
+import store from 'react-native-simple-store';
+import Modal from 'react-native-modal';
 
 let iBell;
 let mTimeout;
@@ -22,13 +33,16 @@ export default class Timer extends Component {
 			isTimer: false,
 			isInterval: false,
 			tick: 0,
-			ambChecked: false
+			ambChecked: false,
+			isModal: false
 		};
 		this.handleTimer = this.handleTimer.bind(this);
 		this.handleTimerEnd = this.handleTimerEnd.bind(this);
 		this.handleInterval = this.handleInterval.bind(this);
 		this.handleTimerReset = this.handleTimerReset.bind(this);
 		this.handleTicker = this.handleTicker.bind(this);
+		this.handleSaveSettings = this.handleSaveSettings.bind(this);
+		this.handleModal = this.handleModal.bind(this);
 	}
 
 	componentDidMount = () => {
@@ -42,6 +56,8 @@ export default class Timer extends Component {
 	componentWillMount() {
 		this.ambPlayer = null;
 		this.reloadPlayer();
+		this.bellPlayer = null;
+		this.reloadBellPlayer();
 	}
 
 	componentWillUnmount = () => {
@@ -52,14 +68,28 @@ export default class Timer extends Component {
 		clearInterval(iBell);
 	};
 
-	reloadPlayer() {
+	reloadBellPlayer = () => {
+		if (this.bellPlayer) {
+			this.bellPlayer.destroy();
+		}
+		this.bellPlayer = new Player('bell.mp3');
+	};
+
+	reloadPlayer = () => {
 		if (this.ambPlayer) {
 			this.ambPlayer.destroy();
 		}
 		this.ambPlayer = new Player('ambientmp3.mp3');
-		this.ambPlayer.looping = true;
-		this.ambPlayer.volume = 0.5;
-	}
+	};
+
+	handleSaveSettings = async => {
+		console.log('save settings called');
+		let test = this.state.minutes;
+		store.save('minutes', test);
+		store.get('minutes').then(res => {
+			console.log(res);
+		});
+	};
 
 	handleTimer = () => {
 		let currTimer = this.state.isTimer;
@@ -70,6 +100,8 @@ export default class Timer extends Component {
 		if (this.state.ambChecked) {
 			this.reloadPlayer();
 			this.ambPlayer.play();
+			this.ambPlayer.looping = true;
+			this.ambPlayer.volume = 0.5;
 		}
 
 		if (this.state.interval > 0) {
@@ -92,13 +124,11 @@ export default class Timer extends Component {
 	};
 
 	handleIntBell = () => {
-		const iBell = new Player('bell.mp3');
-		iBell.play();
+		this.bellPlayer.play();
 	};
 
 	handleTimerEnd = () => {
-		const mBell = new Player('bell.mp3');
-		mBell.play();
+		this.bellPlayer.play();
 		this.handleTimerReset();
 		clearTimeout(mTimeout);
 		clearInterval(iBell);
@@ -118,6 +148,11 @@ export default class Timer extends Component {
 		this.reloadPlayer();
 	};
 
+	handleModal = () => {
+		console.log('handleModal called');
+		this.setState({ isModal: !this.state.isModal });
+	};
+
 	render() {
 		return (
 			<View style={{ flex: 1 }}>
@@ -128,13 +163,13 @@ export default class Timer extends Component {
 								<Burger />
 							</TouchableOpacity>
 						}
-						outerContainerStyles={{ backgroundColor: '#c6d9eb' }}
+						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
 				<View style={styles.container}>
 					<View style={styles.headerWrap}>
 						{this.state.isTimer ? (
-							<View style={styles.remainingWrap}>
+							<Animatable.View animation="fadeIn" style={styles.remainingWrap}>
 								<Text h3 style={styles.cntDown}>
 									{this.state.tick}
 								</Text>
@@ -142,10 +177,10 @@ export default class Timer extends Component {
 									{' '}
 									minutes remaining
 								</Text>
-							</View>
+							</Animatable.View>
 						) : (
 							<View style={styles.logoWrap}>
-								<Image source={Images.logo} style={styles.logo} />
+								<Animatable.Image animation="fadeIn" source={Images.logo} style={styles.logo} />
 							</View>
 						)}
 					</View>
@@ -208,9 +243,29 @@ export default class Timer extends Component {
 								title="Start Meditation"
 							/>
 						)}
-						<Button buttonStyle={styles.presetButton} rounded={true} fontFamily={'Helvetica'} title="Save to Presets" />
+						<Button
+							buttonStyle={styles.presetButton}
+							rounded={true}
+							fontFamily={'Helvetica'}
+							title="Save These Settings"
+							onPress={this.handleModal}
+						/>
 					</View>
 				</View>
+				<Modal isVisible={this.state.isModal} style={{ flex: 1 }}>
+					<View style={styles.modalContent}>
+						<FormLabel labelStyle={styles.modalLabel}>Preset Name</FormLabel>
+						<FormInput />
+						<FormValidationMessage labelStyle={styles.modalValMsg}>Please Enter A Name!</FormValidationMessage>
+						<Button
+							buttonStyle={styles.button}
+							rounded={true}
+							fontFamily={'Helvetica'}
+							title="Save"
+							onPress={this.handleModal}
+						/>
+					</View>
+				</Modal>
 			</View>
 		);
 	}

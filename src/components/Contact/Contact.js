@@ -22,7 +22,7 @@ export default class Contact extends Component {
 								/>
 							</TouchableOpacity>
 						}
-						outerContainerStyles={{ backgroundColor: '#c6d9eb' }}
+						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
 				<ImageBackground source={Images.Backgrounds.contact} style={styles.background}>

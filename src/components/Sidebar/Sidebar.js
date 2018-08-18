@@ -13,7 +13,7 @@ class Sidebar extends Component {
 
 	render() {
 		return (
-			<View>
+			<View style={styles.sideWrap}>
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Guruji')}>
 					<Text style={styles.itemText}>Guruji</Text>
 				</TouchableOpacity>
