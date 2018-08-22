@@ -87,11 +87,18 @@ const styles = StyleSheet.create({
 		borderColor: 'rgba(0, 0, 0, 0.1)'
 	},
 	modalLabel: {
-		color: colors.primary
+		color: colors.primary,
+		marginBottom: margin.md
 	},
 	modalValMsg: {
 		marginTop: margin.sm,
 		marginBottom: margin.sm
+	},
+	modalInput: {
+		borderWidth: 1,
+		borderColor: '#555',
+		marginBottom: margin.md,
+		width: '100%'
 	}
 });
 

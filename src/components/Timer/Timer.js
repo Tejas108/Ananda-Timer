@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import {
-	Button,
-	Text,
-	Slider,
-	Header,
-	CheckBox,
-	FormLabel,
-	FormInput,
-	FormValidationMessage
-} from 'react-native-elements';
+import { Button, Text, Slider, Header, CheckBox, FormLabel, FormInput } from 'react-native-elements';
 import { View, TouchableOpacity } from 'react-native';
 import { Player } from 'react-native-audio-toolkit';
 import Images from 'assets/images';
@@ -34,15 +25,17 @@ export default class Timer extends Component {
 			isInterval: false,
 			tick: 0,
 			ambChecked: false,
-			isModal: false
+			isModal: false,
+			txtInput: '',
+			error: false
 		};
 		this.handleTimer = this.handleTimer.bind(this);
 		this.handleTimerEnd = this.handleTimerEnd.bind(this);
 		this.handleInterval = this.handleInterval.bind(this);
 		this.handleTimerReset = this.handleTimerReset.bind(this);
 		this.handleTicker = this.handleTicker.bind(this);
-		this.handleSaveSettings = this.handleSaveSettings.bind(this);
 		this.handleModal = this.handleModal.bind(this);
+		this.handleModalSubmit = this.handleModalSubmit.bind(this);
 	}
 
 	componentDidMount = () => {
@@ -55,8 +48,8 @@ export default class Timer extends Component {
 
 	componentWillMount() {
 		this.ambPlayer = null;
-		this.reloadPlayer();
 		this.bellPlayer = null;
+		this.reloadPlayer();
 		this.reloadBellPlayer();
 	}
 
@@ -80,15 +73,6 @@ export default class Timer extends Component {
 			this.ambPlayer.destroy();
 		}
 		this.ambPlayer = new Player('ambientmp3.mp3');
-	};
-
-	handleSaveSettings = async => {
-		console.log('save settings called');
-		let test = this.state.minutes;
-		store.save('minutes', test);
-		store.get('minutes').then(res => {
-			console.log(res);
-		});
 	};
 
 	handleTimer = () => {
@@ -148,8 +132,26 @@ export default class Timer extends Component {
 		this.reloadPlayer();
 	};
 
+	handleModalSubmit = () => {
+		console.log('handleModalSubmit');
+
+		//store.delete('settings');
+		const preset = {
+			title: this.state.txtInput,
+			min: this.state.minutes,
+			int: this.state.interval,
+			music: this.state.ambChecked
+		};
+
+		store.push('settings', preset);
+		store.get('settings').then(res => console.log(res));
+		setTimeout(() => {
+			this.handleModal();
+		}, 0);
+		this.setState({ txtInput: '' });
+	};
+
 	handleModal = () => {
-		console.log('handleModal called');
 		this.setState({ isModal: !this.state.isModal });
 	};
 
@@ -252,17 +254,24 @@ export default class Timer extends Component {
 						/>
 					</View>
 				</View>
-				<Modal isVisible={this.state.isModal} style={{ flex: 1 }}>
+				<Modal
+					isVisible={this.state.isModal}
+					style={{ flex: 1 }}
+					onBackdropPress={() => this.setState({ isModal: false })}
+				>
 					<View style={styles.modalContent}>
 						<FormLabel labelStyle={styles.modalLabel}>Preset Name</FormLabel>
-						<FormInput />
-						<FormValidationMessage labelStyle={styles.modalValMsg}>Please Enter A Name!</FormValidationMessage>
+						<FormInput inputStyle={styles.modalInput} onChangeText={input => this.setState({ txtInput: input })} />
+						{/* {this.state.error ? (
+							<FormValidationMessage labelStyle={styles.modalValMsg}>Please Enter A Name!</FormValidationMessage>
+						) : null} */}
+
 						<Button
 							buttonStyle={styles.button}
 							rounded={true}
 							fontFamily={'Helvetica'}
 							title="Save"
-							onPress={this.handleModal}
+							onPress={this.handleModalSubmit}
 						/>
 					</View>
 				</Modal>
