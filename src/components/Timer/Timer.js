@@ -144,7 +144,7 @@ export default class Timer extends Component {
 		};
 
 		store.push('settings', preset);
-		store.get('settings').then(res => console.log(res));
+
 		setTimeout(() => {
 			this.handleModal();
 		}, 0);
@@ -262,10 +262,6 @@ export default class Timer extends Component {
 					<View style={styles.modalContent}>
 						<FormLabel labelStyle={styles.modalLabel}>Preset Name</FormLabel>
 						<FormInput inputStyle={styles.modalInput} onChangeText={input => this.setState({ txtInput: input })} />
-						{/* {this.state.error ? (
-							<FormValidationMessage labelStyle={styles.modalValMsg}>Please Enter A Name!</FormValidationMessage>
-						) : null} */}
-
 						<Button
 							buttonStyle={styles.button}
 							rounded={true}
