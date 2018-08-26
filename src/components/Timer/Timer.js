@@ -10,14 +10,14 @@ import * as Animatable from 'react-native-animatable';
 import store from 'react-native-simple-store';
 import Modal from 'react-native-modal';
 
-let iBell;
 let mTimeout;
 let ticker;
 let count = 0;
+let iInterval;
 
 export default class Timer extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			minutes: 0,
 			interval: 0,
@@ -29,13 +29,6 @@ export default class Timer extends Component {
 			txtInput: '',
 			error: false
 		};
-		this.handleTimer = this.handleTimer.bind(this);
-		this.handleTimerEnd = this.handleTimerEnd.bind(this);
-		this.handleInterval = this.handleInterval.bind(this);
-		this.handleTimerReset = this.handleTimerReset.bind(this);
-		this.handleTicker = this.handleTicker.bind(this);
-		this.handleModal = this.handleModal.bind(this);
-		this.handleModalSubmit = this.handleModalSubmit.bind(this);
 	}
 
 	componentDidMount = () => {
@@ -76,12 +69,36 @@ export default class Timer extends Component {
 	};
 
 	handleTimer = () => {
+		let m = 0;
+		let ivl = 0;
+		let mus = false;
+		let time = 0;
+		if (this.props.navigation.state.params) {
+			m = this.props.navigation.state.params.min;
+			ivl = this.props.navigation.state.params.int;
+			mus = this.props.navigation.state.params.music;
+		}
+
 		let currTimer = this.state.isTimer;
-		this.setState({ isTimer: !currTimer, tick: this.state.minutes }, () => {});
-		let time = this.state.minutes * 60000;
+
+		if (m > 0) {
+			this.setState({ isTimer: !currTimer, tick: m, interval: ivl, minutes: m, ambChecked: mus }, () => {});
+			time = m * 60000;
+			if (ivl > 0) {
+				this.setState({ isInterval: true });
+				let interval = ivl * 60000;
+				iInterval = setInterval(this.handleIntBell, interval);
+			} else {
+				clearInterval(iInterval);
+				this.setState({ isInterval: false, interval: 0 });
+			}
+		} else {
+			this.setState({ isTimer: !currTimer, tick: this.state.minutes }, () => {});
+			time = this.state.minutes * 60000;
+		}
 		mTimeout = setTimeout(this.handleTimerEnd, time);
 		ticker = setInterval(this.handleTicker, 60000);
-		if (this.state.ambChecked) {
+		if (this.state.ambChecked || mus === true) {
 			this.reloadPlayer();
 			this.ambPlayer.play();
 			this.ambPlayer.looping = true;
@@ -91,6 +108,7 @@ export default class Timer extends Component {
 		if (this.state.interval > 0) {
 			this.handleInterval();
 		}
+
 		this.forceUpdate();
 	};
 
@@ -102,23 +120,34 @@ export default class Timer extends Component {
 	};
 
 	handleInterval = () => {
+		console.log('handleInterval called');
 		this.setState({ isInterval: true });
 		let interval = this.state.interval * 60000;
-		let iInterval = setInterval(this.handleIntBell, interval);
+		iInterval = setInterval(this.handleIntBell, interval);
 	};
 
 	handleIntBell = () => {
-		this.bellPlayer.play();
+		if (this.state.interval > 0) {
+			let iBell = new Player('bell.mp3');
+			iBell.play();
+			//iBell.destroy();
+			//this.bellPlayer.play();
+			console.log('int ding!');
+		}
 	};
 
 	handleTimerEnd = () => {
-		this.bellPlayer.play();
+		let mBell = new Player('bell.mp3');
+		mBell.play();
+		//mBell.destroy();
 		this.handleTimerReset();
 		clearTimeout(mTimeout);
-		clearInterval(iBell);
+		clearInterval(iInterval);
+		console.log('timer end ding!');
 	};
 
 	handleTimerReset = () => {
+		this.props.navigation.state.params = undefined;
 		this.setState({
 			minutes: 0,
 			interval: 0,
@@ -130,11 +159,11 @@ export default class Timer extends Component {
 		clearInterval(ticker);
 		this.ambPlayer.stop();
 		this.reloadPlayer();
+		this.reloadBellPlayer();
+		this.forceUpdate();
 	};
 
 	handleModalSubmit = () => {
-		console.log('handleModalSubmit');
-
 		//store.delete('settings');
 		const preset = {
 			title: this.state.txtInput,
@@ -156,6 +185,7 @@ export default class Timer extends Component {
 	};
 
 	render() {
+		const { params } = this.props.navigation.state;
 		return (
 			<View style={{ flex: 1 }}>
 				<View style={{ alignSelf: 'stretch' }}>
@@ -187,45 +217,99 @@ export default class Timer extends Component {
 						)}
 					</View>
 					<View style={styles.sliderWrap}>
-						<Text style={styles.sliderLabel}>Meditation Time: {this.state.minutes} mins</Text>
-						<Slider
-							value={this.state.minutes}
-							minimumValue={0}
-							maximumValue={180}
-							step={5}
-							onValueChange={minutes => this.setState({ minutes })}
-							minimumTrackTintColor="#ffcd32"
-							maximumTrackTintColor="#ffffff"
-							thumbTintColor="#3C3B85"
-							thumbTouchSize={{ width: 60, height: 60 }}
-							style={styles.slider1}
-							width={340}
-							height={40}
-						/>
-						<Text style={styles.sliderLabel}>Interval: {this.state.interval} mins</Text>
-						<Slider
-							value={this.state.interval2}
-							minimumValue={0}
-							maximumValue={60}
-							step={5}
-							minimumTrackTintColor="#ffcd32"
-							maximumTrackTintColor="#fff"
-							thumbTintColor="#3C3B85"
-							onValueChange={interval => this.setState({ interval })}
-							style={styles.slider}
-							width={340}
-							height={40}
-						/>
-						<CheckBox
-							title="Play Ambient Music"
-							checked={this.state.ambChecked}
-							containerStyle={styles.checkbox}
-							textStyle={styles.checkboxText}
-							uncheckedColor={'#3C3B85'}
-							checkedIcon="dot-circle-o"
-							uncheckedIcon="circle-o"
-							onPress={() => this.setState({ ambChecked: !this.state.ambChecked })}
-						/>
+						{params ? (
+							<Text style={styles.sliderLabel} key={1}>
+								Meditation Time: {params.min} mins
+							</Text>
+						) : (
+							<Text style={styles.sliderLabel}>Meditation Time: {this.state.minutes} mins</Text>
+						)}
+						{params ? (
+							<Slider
+								value={params.min}
+								minimumValue={0}
+								maximumValue={180}
+								minimumTrackTintColor="#ffcd32"
+								maximumTrackTintColor="#ffffff"
+								thumbTintColor="#3C3B85"
+								thumbTouchSize={{ width: 60, height: 60 }}
+								style={styles.slider1}
+								width={340}
+								height={40}
+								disabled={true}
+							/>
+						) : (
+							<Slider
+								value={this.state.minutes}
+								minimumValue={0}
+								maximumValue={180}
+								step={5}
+								onValueChange={minutes => this.setState({ minutes })}
+								minimumTrackTintColor="#ffcd32"
+								maximumTrackTintColor="#ffffff"
+								thumbTintColor="#3C3B85"
+								thumbTouchSize={{ width: 60, height: 60 }}
+								style={styles.slider1}
+								width={340}
+								height={40}
+							/>
+						)}
+						{params ? (
+							<Text style={styles.sliderLabel}>Interval: {params.int} mins</Text>
+						) : (
+							<Text style={styles.sliderLabel}>Interval: {this.state.interval} mins</Text>
+						)}
+						{params ? (
+							<Slider
+								value={params.int}
+								minimumValue={0}
+								maximumValue={60}
+								minimumTrackTintColor="#ffcd32"
+								maximumTrackTintColor="#fff"
+								thumbTintColor="#3C3B85"
+								style={styles.slider}
+								width={340}
+								height={40}
+								disabled={true}
+							/>
+						) : (
+							<Slider
+								value={this.state.interval}
+								minimumValue={0}
+								maximumValue={60}
+								step={1}
+								minimumTrackTintColor="#ffcd32"
+								maximumTrackTintColor="#fff"
+								thumbTintColor="#3C3B85"
+								onValueChange={interval => this.setState({ interval })}
+								style={styles.slider}
+								width={340}
+								height={40}
+							/>
+						)}
+						{params ? (
+							<CheckBox
+								title="Play Ambient Music"
+								checked={params.music}
+								containerStyle={styles.checkbox}
+								textStyle={styles.checkboxText}
+								uncheckedColor={'#3C3B85'}
+								checkedIcon="dot-circle-o"
+								uncheckedIcon="circle-o"
+								disabled={true}
+							/>
+						) : (
+							<CheckBox
+								title="Play Ambient Music"
+								checked={this.state.ambChecked}
+								containerStyle={styles.checkbox}
+								textStyle={styles.checkboxText}
+								uncheckedColor={'#3C3B85'}
+								checkedIcon="dot-circle-o"
+								uncheckedIcon="circle-o"
+								onPress={() => this.setState({ ambChecked: !this.state.ambChecked })}
+							/>
+						)}
 						{this.state.isTimer ? (
 							<Button
 								buttonStyle={styles.button}
@@ -245,13 +329,26 @@ export default class Timer extends Component {
 								title="Start Meditation"
 							/>
 						)}
-						<Button
-							buttonStyle={styles.presetButton}
-							rounded={true}
-							fontFamily={'Helvetica'}
-							title="Save These Settings"
-							onPress={this.handleModal}
-						/>
+						{params ? (
+							<View>
+								<Button
+									buttonStyle={styles.presetButton}
+									rounded={true}
+									fontFamily={'Helvetica'}
+									title="Reset Timer To Default"
+									onPress={this.handleTimerReset}
+								/>
+							</View>
+						) : (
+							<Button
+								buttonStyle={styles.presetButton}
+								rounded={true}
+								fontFamily={'Helvetica'}
+								title="Save These Settings"
+								onPress={this.handleModal}
+							/>
+						)}
+						{/* <Text>Current Preset: {params.title}</Text> */}
 					</View>
 				</View>
 				<Modal

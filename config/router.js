@@ -85,4 +85,3 @@ const AppNav = createDrawerNavigator(
 );
 
 export default AppNav;
-// contentComponent: <Sidebar {...this.props}  activeTintColor='#2196f3' activeBackgroundColor='rgba(0, 0, 0, .04)' inactiveTintColor='rgba(0, 0, 0, .87)' inactiveBackgroundColor='transparent' style={{backgroundColor: '#000000'}} labelStyle={{color: '#ffffff'}}/>

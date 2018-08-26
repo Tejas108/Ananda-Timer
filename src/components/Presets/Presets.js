@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Header, Icon, Text } from 'react-native-elements';
+import { Header, Icon, Text, Button } from 'react-native-elements';
 import { TouchableOpacity, View } from 'react-native';
-import { DrawerActions } from 'react-navigation';
+import { DrawerActions, NavigationActions } from 'react-navigation';
 import store from 'react-native-simple-store';
 
 export default class Presets extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { data: [{ title: 'frodo', min: 10, int: 20, music: false }] };
+		this.state = { data: [{ title: 'default', min: 0, int: 0, music: false }], current: {} };
 	}
+
 	componentDidMount = () => {
 		this.subs = [
 			this.props.navigation.addListener('willFocus', () => {
@@ -17,7 +18,6 @@ export default class Presets extends Component {
 		];
 	};
 	componentWillMount = () => {
-		console.log('did mount');
 		this.init();
 	};
 
@@ -33,8 +33,7 @@ export default class Presets extends Component {
 	};
 
 	render() {
-		//let data = JSON.stringify(this.state.data);
-		// console.log('data: ' + data);
+		const { navigate } = this.props.navigation;
 		return (
 			<View style={{ flex: 1 }}>
 				<View style={{ alignSelf: 'stretch' }}>
@@ -55,7 +54,19 @@ export default class Presets extends Component {
 				</View>
 				<Text>I'm presets screen</Text>
 				{this.state.data ? (
-					this.state.data.map(item => <Preset title={item.title} key={item.title} />)
+					this.state.data.map((item, i) => (
+						<Button
+							title={item.title}
+							key={i}
+							onPress={() =>
+								navigate('Timer', {
+									min: item.min,
+									int: item.int,
+									music: item.music,
+									title: item.title
+								})}
+						/>
+					))
 				) : (
 					<Text>You Have No Presets</Text>
 				)}
@@ -63,8 +74,3 @@ export default class Presets extends Component {
 		);
 	}
 }
-const Preset = props => (
-	<TouchableOpacity>
-		<Text>{props.title}</Text>
-	</TouchableOpacity>
-);
