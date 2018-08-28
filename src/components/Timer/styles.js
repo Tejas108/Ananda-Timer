@@ -62,13 +62,13 @@ const styles = StyleSheet.create({
 	button: {
 		borderRadius: 8,
 		marginBottom: margin.lg,
-		backgroundColor: '#3C3B85'
+		backgroundColor: colors.primary
 	},
 	presetButton: {
 		marginBottom: margin.sm,
 		padding: padding.sm,
 		borderRadius: 8,
-		backgroundColor: '#3C3B85'
+		backgroundColor: colors.primary
 	},
 	checkbox: {
 		backgroundColor: 'transparent',
@@ -99,6 +99,12 @@ const styles = StyleSheet.create({
 		borderColor: '#555',
 		marginBottom: margin.md,
 		width: '100%'
+	},
+	presetText: {
+		textAlign: 'center',
+		marginTop: margin.lg,
+		color: colors.primary,
+		fontSize: fonts.md
 	}
 });
 

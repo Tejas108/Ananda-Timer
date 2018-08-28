@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Header, Icon, Text, Button } from 'react-native-elements';
-import { TouchableOpacity, View } from 'react-native';
-import { DrawerActions, NavigationActions } from 'react-navigation';
+import { Header, Icon, Text, List, ListItem } from 'react-native-elements';
+import { TouchableOpacity, View, FlatList } from 'react-native';
+import { DrawerActions } from 'react-navigation';
 import store from 'react-native-simple-store';
+import styles from './styles';
 
 export default class Presets extends Component {
 	constructor(props) {
@@ -32,10 +33,36 @@ export default class Presets extends Component {
 			});
 	};
 
+	renderSeparator = () => {
+		return (
+			<View
+				style={{
+					height: 1,
+					width: '86%',
+					backgroundColor: '#CED0CE',
+					marginLeft: '14%'
+				}}
+			/>
+		);
+	};
+
 	render() {
 		const { navigate } = this.props.navigation;
+
+		renderSeparator = () => {
+			return (
+				<View
+					style={{
+						height: 1,
+						width: '86%',
+						backgroundColor: '#CED0CE',
+						marginLeft: '14%'
+					}}
+				/>
+			);
+		};
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
 						leftComponent={
@@ -52,24 +79,33 @@ export default class Presets extends Component {
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
-				<Text>I'm presets screen</Text>
-				{this.state.data ? (
-					this.state.data.map((item, i) => (
-						<Button
-							title={item.title}
-							key={i}
-							onPress={() =>
-								navigate('Timer', {
-									min: item.min,
-									int: item.int,
-									music: item.music,
-									title: item.title
-								})}
-						/>
-					))
-				) : (
-					<Text>You Have No Presets</Text>
-				)}
+				<Text style={styles.heading}>Presets</Text>
+				<List>
+					<FlatList
+						style={styles.list}
+						data={this.state.data}
+						renderItem={({ item }) => (
+							<ListItem
+								key={item.title}
+								title={`${item.title}`}
+								titleStyle={{ color: '#ffcd32' }}
+								chevronColor="#ffcd32"
+								subtitle={
+									item.min + ' minutes, ' + item.int + ' interval, ' + (item.music ? 'Yes Ambiance' : 'No Ambiance')
+								}
+								titleStyle={{ color: '#ffcd32' }}
+								onPress={() =>
+									navigate('Timer', {
+										min: item.min,
+										int: item.int,
+										music: item.music,
+										title: item.title
+									})}
+							/>
+						)}
+						keyExtractor={item => item.title}
+					/>
+				</List>
 			</View>
 		);
 	}

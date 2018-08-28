@@ -51,7 +51,7 @@ export default class Timer extends Component {
 			sub.remove();
 		});
 		clearTimeout(mTimeout);
-		clearInterval(iBell);
+		clearInterval(iInterval);
 	};
 
 	reloadBellPlayer = () => {
@@ -227,7 +227,7 @@ export default class Timer extends Component {
 						{params ? (
 							<Slider
 								value={params.min}
-								minimumValue={0}
+								minimumValue={1}
 								maximumValue={180}
 								minimumTrackTintColor="#ffcd32"
 								maximumTrackTintColor="#ffffff"
@@ -330,7 +330,7 @@ export default class Timer extends Component {
 							/>
 						)}
 						{params ? (
-							<View>
+							<View style={{ flex: 1 }}>
 								<Button
 									buttonStyle={styles.presetButton}
 									rounded={true}
@@ -338,6 +338,7 @@ export default class Timer extends Component {
 									title="Reset Timer To Default"
 									onPress={this.handleTimerReset}
 								/>
+								<Text style={styles.presetText}>Current Preset: {params.title}</Text>
 							</View>
 						) : (
 							<Button
@@ -348,7 +349,6 @@ export default class Timer extends Component {
 								onPress={this.handleModal}
 							/>
 						)}
-						{/* <Text>Current Preset: {params.title}</Text> */}
 					</View>
 				</View>
 				<Modal
