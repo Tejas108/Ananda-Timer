@@ -3,23 +3,24 @@ import { Header, Icon, Text, List, ListItem } from 'react-native-elements';
 import { TouchableOpacity, View, FlatList } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import store from 'react-native-simple-store';
+import Swipeout from 'react-native-swipeout';
 import styles from './styles';
 
 export default class Presets extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { data: [{ title: 'default', min: 0, int: 0, music: false }], current: {} };
+		this.state = {
+			data: [],
+			activeRow: null
+		};
 	}
 
-	componentDidMount = () => {
+	componentWillMount = () => {
 		this.subs = [
 			this.props.navigation.addListener('willFocus', () => {
 				this.init();
 			})
 		];
-	};
-	componentWillMount = () => {
-		this.init();
 	};
 
 	init = () => {
@@ -33,34 +34,35 @@ export default class Presets extends Component {
 			});
 	};
 
-	renderSeparator = () => {
-		return (
-			<View
-				style={{
-					height: 1,
-					width: '86%',
-					backgroundColor: '#CED0CE',
-					marginLeft: '14%'
-				}}
-			/>
-		);
+	handleDelete = index => {
+		console.log('delete ' + index);
+		let newData = this.state.data.slice();
+		newData.splice(index, 1);
+		this.setState({ data: newData });
+		store.save('settings', newData);
+	};
+
+	onSwipeOpen = rowId => {
+		this.setState({ activeRow: rowId });
+	};
+	onSwipeClose = rowId => {
+		this.setState({ activeRow: null });
 	};
 
 	render() {
 		const { navigate } = this.props.navigation;
+		let swipeoutBtns = [
+			{
+				text: 'Delete',
+				backgroundColor: 'red',
+				type: 'Delete',
+				onPress: () => {
+					//console.log('index: ' + this.state.activeRow);
+					this.handleDelete();
+				}
+			}
+		];
 
-		renderSeparator = () => {
-			return (
-				<View
-					style={{
-						height: 1,
-						width: '86%',
-						backgroundColor: '#CED0CE',
-						marginLeft: '14%'
-					}}
-				/>
-			);
-		};
 		return (
 			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
@@ -78,32 +80,45 @@ export default class Presets extends Component {
 						}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
+					<Text style={styles.heading}>Presets</Text>
+					{!this.state.data.length ? <Text>There are currently no presets</Text> : null}
 				</View>
-				<Text style={styles.heading}>Presets</Text>
+
 				<List>
 					<FlatList
 						style={styles.list}
 						data={this.state.data}
-						renderItem={({ item }) => (
-							<ListItem
-								key={item.title}
-								title={`${item.title}`}
-								titleStyle={{ color: '#ffcd32' }}
-								chevronColor="#ffcd32"
-								subtitle={
-									item.min + ' minutes, ' + item.int + ' interval, ' + (item.music ? 'Yes Ambiance' : 'No Ambiance')
-								}
-								titleStyle={{ color: '#ffcd32' }}
-								onPress={() =>
-									navigate('Timer', {
-										min: item.min,
-										int: item.int,
-										music: item.music,
-										title: item.title
-									})}
-							/>
+						renderItem={({ item, index }) => (
+							<Swipeout
+								left={swipeoutBtns}
+								style={styles.swipeout}
+								autoClose={true}
+								close={true}
+								rowID={index}
+								key={index}
+								// onOpen={rowId => this.onSwipeOpen(index)}
+								// onClose={rowId => this.onSwipeClose(index)}
+							>
+								<ListItem
+									key={item.id}
+									title={`${item.title}`}
+									titleStyle={{ color: '#ffcd32' }}
+									chevronColor="#ffcd32"
+									subtitle={
+										item.min + ' minutes, ' + item.int + ' interval, ' + (item.music ? 'Yes Ambiance' : 'No Ambiance')
+									}
+									titleStyle={{ color: '#ffcd32' }}
+									onPress={() =>
+										navigate('Timer', {
+											min: item.min,
+											int: item.int,
+											music: item.music,
+											title: item.title
+										})}
+								/>
+							</Swipeout>
 						)}
-						keyExtractor={item => item.title}
+						keyExtractor={item => item.id}
 					/>
 				</List>
 			</View>

@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
 	listItem: {
 		color: colors.light,
 		borderColor: 'red'
+	},
+	swipeout: {
+		backgroundColor: colors.primary
 	}
 });
 

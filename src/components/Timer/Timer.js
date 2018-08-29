@@ -9,9 +9,10 @@ import Burger from '../Burger';
 import * as Animatable from 'react-native-animatable';
 import store from 'react-native-simple-store';
 import Modal from 'react-native-modal';
+import uuid from 'uuid';
 
 let mTimeout;
-let ticker;
+let ticker; //
 let count = 0;
 let iInterval;
 
@@ -165,19 +166,21 @@ export default class Timer extends Component {
 
 	handleModalSubmit = () => {
 		//store.delete('settings');
-		const preset = {
-			title: this.state.txtInput,
-			min: this.state.minutes,
-			int: this.state.interval,
-			music: this.state.ambChecked
-		};
-
-		store.push('settings', preset);
-
-		setTimeout(() => {
-			this.handleModal();
-		}, 0);
-		this.setState({ txtInput: '' });
+		let id = uuid.v4();
+		if (this.state.input !== '') {
+			const preset = {
+				id: id,
+				title: this.state.txtInput,
+				min: this.state.minutes,
+				int: this.state.interval,
+				music: this.state.ambChecked
+			};
+			store.push('settings', preset);
+			setTimeout(() => {
+				this.handleModal();
+			}, 0);
+			this.setState({ txtInput: '' });
+		}
 	};
 
 	handleModal = () => {
@@ -359,13 +362,24 @@ export default class Timer extends Component {
 					<View style={styles.modalContent}>
 						<FormLabel labelStyle={styles.modalLabel}>Preset Name</FormLabel>
 						<FormInput inputStyle={styles.modalInput} onChangeText={input => this.setState({ txtInput: input })} />
-						<Button
-							buttonStyle={styles.button}
-							rounded={true}
-							fontFamily={'Helvetica'}
-							title="Save"
-							onPress={this.handleModalSubmit}
-						/>
+						{this.state.txtInput !== '' ? (
+							<Button
+								buttonStyle={styles.button}
+								rounded={true}
+								fontFamily={'Helvetica'}
+								title="Save"
+								onPress={this.handleModalSubmit}
+							/>
+						) : (
+							<Button
+								buttonStyle={styles.button}
+								rounded={true}
+								fontFamily={'Helvetica'}
+								title="Save"
+								disabled={true}
+								onPress={this.handleModalSubmit}
+							/>
+						)}
 					</View>
 				</Modal>
 			</View>
