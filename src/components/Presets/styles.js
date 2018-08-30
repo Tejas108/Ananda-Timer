@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
 		paddingHorizontal: padding.sm
 	},
 	list: {
-		backgroundColor: colors.primary
+		// backgroundColor: colors.primary
 	},
 	listItem: {
-		color: colors.light,
-		borderColor: 'red'
+		color: colors.light
 	},
 	swipeout: {
-		backgroundColor: colors.primary
+		backgroundColor: colors.primary,
+		marginBottom: margin.sm
 	}
 });
 

@@ -57,7 +57,6 @@ export default class Presets extends Component {
 				backgroundColor: 'red',
 				type: 'Delete',
 				onPress: () => {
-					//console.log('index: ' + this.state.activeRow);
 					this.handleDelete();
 				}
 			}
@@ -81,46 +80,47 @@ export default class Presets extends Component {
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 					<Text style={styles.heading}>Presets</Text>
-					{!this.state.data.length ? <Text>There are currently no presets</Text> : null}
+					{!this.state.data.length ? <Text style={{ textAlign: 'center' }}>You have no presets</Text> : null}
 				</View>
 
-				<List>
-					<FlatList
-						style={styles.list}
-						data={this.state.data}
-						renderItem={({ item, index }) => (
-							<Swipeout
-								left={swipeoutBtns}
-								style={styles.swipeout}
-								autoClose={true}
-								close={true}
-								rowID={index}
-								key={index}
-								// onOpen={rowId => this.onSwipeOpen(index)}
-								// onClose={rowId => this.onSwipeClose(index)}
-							>
-								<ListItem
-									key={item.id}
-									title={`${item.title}`}
-									titleStyle={{ color: '#ffcd32' }}
-									chevronColor="#ffcd32"
-									subtitle={
-										item.min + ' minutes, ' + item.int + ' interval, ' + (item.music ? 'Yes Ambiance' : 'No Ambiance')
-									}
-									titleStyle={{ color: '#ffcd32' }}
-									onPress={() =>
-										navigate('Timer', {
-											min: item.min,
-											int: item.int,
-											music: item.music,
-											title: item.title
-										})}
-								/>
-							</Swipeout>
-						)}
-						keyExtractor={item => item.id}
-					/>
-				</List>
+				<FlatList
+					style={styles.list}
+					data={this.state.data}
+					renderItem={({ item, index }) => (
+						<Swipeout
+							left={swipeoutBtns}
+							style={styles.swipeout}
+							autoClose={true}
+							close={true}
+							rowID={index}
+							key={index}
+							// onOpen={rowId => this.onSwipeOpen(index)}
+							// onClose={rowId => this.onSwipeClose(index)}
+						>
+							<ListItem
+								key={item.id}
+								underlayColor={'#3C3B85'}
+								title={`${item.title}`}
+								titleStyle={{ color: '#ffcd32' }}
+								chevronColor="#ffcd32"
+								style={{ backgroundColor: 'green' }}
+								subtitle={
+									item.min + ' minutes, ' + item.int + ' interval, ' + (item.music ? 'Yes Ambiance' : 'No Ambiance')
+								}
+								titleStyle={{ color: '#ffcd32' }}
+								onPress={() =>
+									navigate('Timer', {
+										min: item.min,
+										int: item.int,
+										music: item.music,
+										title: item.title
+									})}
+							/>
+						</Swipeout>
+					)}
+					keyExtractor={item => item.id}
+				/>
+				{/* </List> */}
 			</View>
 		);
 	}

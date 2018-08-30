@@ -9,6 +9,7 @@ import Quotes from '../Quotes/Quotes';
 const dimensions = Dimensions.get('window');
 const deviceWidth = dimensions.width;
 import * as Animatable from 'react-native-animatable';
+import SplashScreen from 'react-native-splash-screen';
 
 export default class Home extends Component {
 	render() {
