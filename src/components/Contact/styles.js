@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: colors.secondary
-		// paddingHorizontal: padding.sm
 	},
 	heading: {
 		fontSize: fonts.lg,
@@ -13,7 +12,6 @@ const styles = StyleSheet.create({
 		fontFamily: fonts.heading,
 		marginTop: margin.lg,
 		marginBottom: margin.lg
-		// paddingHorizontal: padding.sm
 	},
 	content: {
 		fontSize: fonts.lg,
@@ -28,6 +26,12 @@ const styles = StyleSheet.create({
 		flex: 1,
 		width: '100%',
 		height: '100%'
+	},
+	button: {
+		borderRadius: 8,
+		marginBottom: margin.lg,
+		backgroundColor: colors.primary,
+		fontFamily: 'Helvetica'
 	}
 });
 

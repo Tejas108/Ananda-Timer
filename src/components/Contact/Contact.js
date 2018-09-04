@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Header, Icon, Text } from 'react-native-elements';
-import { TouchableOpacity, View, ImageBackground } from 'react-native';
+import { Header, Icon, Text, Button } from 'react-native-elements';
+import { TouchableOpacity, View, ImageBackground, Linking } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import styles from './styles';
-import Images from '../../../assets/images';
+import Images from 'assets/images';
 
 export default class Contact extends Component {
 	render() {
@@ -32,8 +32,19 @@ export default class Contact extends Component {
 							13 Sapphire Road{'\n'}
 							Monroe, NY 10950
 						</Text>
-						<Text style={styles.content}>845.782.5575</Text>
-						<Text style={styles.content}>anandaashram.org</Text>
+						<Button
+							rounded={true}
+							buttonStyle={styles.button}
+							title="Call Us At 845.782.5575"
+							onPress={() => Linking.openURL('tel://8457825575')}
+						/>
+						<Button
+							rounded={true}
+							buttonStyle={styles.button}
+							title="Visit Ananda Ashram"
+							onPress={() => Linking.openURL('http://anandaashram.org/?theme=ananda_mobile')}
+						/>
+						<Button rounded={true} buttonStyle={styles.button} title="Make Your Reservation Online" />
 					</View>
 				</ImageBackground>
 			</View>

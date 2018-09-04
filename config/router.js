@@ -1,14 +1,14 @@
 import React from 'react';
 import { createDrawerNavigator, createMaterialTopTabNavigator } from 'react-navigation';
-import { Image } from 'react-native';
 import { colors } from '../src/styles/base';
 import Home from '../src/components/Home/Home';
 import Timer from '../src/components/Timer/Timer';
-import Guided from '../src/components/Guided';
+import Guided from '../src/components/Guided/Guided';
 import Sidebar from '../src/components/Sidebar/Sidebar';
 import Presets from '../src/components/Presets/Presets';
 import Settings from '../src/components/Settings/Settings';
 import Contact from '../src/components/Contact/Contact';
+
 import StackNav from './StackNav';
 import { Icon } from 'react-native-elements';
 import styles from '../src/styles/appStyles';

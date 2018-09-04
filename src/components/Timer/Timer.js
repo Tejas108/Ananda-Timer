@@ -363,18 +363,11 @@ export default class Timer extends Component {
 						<FormLabel labelStyle={styles.modalLabel}>Preset Name</FormLabel>
 						<FormInput inputStyle={styles.modalInput} onChangeText={input => this.setState({ txtInput: input })} />
 						{this.state.txtInput !== '' ? (
-							<Button
-								buttonStyle={styles.button}
-								rounded={true}
-								fontFamily={'Helvetica'}
-								title="Save"
-								onPress={this.handleModalSubmit}
-							/>
+							<Button buttonStyle={styles.button} rounded={true} title="Save" onPress={this.handleModalSubmit} />
 						) : (
 							<Button
 								buttonStyle={styles.button}
 								rounded={true}
-								fontFamily={'Helvetica'}
 								title="Save"
 								disabled={true}
 								onPress={this.handleModalSubmit}

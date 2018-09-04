@@ -5,6 +5,7 @@ import { DrawerActions } from 'react-navigation';
 import store from 'react-native-simple-store';
 import Swipeout from 'react-native-swipeout';
 import styles from './styles';
+import Burger from '../Burger';
 
 export default class Presets extends Component {
 	constructor(props) {
@@ -22,6 +23,11 @@ export default class Presets extends Component {
 			})
 		];
 	};
+	componentWillUnmount = () => {
+		this.subs.forEach(sub => {
+			sub.remove();
+		});
+	};
 
 	init = () => {
 		store
@@ -35,7 +41,6 @@ export default class Presets extends Component {
 	};
 
 	handleDelete = index => {
-		console.log('delete ' + index);
 		let newData = this.state.data.slice();
 		newData.splice(index, 1);
 		this.setState({ data: newData });
@@ -64,7 +69,7 @@ export default class Presets extends Component {
 
 		return (
 			<View style={styles.container}>
-				<View style={{ alignSelf: 'stretch' }}>
+				{/* <View style={{ alignSelf: 'stretch' }}>
 					<Header
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
@@ -79,10 +84,19 @@ export default class Presets extends Component {
 						}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
+				</View> */}
+				<View style={{ alignSelf: 'stretch' }}>
+					<Header
+						leftComponent={
+							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
+								<Burger />
+							</TouchableOpacity>
+						}
+						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
+					/>
 					<Text style={styles.heading}>Presets</Text>
 					{!this.state.data.length ? <Text style={{ textAlign: 'center' }}>You have no presets</Text> : null}
 				</View>
-
 				<FlatList
 					style={styles.list}
 					data={this.state.data}
