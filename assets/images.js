@@ -10,6 +10,10 @@ const Images = {
 	},
 	Backgrounds: {
 		contact: require('./img/contact-bg.jpg')
+	},
+	Reserve: {
+		overnight: require('./img/Semi-Private.jpg'),
+		fourweek: require('./img/fourweek.jpg')
 	}
 };
 

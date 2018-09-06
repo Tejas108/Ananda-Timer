@@ -280,7 +280,7 @@ export default class Timer extends Component {
 								value={this.state.interval}
 								minimumValue={0}
 								maximumValue={60}
-								step={1}
+								step={5}
 								minimumTrackTintColor="#ffcd32"
 								maximumTrackTintColor="#fff"
 								thumbTintColor="#3C3B85"

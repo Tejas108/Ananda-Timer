@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
-import { Header, Icon, Text, Button } from 'react-native-elements';
-import { TouchableOpacity, View, ImageBackground, Linking, WebView } from 'react-native';
-import { DrawerActions } from 'react-navigation';
+import { Header, Text, Button } from 'react-native-elements';
+import { TouchableOpacity, View, ImageBackground, Linking } from 'react-native';
+import { DrawerActions, NavigationActions } from 'react-navigation';
 import styles from './styles';
+import Burger from '../Burger';
+
 import Images from 'assets/images';
 
 export default class Contact extends Component {
+	navigateToScreen = route => () => {
+		const navigateAction = NavigationActions.navigate({
+			routeName: route
+		});
+		this.props.navigation.dispatch(navigateAction);
+	};
 	render() {
-		const jsCode = "window.postMessage(document.getElementById('gb-main').innerHTML)";
-
 		return (
 			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
-								<Icon
-									name="bars"
-									style={{ padding: 10, marginLeft: 10 }}
-									size={20}
-									color="#3C3B85"
-									type={'font-awesome'}
-								/>
+								<Burger />
 							</TouchableOpacity>
 						}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
@@ -29,12 +29,6 @@ export default class Contact extends Component {
 				</View>
 				<ImageBackground source={Images.Backgrounds.contact} style={styles.background}>
 					<View style={styles.contentWrap}>
-						<WebView
-							javaScriptEnabled={true}
-							injectedJavaScript={jsCode}
-							source={{ uri: 'http://www.google.com/' }}
-							onMessage={event => console.log('Received: ', event.nativeEvent.data)}
-						/>
 						<Text style={styles.heading}>Contact Ananda Ashram</Text>
 						<Text style={styles.content}>
 							13 Sapphire Road{'\n'}
@@ -52,7 +46,12 @@ export default class Contact extends Component {
 							title="Visit Ananda Ashram"
 							onPress={() => Linking.openURL('http://anandaashram.org/?theme=ananda_mobile')}
 						/>
-						<Button rounded={true} buttonStyle={styles.button} title="Make Your Reservation Online" />
+						<Button
+							rounded={true}
+							buttonStyle={styles.button}
+							title="Make Your Reservation Online"
+							onPress={this.navigateToScreen('Reserve')}
+						/>
 					</View>
 				</ImageBackground>
 			</View>

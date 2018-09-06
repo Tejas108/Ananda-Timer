@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		marginBottom: margin.lg,
 		backgroundColor: colors.primary,
-		fontFamily: 'Helvetica'
+		fontFamily: fonts.copy
 	}
 });
 
