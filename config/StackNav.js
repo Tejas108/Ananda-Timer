@@ -11,6 +11,7 @@ import Guided from '../src/components/Guided/Guided';
 import Guruji from '../src/components/Guruji/Guruji';
 import Ashram from '../src/components/Ashram/Ashram';
 import Reserve from '../src/components/Reserve/Reserve';
+import Overnight from '../src/components/Reserve/Overnight';
 
 const StackNav = createStackNavigator(
 	{
@@ -60,6 +61,12 @@ const StackNav = createStackNavigator(
 			screen: Reserve,
 			navigationOptions: props => ({
 				title: 'Reserve'
+			})
+		},
+		Overnight: {
+			screen: Overnight,
+			navigationOptions: props => ({
+				title: 'Overnight'
 			})
 		}
 	},

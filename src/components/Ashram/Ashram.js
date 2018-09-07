@@ -3,6 +3,7 @@ import { Header, Icon, Text } from 'react-native-elements';
 import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 import Images from 'assets/images';
+import Burger from '../Burger';
 import { DrawerActions } from 'react-navigation';
 
 class Ashram extends Component {
@@ -13,13 +14,7 @@ class Ashram extends Component {
 					<Header
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
-								<Icon
-									name="bars"
-									style={{ padding: 10, marginLeft: 10 }}
-									size={20}
-									color="#3C3B85"
-									type={'font-awesome'}
-								/>
+								<Burger />
 							</TouchableOpacity>
 						}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}

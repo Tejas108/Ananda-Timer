@@ -21,7 +21,7 @@ export const margin = {
 
 export const fonts = {
 	sm: 12,
-	md: 18,
+	md: 17,
 	lg: 28,
 	copy: 'Helvetica',
 	heading: 'Avenir Next',

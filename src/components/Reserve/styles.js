@@ -7,11 +7,13 @@ const styles = StyleSheet.create({
 		color: colors.primary,
 		marginBottom: margin.sm,
 		paddingVertical: padding.sm,
-		lineHeight: 30
+		lineHeight: 22,
+		fontSize: fonts.md
 	},
 	container: {
 		flex: 1,
-		backgroundColor: colors.secondary
+		backgroundColor: colors.secondary,
+		paddingHorizontal: padding.sm
 	},
 	heading: {
 		marginTop: margin.sm,
@@ -21,10 +23,18 @@ const styles = StyleSheet.create({
 		color: colors.primary,
 		paddingHorizontal: padding.sm
 	},
+	headingInside: {
+		marginTop: margin.sm,
+		marginBottom: margin.md,
+		fontFamily: fonts.heading,
+		fontSize: fonts.lg,
+		color: colors.primary
+	},
 	subheading: {
 		fontWeight: 'bold',
 		fontSize: fonts.md,
-		color: colors.primary
+		color: colors.primary,
+		marginBottom: margin.lg
 	},
 	reservationItem: {
 		paddingHorizontal: padding.sm
@@ -35,7 +45,12 @@ const styles = StyleSheet.create({
 	divider: {
 		backgroundColor: colors.light,
 		marginBottom: margin.md
-	}
+	},
+	button: {
+	borderRadius: 8,
+	marginBottom: margin.lg,
+	backgroundColor: colors.primary
+	},
 });
 
 export default styles;

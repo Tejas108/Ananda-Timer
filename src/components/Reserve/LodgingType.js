@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TouchableOpacity, Image, Text, View } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import styles from './styles';
 
-const LodgingType = props => {
-	return (
-		<View style={styles.reservationItem}>
-			<TouchableOpacity>
-				<Image source={props.image} style={styles.image} />
-			</TouchableOpacity>
-			<Text style={styles.subheading}>{props.title}</Text>
-			<Text style={styles.paragraph}>{props.content}</Text>
-		</View>
-	);
-};
-export default LodgingType;
+class LodgingType extends Component {
+	render() {
+		return (
+			<View style={styles.reservationItem}>
+				<TouchableOpacity onPress={() => this.props.navigation.navigate(this.props.url)}>
+					<Image source={this.props.image} style={styles.image} />
+				</TouchableOpacity>
+				<Text style={styles.subheading}>{this.props.title}</Text>
+			</View>
+		);
+	}
+}
+export default withNavigation(LodgingType);

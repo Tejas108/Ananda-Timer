@@ -5,6 +5,7 @@ import styles from './styles';
 import Images from 'assets/images';
 import { DrawerActions } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
+import Burger from '../Burger';
 
 class Guruji extends React.Component {
 	render() {
@@ -14,13 +15,7 @@ class Guruji extends React.Component {
 					<Header
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
-								<Icon
-									name="bars"
-									style={{ padding: 10, marginLeft: 10 }}
-									size={20}
-									color="#3C3B85"
-									type={'font-awesome'}
-								/>
+								<Burger />
 							</TouchableOpacity>
 						}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}

@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     marginBottom: margin.sm,
     paddingHorizontal: padding.sm,
     paddingVertical: padding.sm,
-    lineHeight: 30,
+    lineHeight: 22,
+    fontSize: fonts.md
   },
   container: {
     flex: 1,

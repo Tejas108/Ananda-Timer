@@ -4,7 +4,6 @@ import { TouchableOpacity, View, ImageBackground, Linking } from 'react-native';
 import { DrawerActions, NavigationActions } from 'react-navigation';
 import styles from './styles';
 import Burger from '../Burger';
-
 import Images from 'assets/images';
 
 export default class Contact extends Component {
