@@ -12,6 +12,11 @@ import Guruji from '../src/components/Guruji/Guruji';
 import Ashram from '../src/components/Ashram/Ashram';
 import Reserve from '../src/components/Reserve/Reserve';
 import Overnight from '../src/components/Reserve/Overnight';
+import FourWeeks from '../src/components/Reserve/FourWeeks';
+import ThreeWeeks from '../src/components/Reserve/ThreeWeeks';
+import TwoWeeks from '../src/components/Reserve/TwoWeeks';
+import OneWeek from '../src/components/Reserve/OneWeek';
+import WebScreen from '../src/components/Reserve/WebScreen';
 
 const StackNav = createStackNavigator(
 	{
@@ -67,6 +72,37 @@ const StackNav = createStackNavigator(
 			screen: Overnight,
 			navigationOptions: props => ({
 				title: 'Overnight'
+			})
+		},
+		FourWeeks: {
+			screen: FourWeeks,
+			navigationOptions: props => ({
+				title: 'FourWeeks'
+			})
+		},
+		ThreeWeeks: {
+			screen: ThreeWeeks,
+			navigationOptions: props => ({
+				title: 'ThreeWeeks'
+			})
+		},
+		TwoWeeks: {
+			screen: TwoWeeks,
+			navigationOptions: props => ({
+				title: 'TwoWeeks'
+			})
+		},
+		OneWeek: {
+			screen: OneWeek,
+			navigationOptions: props => ({
+				title: 'OneWeek'
+			})
+		},
+		WebScreen: {
+			screen: WebScreen,
+			navigationOptions: props => ({
+				title: 'WebScreen',
+				url: ''
 			})
 		}
 	},

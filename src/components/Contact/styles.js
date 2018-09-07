@@ -10,14 +10,13 @@ const styles = StyleSheet.create({
 		fontSize: fonts.lg,
 		color: colors.primary,
 		fontFamily: fonts.heading,
-		marginTop: margin.lg,
-		marginBottom: margin.lg
+		marginBottom: margin.sm
 	},
 	content: {
-		fontSize: fonts.lg,
+		fontSize: fonts.md,
 		color: colors.primary,
 		marginTop: margin.md,
-		marginBottom: margin.md
+		marginBottom: margin.lg
 	},
 	contentWrap: {
 		paddingHorizontal: padding.sm

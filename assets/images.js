@@ -13,7 +13,10 @@ const Images = {
 	},
 	Reserve: {
 		overnight: require('./img/Semi-Private.jpg'),
-		fourweek: require('./img/fourweek.jpg')
+		fourweek: require('./img/fourweek.jpg'),
+		threeweek: require('./img/threeweek.jpg'),
+		twoweek: require('./img/twoweek.jpg'),
+		oneweek: require('./img/oneweek.jpg')
 	}
 };
 

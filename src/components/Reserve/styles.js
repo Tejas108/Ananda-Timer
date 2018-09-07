@@ -47,10 +47,15 @@ const styles = StyleSheet.create({
 		marginBottom: margin.md
 	},
 	button: {
-	borderRadius: 8,
-	marginBottom: margin.lg,
-	backgroundColor: colors.primary
+		borderRadius: 8,
+		marginBottom: margin.lg,
+		backgroundColor: colors.highlight
 	},
+	backlink: {
+		color: colors.primary,
+		fontSize: fonts.md,
+		fontFamily: fonts.copy
+	}
 });
 
 export default styles;

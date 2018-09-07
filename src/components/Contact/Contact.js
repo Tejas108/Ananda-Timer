@@ -48,7 +48,7 @@ export default class Contact extends Component {
 						<Button
 							rounded={true}
 							buttonStyle={styles.button}
-							title="Make Your Reservation Online"
+							title="Make Your Reservation"
 							onPress={this.navigateToScreen('Reserve')}
 						/>
 					</View>

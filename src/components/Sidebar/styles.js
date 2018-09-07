@@ -10,10 +10,9 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 1
 	},
 	itemText: {
-		fontSize: fonts.sm,
+		fontSize: fonts.md,
 		color: colors.primary,
-		fontFamily: fonts.copy,
-		fontWeight: 'bold'
+		fontFamily: fonts.copy
 	},
 	sideWrap: {
 		marginTop: 40
