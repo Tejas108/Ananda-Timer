@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
 	button: {
 		borderRadius: 8,
 		marginBottom: margin.lg,
-		backgroundColor: colors.primary,
-		fontFamily: fonts.copy
+		backgroundColor: colors.primary
 	}
 });
 

@@ -36,17 +36,20 @@ export default class Contact extends Component {
 						<Button
 							rounded={true}
 							buttonStyle={styles.button}
+							fontFamily={'Helvetica'}
 							title="Call Us At 845.782.5575"
 							onPress={() => Linking.openURL('tel://8457825575')}
 						/>
 						<Button
 							rounded={true}
+							fontFamily={'Helvetica'}
 							buttonStyle={styles.button}
 							title="Visit Ananda Ashram"
-							onPress={() => Linking.openURL('http://anandaashram.org/?theme=ananda_mobile')}
+							onPress={() => Linking.openURL('http://anandaashram.org/events-calendar?theme=ananda_mobile')}
 						/>
 						<Button
 							rounded={true}
+							fontFamily={'Helvetica'}
 							buttonStyle={styles.button}
 							title="Make Your Reservation"
 							onPress={this.navigateToScreen('Reserve')}
