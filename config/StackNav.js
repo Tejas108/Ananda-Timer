@@ -16,7 +16,8 @@ import FourWeeks from '../src/components/Reserve/FourWeeks';
 import ThreeWeeks from '../src/components/Reserve/ThreeWeeks';
 import TwoWeeks from '../src/components/Reserve/TwoWeeks';
 import OneWeek from '../src/components/Reserve/OneWeek';
-import WebScreen from '../src/components/Reserve/WebScreen';
+import WebScreenReserve from '../src/components/Reserve/WebScreenReserve';
+import WebScreenEvents from '../src/components/Reserve/WebScreenEvents';
 
 const StackNav = createStackNavigator(
 	{
@@ -98,10 +99,17 @@ const StackNav = createStackNavigator(
 				title: 'OneWeek'
 			})
 		},
-		WebScreen: {
-			screen: WebScreen,
+		WebScreenReserve: {
+			screen: WebScreenReserve,
 			navigationOptions: props => ({
-				title: 'WebScreen',
+				title: 'WebScreenReserve',
+				url: ''
+			})
+		},
+		WebScreenEvents: {
+			screen: WebScreenEvents,
+			navigationOptions: props => ({
+				title: 'WebScreenEvents',
 				url: ''
 			})
 		}

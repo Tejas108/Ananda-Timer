@@ -30,7 +30,7 @@ export default class ThreeWeeks extends Component {
 								<Burger />
 							</TouchableOpacity>
 						}
-						rightComponent={<GoBack />}
+						rightComponent={<GoBack screen={'Contact'} screenTitle={'Contact'} />}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
@@ -49,7 +49,7 @@ export default class ThreeWeeks extends Component {
 						buttonStyle={styles.button}
 						title="Reserve Now"
 						onPress={() =>
-							navigate('WebScreen', {
+							navigate('WebScreenReserve', {
 								url: url
 							})}
 					/>

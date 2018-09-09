@@ -44,8 +44,8 @@ export default class Contact extends Component {
 							rounded={true}
 							fontFamily={'Helvetica'}
 							buttonStyle={styles.button}
-							title="Visit Ananda Ashram"
-							onPress={() => Linking.openURL('http://anandaashram.org/events-calendar?theme=ananda_mobile')}
+							title="Ashram Events"
+							onPress={this.navigateToScreen('WebScreenEvents')}
 						/>
 						<Button
 							rounded={true}

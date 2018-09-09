@@ -7,8 +7,8 @@ class GoBack extends Component {
 	render() {
 		return (
 			<View>
-				<TouchableOpacity onPress={() => this.props.navigation.navigate('Reserve')}>
-					<Text style={styles.backlink}>Back To Reservations</Text>
+				<TouchableOpacity onPress={() => this.props.navigation.navigate(this.props.screen)}>
+					<Text style={styles.backlink}>Back To {this.props.screenTitle}</Text>
 				</TouchableOpacity>
 			</View>
 		);

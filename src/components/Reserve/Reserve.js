@@ -7,6 +7,7 @@ import styles from './styles';
 import Images from 'assets/images';
 import LodgingType from './LodgingType';
 import { DrawerActions } from 'react-navigation';
+import GoBack from './GoBack';
 
 export default class Reserve extends Component {
 	navigateToScreen = route => () => {
@@ -25,6 +26,7 @@ export default class Reserve extends Component {
 								<Burger />
 							</TouchableOpacity>
 						}
+						rightComponent={<GoBack screen={'Contact'} screenTitle={'Contact'} />}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
