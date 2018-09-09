@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
 		fontSize: fonts.md
 	},
 	container: {
-		flex: 1
+		flex: 1,
+		backgroundColor: colors.secondary
 	},
 	heading: {
 		marginTop: 10,

@@ -98,7 +98,7 @@ $1,315 */}
 						buttonStyle={styles.button}
 						title="Reserve Now"
 						onPress={() =>
-							navigate('WebScreen', {
+							navigate('WebScreenReserve', {
 								url: url
 							})}
 					/>

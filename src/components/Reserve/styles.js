@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 	},
 	backlink: {
 		color: colors.primary,
-		fontSize: fonts.md,
+		fontSize: fonts.sm,
 		fontFamily: fonts.copy
 	},
 	indicator: {
@@ -64,6 +64,9 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		alignItems: 'center',
 		justifyContent: 'center'
+	},
+	webview: {
+		flex: 1
 	}
 });
 

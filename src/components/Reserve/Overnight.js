@@ -85,7 +85,7 @@ export default class Overnight extends Component {
 						buttonStyle={styles.button}
 						title="Reserve Now"
 						onPress={() =>
-							navigate('WebScreen', {
+							navigate('WebScreenReserve', {
 								url: url
 							})}
 					/>
