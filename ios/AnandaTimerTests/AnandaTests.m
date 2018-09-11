@@ -14,11 +14,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface AnandaTimerTests : XCTestCase
+@interface AnandaTests : XCTestCase
 
 @end
 
-@implementation AnandaTimerTests
+@implementation AnandaTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

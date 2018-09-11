@@ -22,8 +22,6 @@ const styles = StyleSheet.create({
 		paddingHorizontal: padding.sm
 	},
 	background: {
-		flex: 1,
-		width: '100%',
 		height: '100%'
 	},
 	button: {

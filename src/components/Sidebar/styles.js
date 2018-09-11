@@ -3,19 +3,21 @@ import { padding, fonts, colors } from '../../styles/base';
 
 const styles = StyleSheet.create({
 	item: {
-		backgroundColor: colors.light,
+		backgroundColor: '#b7b8da',
 		paddingVertical: padding.md,
 		paddingHorizontal: padding.sm,
-		borderBottomColor: colors.primary,
+		borderBottomColor: colors.light,
 		borderBottomWidth: 1
 	},
 	itemText: {
 		fontSize: fonts.md,
-		color: colors.primary,
+		color: colors.light,
 		fontFamily: fonts.copy
 	},
 	sideWrap: {
-		marginTop: 40
+		flex: 1,
+		paddingTop: 40,
+		backgroundColor: '#b7b8da'
 	}
 });
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Icon, Text } from 'react-native-elements';
+import { Header, Text } from 'react-native-elements';
 import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 import Images from 'assets/images';
@@ -12,11 +12,16 @@ class Ashram extends Component {
 			<View style={{ flex: 1 }}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
+						placement="left"
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
 								<Burger />
 							</TouchableOpacity>
 						}
+						centerComponent={{
+							text: 'Ananda Ashram',
+							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>

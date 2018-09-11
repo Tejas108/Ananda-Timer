@@ -7,12 +7,9 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.secondary
 	},
 	heading: {
-		marginTop: margin.sm,
-		marginBottom: margin.md,
-		fontFamily: fonts.heading,
-		fontSize: fonts.lg,
-		color: colors.primary,
-		paddingHorizontal: padding.sm
+		fontSize: 17,
+		fontWeight: 'bold',
+		color: '#3C3B85'
 	},
 	list: {
 		// backgroundColor: colors.primary

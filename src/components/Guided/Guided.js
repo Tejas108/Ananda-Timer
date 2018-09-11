@@ -11,15 +11,20 @@ export default class Guided extends Component {
 			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
+						placement="left"
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
 								<Burger />
 							</TouchableOpacity>
 						}
+						centerComponent={{
+							text: 'Guided Meditations',
+							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
-				<Text>I'm guided meditation screen</Text>
+				{/* <Text>I'm guided meditation screen</Text> */}
 			</View>
 		);
 	}

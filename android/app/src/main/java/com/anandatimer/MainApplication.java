@@ -1,4 +1,4 @@
-package com.anandatimer;
+package com.anandatimerashram;
 
 import android.app.Application;
 

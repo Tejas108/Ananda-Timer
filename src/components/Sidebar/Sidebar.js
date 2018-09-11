@@ -20,8 +20,17 @@ class Sidebar extends Component {
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Ashram')}>
 					<Text style={styles.itemText}>Ashram</Text>
 				</TouchableOpacity>
+				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('WebScreenEvents')}>
+					<Text style={styles.itemText}>Event Calendar</Text>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('WebScreenYoga')}>
+					<Text style={styles.itemText}>Yoga Schedule</Text>
+				</TouchableOpacity>
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Contact')}>
-					<Text style={styles.itemText}>Contact</Text>
+					<Text style={styles.itemText}>Reservations & Contact</Text>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Settings')}>
+					<Text style={styles.itemText}>Settings</Text>
 				</TouchableOpacity>
 			</View>
 		);

@@ -16,12 +16,13 @@ const styles = StyleSheet.create({
 		paddingHorizontal: padding.sm
 	},
 	heading: {
-		marginTop: margin.sm,
-		marginBottom: margin.lg,
-		fontFamily: fonts.heading,
-		fontSize: fonts.lg,
-		color: colors.primary,
-		paddingHorizontal: padding.sm
+		// marginTop: margin.sm,
+		// marginBottom: margin.lg,
+		// fontFamily: fonts.heading,
+		fontSize: fonts.md,
+		fontWeight: 'bold',
+		color: colors.primary
+		// paddingHorizontal: padding.sm
 	},
 	headingInside: {
 		marginTop: margin.sm,
@@ -67,6 +68,12 @@ const styles = StyleSheet.create({
 	},
 	webview: {
 		flex: 1
+	},
+	lodgingWrap: {
+		flex: 1,
+		flexWrap: 'wrap',
+		flexDirection: 'row',
+		justifyContent: 'center'
 	}
 });
 

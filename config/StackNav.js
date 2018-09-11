@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import IOSIcon from 'react-native-vector-icons/Ionicons';
 import Home from '../src/components/Home/Home';
 import Presets from '../src/components/Presets/Presets';
 import Settings from '../src/components/Settings/Settings';
@@ -17,7 +14,8 @@ import ThreeWeeks from '../src/components/Reserve/ThreeWeeks';
 import TwoWeeks from '../src/components/Reserve/TwoWeeks';
 import OneWeek from '../src/components/Reserve/OneWeek';
 import WebScreenReserve from '../src/components/Reserve/WebScreenReserve';
-import WebScreenEvents from '../src/components/Reserve/WebScreenEvents';
+import WebScreenEvents from '../src/components/Events/WebScreenEvents';
+import WebScreenYoga from '../src/components/Yoga/WebScreenYoga';
 
 const StackNav = createStackNavigator(
 	{
@@ -110,6 +108,13 @@ const StackNav = createStackNavigator(
 			screen: WebScreenEvents,
 			navigationOptions: props => ({
 				title: 'WebScreenEvents',
+				url: ''
+			})
+		},
+		WebScreenYoga: {
+			screen: WebScreenYoga,
+			navigationOptions: props => ({
+				title: 'WebScreenYoga',
 				url: ''
 			})
 		}

@@ -8,6 +8,8 @@ import Sidebar from '../src/components/Sidebar/Sidebar';
 import Presets from '../src/components/Presets/Presets';
 import Settings from '../src/components/Settings/Settings';
 import Contact from '../src/components/Contact/Contact';
+import WebScreenEvents from '../src/components/Events/WebScreenEvents';
+import WebScreenYoga from '../src/components/Yoga/WebScreenYoga';
 
 import StackNav from './StackNav';
 import { Icon } from 'react-native-elements';
@@ -74,7 +76,9 @@ const AppNav = createDrawerNavigator(
 		Timer: Timer,
 		Presets: Presets,
 		Settings: Settings,
-		Contact: Contact
+		Contact: Contact,
+		WebScreenEvents: WebScreenEvents,
+		WebScreenYoga: WebScreenYoga
 	},
 	{
 		contentComponent: Sidebar,

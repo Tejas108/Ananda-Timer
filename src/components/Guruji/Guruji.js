@@ -13,11 +13,16 @@ class Guruji extends React.Component {
 			<View style={{ flex: 1 }}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
+						placement="left"
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
 								<Burger />
 							</TouchableOpacity>
 						}
+						centerComponent={{
+							text: 'Guruji',
+							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>

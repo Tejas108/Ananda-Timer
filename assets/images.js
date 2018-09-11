@@ -12,7 +12,7 @@ const Images = {
 		contact: require('./img/contact-bg.jpg')
 	},
 	Reserve: {
-		overnight: require('./img/Semi-Private.jpg'),
+		overnight: require('./img/overnight.jpg'),
 		fourweek: require('./img/fourweek.jpg'),
 		threeweek: require('./img/threeweek.jpg'),
 		twoweek: require('./img/twoweek.jpg'),

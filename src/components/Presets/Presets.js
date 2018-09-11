@@ -69,32 +69,21 @@ export default class Presets extends Component {
 
 		return (
 			<View style={styles.container}>
-				{/* <View style={{ alignSelf: 'stretch' }}>
-					<Header
-						leftComponent={
-							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
-								<Icon
-									name="bars"
-									style={{ padding: 10, marginLeft: 10 }}
-									size={20}
-									color="#3C3B85"
-									type={'font-awesome'}
-								/>
-							</TouchableOpacity>
-						}
-						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
-					/>
-				</View> */}
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
+						placement="left"
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
 								<Burger />
 							</TouchableOpacity>
 						}
+						centerComponent={{
+							text: 'Meditation Presets',
+							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
-					<Text style={styles.heading}>Presets</Text>
+					{/* <Text style={styles.heading}>Presets</Text> */}
 					{!this.state.data.length ? <Text style={{ textAlign: 'center' }}>You have no presets</Text> : null}
 				</View>
 				<FlatList
