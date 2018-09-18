@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { Text, View, TouchableOpacity, NetInfo } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 class Sidebar extends Component {
@@ -29,7 +29,7 @@ class Sidebar extends Component {
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Contact')}>
 					<Text style={styles.itemText}>Reservations & Contact</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Membership')}>
+				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('WebScreenMembers')}>
 					<Text style={styles.itemText}>Membership</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Settings')}>

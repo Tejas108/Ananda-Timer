@@ -3,25 +3,26 @@ import { Header, Icon, Text } from 'react-native-elements';
 import { TouchableOpacity, View } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import styles from './styles';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
+import Burger from '../Burger';
 
 export default class Settings extends Component {
 	render() {
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
+						placement="left"
 						leftComponent={
 							<TouchableOpacity onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}>
-								<Icon
-									name="bars"
-									style={{ padding: 10, marginLeft: 10 }}
-									size={20}
-									color="#3C3B85"
-									type={'font-awesome'}
-								/>
+								<Burger />
 							</TouchableOpacity>
 						}
-						outerContainerStyles={{ backgroundColor: '#c6d9eb' }}
+						centerComponent={{
+							text: 'Settings',
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
+						}}
+						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
 				<Text>I'm settings screen</Text>

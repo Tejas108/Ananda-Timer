@@ -5,7 +5,7 @@ import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 const styles = StyleSheet.create({
 	item: {
 		backgroundColor: '#b7b8da',
-		paddingVertical: padding.md,
+		paddingVertical: padding.sm,
 		paddingHorizontal: padding.sm,
 		borderBottomColor: colors.light,
 		borderBottomWidth: 1

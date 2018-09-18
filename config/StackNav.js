@@ -16,6 +16,7 @@ import OneWeek from '../src/components/Reserve/OneWeek';
 import WebScreenReserve from '../src/components/Reserve/WebScreenReserve';
 import WebScreenEvents from '../src/components/Events/WebScreenEvents';
 import WebScreenYoga from '../src/components/Yoga/WebScreenYoga';
+import WebScreenMembers from '../src/components/Membership/WebScreenMembers';
 
 const StackNav = createStackNavigator(
 	{
@@ -115,6 +116,13 @@ const StackNav = createStackNavigator(
 			screen: WebScreenYoga,
 			navigationOptions: props => ({
 				title: 'WebScreenYoga',
+				url: ''
+			})
+		},
+		WebScreenMembers: {
+			screen: WebScreenMembers,
+			navigationOptions: props => ({
+				title: 'WebScreenMembers',
 				url: ''
 			})
 		}
