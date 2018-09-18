@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { padding, fonts, colors } from '../../styles/base';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 const styles = StyleSheet.create({
 	item: {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 1
 	},
 	itemText: {
-		fontSize: fonts.md,
+		fontSize: moderateScale(fonts.md, 0.3),
 		color: colors.light,
 		fontFamily: fonts.copy
 	},

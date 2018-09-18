@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { colors, padding, fonts, margin } from '../../styles/base';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 const styles = StyleSheet.create({
 	container: {
@@ -13,17 +15,21 @@ const styles = StyleSheet.create({
 	sliderLabel: {
 		color: colors.primary,
 		fontFamily: fonts.heading,
-		fontSize: fonts.md
+		fontSize: moderateScale(fonts.md)
 	},
 	sliderWrap: {
-		flex: 1,
+		flex: 2,
 		justifyContent: 'center',
 		alignSelf: 'center',
 		flexDirection: 'column',
 		textAlign: 'center'
 	},
 	slider1: {
-		marginBottom: 40
+		marginBottom: 40,
+		width: wp('80%')
+	},
+	slider: {
+		width: wp('80%')
 	},
 	slider2: {
 		marginBottom: 20
@@ -45,7 +51,7 @@ const styles = StyleSheet.create({
 		marginTop: -10
 	},
 	headerWrap: {
-		height: 100,
+		height: verticalScale(100),
 		marginTop: 40
 	},
 	logoWrap: {
@@ -55,9 +61,9 @@ const styles = StyleSheet.create({
 	},
 	logo: {
 		alignSelf: 'center',
-		width: 150,
-		height: 150,
-		marginBottom: 20
+		width: moderateScale(150, 0.5),
+		height: moderateScale(150, 0.5)
+		// marginBottom: 20
 	},
 	button: {
 		borderRadius: 8,
@@ -77,7 +83,8 @@ const styles = StyleSheet.create({
 		marginLeft: -10
 	},
 	checkboxText: {
-		color: colors.primary
+		color: colors.primary,
+		fontSize: moderateScale(fonts.sm)
 	},
 	modalContent: {
 		backgroundColor: 'white',
@@ -104,7 +111,7 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		marginTop: margin.lg,
 		color: colors.primary,
-		fontSize: fonts.md
+		fontSize: moderateScale(fonts.md)
 	}
 });
 

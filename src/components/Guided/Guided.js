@@ -4,6 +4,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import Burger from '../Burger';
 import styles from './styles';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 export default class Guided extends Component {
 	render() {
@@ -19,7 +20,7 @@ export default class Guided extends Component {
 						}
 						centerComponent={{
 							text: 'Guided Meditations',
-							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
 						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>

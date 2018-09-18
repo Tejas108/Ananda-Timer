@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, NetInfo } from 'react-native';
 import styles from './styles';
 
 class Sidebar extends Component {
@@ -24,10 +24,13 @@ class Sidebar extends Component {
 					<Text style={styles.itemText}>Event Calendar</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('WebScreenYoga')}>
-					<Text style={styles.itemText}>Yoga Schedule</Text>
+					<Text style={styles.itemText}>Yoga Class Schedule</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Contact')}>
 					<Text style={styles.itemText}>Reservations & Contact</Text>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Membership')}>
+					<Text style={styles.itemText}>Membership</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Settings')}>
 					<Text style={styles.itemText}>Settings</Text>

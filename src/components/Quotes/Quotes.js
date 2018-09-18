@@ -51,7 +51,7 @@ export default class Quotes extends Component {
 
 	render() {
 		return (
-			<PullToRefresh isRefreshing={this.state.isRefreshing} onRefresh={this.onRefresh.bind(this)} minPullDistance={10}>
+			<PullToRefresh isRefreshing={this.state.isRefreshing} onRefresh={this.onRefresh.bind(this)} minPullDistance={62}>
 				<ScrollView style={{ flex: 1, padding: 10, backgroundColor: '#c6d9eb' }}>
 					<Text style={styles.quote}>{this.state.currQuote}</Text>
 					<Text style={styles.citation}> - Shri Brahmananda Saraswati</Text>

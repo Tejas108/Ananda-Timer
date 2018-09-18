@@ -5,6 +5,8 @@ import styles from './styles';
 import Images from 'assets/images';
 import Burger from '../Burger';
 import { DrawerActions } from 'react-navigation';
+import * as Animatable from 'react-native-animatable';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 class Ashram extends Component {
 	render() {
@@ -20,15 +22,15 @@ class Ashram extends Component {
 						}
 						centerComponent={{
 							text: 'Ananda Ashram',
-							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
 						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
 				<ScrollView style={styles.container}>
-					<View style={{ flex: 1 }}>
-						<Image source={Images.ananda} style={{ flex: 1, alignSelf: 'stretch' }} />
-					</View>
+					<Animatable.View animation="fadeIn" View style={{ flex: 1 }}>
+						<Image source={Images.ananda} style={{ alignSelf: 'center' }} />
+					</Animatable.View>
 					<Text style={styles.heading}>Ananda Ashram</Text>
 					<Text style={styles.paragraph}>
 						Ananda Ashram in Monroe, New York, is a Yoga retreat and spiritual-educational center just over one hour

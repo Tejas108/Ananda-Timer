@@ -6,6 +6,7 @@ import store from 'react-native-simple-store';
 import Swipeout from 'react-native-swipeout';
 import styles from './styles';
 import Burger from '../Burger';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 export default class Presets extends Component {
 	constructor(props) {
@@ -79,34 +80,23 @@ export default class Presets extends Component {
 						}
 						centerComponent={{
 							text: 'Meditation Presets',
-							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
 						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
-					{/* <Text style={styles.heading}>Presets</Text> */}
-					{!this.state.data.length ? <Text style={{ textAlign: 'center' }}>You have no presets</Text> : null}
+					{this.state.data == '' ? <Text style={{ textAlign: 'center' }}>You have no presets</Text> : null}
 				</View>
 				<FlatList
 					style={styles.list}
 					data={this.state.data}
-					renderItem={({ item, index }) => (
-						<Swipeout
-							left={swipeoutBtns}
-							style={styles.swipeout}
-							autoClose={true}
-							close={true}
-							rowID={index}
-							key={index}
-							// onOpen={rowId => this.onSwipeOpen(index)}
-							// onClose={rowId => this.onSwipeClose(index)}
-						>
+					renderItem={({ item, i }) => (
+						<Swipeout left={swipeoutBtns} style={styles.swipeout} autoClose={true} close={true} rowID={i} key={i}>
 							<ListItem
 								key={item.id}
 								underlayColor={'#3C3B85'}
 								title={`${item.title}`}
-								titleStyle={{ color: '#ffcd32' }}
+								// titleStyle={{ color: '#ffcd32' }}
 								chevronColor="#ffcd32"
-								style={{ backgroundColor: 'green' }}
 								subtitle={
 									item.min + ' minutes, ' + item.int + ' interval, ' + (item.music ? 'Yes Ambiance' : 'No Ambiance')
 								}
@@ -123,7 +113,6 @@ export default class Presets extends Component {
 					)}
 					keyExtractor={item => item.id}
 				/>
-				{/* </List> */}
 			</View>
 		);
 	}

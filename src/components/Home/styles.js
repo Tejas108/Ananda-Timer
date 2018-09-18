@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors, padding, fonts, margin } from '../../styles/base';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 const styles = StyleSheet.create({
 	container: {
@@ -10,10 +11,10 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		paddingHorizontal: padding.sm,
-		backgroundColor: colors.secondary,
+		backgroundColor: colors.secondary
 	},
 	ashramlogo: {
-		height: 120,
+		height: scale(150)
 	}
 });
 

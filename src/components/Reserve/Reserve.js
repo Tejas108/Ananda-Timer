@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, TouchableOpacity } from 'react-native';
+import { ScrollView, View, TouchableOpacity, NetInfo } from 'react-native';
 import Burger from '../Burger';
 import { Header } from 'react-native-elements';
 import { overnight, fourweek, threeweek, twoweek, oneweek } from './reserve-landing-content';

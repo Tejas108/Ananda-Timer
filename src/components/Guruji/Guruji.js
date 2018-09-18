@@ -6,6 +6,7 @@ import Images from 'assets/images';
 import { DrawerActions } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 import Burger from '../Burger';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 class Guruji extends React.Component {
 	render() {
@@ -21,7 +22,7 @@ class Guruji extends React.Component {
 						}
 						centerComponent={{
 							text: 'Guruji',
-							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
 						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>

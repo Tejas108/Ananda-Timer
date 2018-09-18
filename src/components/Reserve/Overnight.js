@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, View, TouchableOpacity, Image, Linking } from 'react-native';
+import { Text, ScrollView, View, TouchableOpacity, Image, NetInfo } from 'react-native';
 import { Header, Button } from 'react-native-elements';
 import Burger from '../Burger';
 import { DrawerActions, NavigationActions } from 'react-navigation';

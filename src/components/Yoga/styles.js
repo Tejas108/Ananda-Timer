@@ -11,10 +11,11 @@ const styles = StyleSheet.create({
 		fontSize: fonts.lg,
 		color: colors.primary,
 		fontFamily: fonts.heading,
-		marginBottom: margin.sm
+		marginBottom: margin.sm,
+		paddingLeft: padding.sm
 	},
 	content: {
-		fontSize: moderateScale(fonts.md),
+		fontSize: fonts.md,
 		color: colors.primary,
 		marginTop: margin.md,
 		marginBottom: margin.lg
@@ -23,12 +24,32 @@ const styles = StyleSheet.create({
 		paddingHorizontal: padding.sm
 	},
 	background: {
+		flex: 1,
+		width: '100%',
 		height: '100%'
 	},
 	button: {
 		borderRadius: 8,
 		marginBottom: margin.lg,
 		backgroundColor: colors.primary
+	},
+	backlink: {
+		color: colors.primary,
+		fontSize: fonts.sm,
+		fontFamily: fonts.copy
+	},
+	indicator: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		top: 0,
+		bottom: 0,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	webview: {
+		flex: 1,
+		backgroundColor: '#c6d9eb'
 	},
 	netError: {
 		fontSize: moderateScale(fonts.sm),

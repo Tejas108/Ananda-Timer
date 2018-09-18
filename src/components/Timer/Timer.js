@@ -10,6 +10,7 @@ import * as Animatable from 'react-native-animatable';
 import store from 'react-native-simple-store';
 import Modal from 'react-native-modal';
 import uuid from 'uuid';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 let mTimeout;
 let ticker; //
@@ -201,7 +202,7 @@ export default class Timer extends Component {
 						}
 						centerComponent={{
 							text: 'Meditation Timer',
-							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
 						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
@@ -242,7 +243,7 @@ export default class Timer extends Component {
 								thumbTintColor="#3C3B85"
 								thumbTouchSize={{ width: 60, height: 60 }}
 								style={styles.slider1}
-								width={340}
+								// width={340}
 								height={40}
 								disabled={true}
 							/>
@@ -258,7 +259,7 @@ export default class Timer extends Component {
 								thumbTintColor="#3C3B85"
 								thumbTouchSize={{ width: 60, height: 60 }}
 								style={styles.slider1}
-								width={340}
+								// width={340}
 								height={40}
 							/>
 						)}
@@ -276,7 +277,6 @@ export default class Timer extends Component {
 								maximumTrackTintColor="#fff"
 								thumbTintColor="#3C3B85"
 								style={styles.slider}
-								width={340}
 								height={40}
 								disabled={true}
 							/>
@@ -291,7 +291,6 @@ export default class Timer extends Component {
 								thumbTintColor="#3C3B85"
 								onValueChange={interval => this.setState({ interval })}
 								style={styles.slider}
-								width={340}
 								height={40}
 							/>
 						)}

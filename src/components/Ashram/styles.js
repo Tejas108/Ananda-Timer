@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors, padding, fonts, margin } from '../../styles/base';
+import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 
 const styles = StyleSheet.create({
 	paragraph: {
@@ -8,8 +9,8 @@ const styles = StyleSheet.create({
 		marginBottom: margin.sm,
 		paddingHorizontal: padding.sm,
 		paddingVertical: padding.sm,
-		lineHeight: 22,
-		fontSize: fonts.md
+		lineHeight: moderateScale(22),
+		fontSize: moderateScale(fonts.md)
 	},
 	container: {
 		flex: 1,
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
 	heading: {
 		marginTop: 10,
 		fontFamily: fonts.heading,
-		fontSize: fonts.lg,
+		fontSize: moderateScale(fonts.lg),
 		color: colors.primary,
 		paddingHorizontal: padding.sm
 	}
