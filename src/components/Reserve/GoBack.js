@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import styles from './styles';
@@ -14,5 +15,9 @@ class GoBack extends Component {
 		);
 	}
 }
+
+GoBack.propTypes = {
+	screen: PropTypes.string
+};
 
 export default withNavigation(GoBack);

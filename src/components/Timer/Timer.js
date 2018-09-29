@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Text, Slider, Header, CheckBox, FormLabel, FormInput } from 'react-native-elements';
 import { View, TouchableOpacity } from 'react-native';
 import { Player } from 'react-native-audio-toolkit';
@@ -10,10 +11,10 @@ import * as Animatable from 'react-native-animatable';
 import store from 'react-native-simple-store';
 import Modal from 'react-native-modal';
 import uuid from 'uuid';
-import { scale, moderateScale, verticalScale } from '../../styles/Utils';
+import { moderateScale } from '../../styles/Utils';
 
 let mTimeout;
-let ticker; //
+let ticker;
 let count = 0;
 let iInterval;
 
@@ -21,7 +22,7 @@ export default class Timer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			minutes: 0,
+			minutes: 1,
 			interval: 0,
 			isTimer: false,
 			isInterval: false,
@@ -34,9 +35,11 @@ export default class Timer extends Component {
 	}
 
 	componentDidMount = () => {
+		console.log('did mount');
 		this.subs = [
 			this.props.navigation.addListener('didBlur', () => {
 				this.handleTimerReset();
+				console.log('blurred');
 			})
 		];
 	};
@@ -45,7 +48,7 @@ export default class Timer extends Component {
 		this.ambPlayer = null;
 		this.bellPlayer = null;
 		this.reloadPlayer();
-		this.reloadBellPlayer();
+		//this.reloadBellPlayer();
 	}
 
 	componentWillUnmount = () => {
@@ -57,10 +60,14 @@ export default class Timer extends Component {
 	};
 
 	reloadBellPlayer = () => {
+		console.log('reloadBellPlayer called');
 		if (this.bellPlayer) {
 			this.bellPlayer.destroy();
 		}
-		this.bellPlayer = new Player('bell.mp3');
+		if (this.state.isTimer) {
+			this.bellPlayer = new Player('bell.mp3');
+			this.bellPlayer.play();
+		}
 	};
 
 	reloadPlayer = () => {
@@ -139,9 +146,10 @@ export default class Timer extends Component {
 	};
 
 	handleTimerEnd = () => {
-		let mBell = new Player('bell.mp3');
-		mBell.play();
+		//let mBell = new Player('bell.mp3');
+		//mBell.play();
 		//mBell.destroy();
+		this.reloadBellPlayer();
 		this.handleTimerReset();
 		clearTimeout(mTimeout);
 		clearInterval(iInterval);
@@ -161,7 +169,7 @@ export default class Timer extends Component {
 		clearInterval(ticker);
 		this.ambPlayer.stop();
 		this.reloadPlayer();
-		this.reloadBellPlayer();
+		// this.reloadBellPlayer();
 		this.forceUpdate();
 	};
 
@@ -250,7 +258,7 @@ export default class Timer extends Component {
 						) : (
 							<Slider
 								value={this.state.minutes}
-								minimumValue={0}
+								minimumValue={1}
 								maximumValue={180}
 								step={5}
 								onValueChange={minutes => this.setState({ minutes })}
@@ -383,3 +391,6 @@ export default class Timer extends Component {
 		);
 	}
 }
+Modal.propTypes = {
+	isVisible: PropTypes.bool
+};

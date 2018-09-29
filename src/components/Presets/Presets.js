@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Header, Icon, Text, List, ListItem } from 'react-native-elements';
+import { Header, Text, ListItem } from 'react-native-elements';
 import { TouchableOpacity, View, FlatList } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import store from 'react-native-simple-store';
 import Swipeout from 'react-native-swipeout';
 import styles from './styles';
 import Burger from '../Burger';
-import { scale, moderateScale, verticalScale } from '../../styles/Utils';
+import { moderateScale } from '../../styles/Utils';
 
 export default class Presets extends Component {
 	constructor(props) {
@@ -84,7 +84,7 @@ export default class Presets extends Component {
 						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
-					{this.state.data == '' ? <Text style={{ textAlign: 'center' }}>You have no presets</Text> : null}
+					{this.state.data == '' && <Text style={{ textAlign: 'center' }}>You have no presets</Text>}
 				</View>
 				<FlatList
 					style={styles.list}
@@ -95,7 +95,6 @@ export default class Presets extends Component {
 								key={item.id}
 								underlayColor={'#3C3B85'}
 								title={`${item.title}`}
-								// titleStyle={{ color: '#ffcd32' }}
 								chevronColor="#ffcd32"
 								subtitle={
 									item.min + ' minutes, ' + item.int + ' interval, ' + (item.music ? 'Yes Ambiance' : 'No Ambiance')

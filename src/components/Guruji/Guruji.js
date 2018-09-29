@@ -11,7 +11,7 @@ import { scale, moderateScale, verticalScale } from '../../styles/Utils';
 class Guruji extends React.Component {
 	render() {
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
 						placement="left"

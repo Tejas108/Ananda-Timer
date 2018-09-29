@@ -3,6 +3,7 @@ import { ScrollView, Text } from 'react-native';
 import data from './quoteData.json';
 import styles from './styles';
 import PullToRefresh from 'react-native-simple-ptr';
+import PropTypes from 'prop-types';
 
 let randQuote = '';
 
@@ -51,8 +52,8 @@ export default class Quotes extends Component {
 
 	render() {
 		return (
-			<PullToRefresh isRefreshing={this.state.isRefreshing} onRefresh={this.onRefresh.bind(this)} minPullDistance={62}>
-				<ScrollView style={{ flex: 1, padding: 10, backgroundColor: '#c6d9eb' }}>
+			<PullToRefresh isRefreshing={this.state.isRefreshing} onRefresh={this.onRefresh.bind(this)} minPullDistance={10}>
+				<ScrollView style={styles.scrollView}>
 					<Text style={styles.quote}>{this.state.currQuote}</Text>
 					<Text style={styles.citation}> - Shri Brahmananda Saraswati</Text>
 				</ScrollView>
@@ -60,3 +61,6 @@ export default class Quotes extends Component {
 		);
 	}
 }
+PullToRefresh.propTypes = {
+	isRefreshing: PropTypes.bool
+};

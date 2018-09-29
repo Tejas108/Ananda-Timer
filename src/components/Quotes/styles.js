@@ -14,6 +14,11 @@ const styles = StyleSheet.create({
 		color: colors.primary,
 		textAlign: 'right',
 		fontSize: moderateScale(12, 1)
+	},
+	scrollView: {
+		flex: 1,
+		padding: 10,
+		backgroundColor: '#c6d9eb'
 	}
 });
 

@@ -4,7 +4,7 @@ import { Header } from 'react-native-elements';
 import { DrawerActions, NavigationActions } from 'react-navigation';
 import Burger from '../Burger';
 import styles from './styles';
-import { scale, moderateScale, verticalScale } from '../../styles/Utils';
+import { moderateScale } from '../../styles/Utils';
 
 class WebScreenEvents extends Component {
 	constructor() {
@@ -42,7 +42,7 @@ class WebScreenEvents extends Component {
 		const jsCode =
 			'(function(){var vr=document.getElementsByClassName("event-row");for(var i=0;i<vr.length;i++){vr[i].style.height="100px";vr[i].style.borderBottom="1px solid #fff";vr[i].style.paddingTop="20px";}}());document.getElementById("header").remove();document.getElementById("page-title").style.display="none";document.getElementsByClassName("region-bottom")[0].remove();document.getElementById("page").style.fontSize="16px";document.getElementById("main").style.background="#c6d9eb";document.getElementById("main").style.marginBottom="40px";document.getElementById("main").style.border="none";document.getElementById("content").style.backgroundColor="#c6d9eb";document.getElementsByClassName("html")[0].style.padding="0";document.getElementsByClassName("html")[0].style.backgroundColor="#c6d9eb";document.getElementsByClassName("view-events-calendar")[0].style.backgroundColor="#c6d9eb";';
 		return (
-			<View style={{ flex: 1, backgroundColor: '#c6d9eb' }}>
+			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
 					<Header
 						placement="left"
