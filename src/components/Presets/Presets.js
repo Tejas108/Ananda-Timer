@@ -68,6 +68,15 @@ export default class Presets extends Component {
 			}
 		];
 
+		renameBell = bell => {
+			if (bell !== undefined) {
+				let bellName = bell.substring(0, bell.length - 4);
+				return bellName.toLowerCase().replace(/\b\w/g, m => {
+					return m.toUpperCase();
+				});
+			}
+		};
+
 		return (
 			<View style={styles.container}>
 				<View style={{ alignSelf: 'stretch' }}>
@@ -84,7 +93,7 @@ export default class Presets extends Component {
 						}}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
-					{this.state.data == '' && <Text style={{ textAlign: 'center' }}>You have no presets</Text>}
+					{!this.state.data && <Text style={styles.noPresets}>You have no presets</Text>}
 				</View>
 				<FlatList
 					style={styles.list}
@@ -97,15 +106,30 @@ export default class Presets extends Component {
 								title={`${item.title}`}
 								chevronColor="#ffcd32"
 								subtitle={
-									item.min + ' minutes, ' + item.int + ' interval, ' + (item.music ? 'Yes Ambiance' : 'No Ambiance')
+									<View>
+										<Text style={styles.subtitle}>
+											{item.min +
+												' minutes, ' +
+												item.int +
+												' interval, ' +
+												(item.music ? ', Ambiance' : 'No Ambiance') +
+												'\n' +
+												renameBell(item.endBell) +
+												' end sound, ' +
+												(item.intBell ? renameBell(item.intBell) + ' interval sound' : '')}
+										</Text>
+									</View>
 								}
-								titleStyle={{ color: '#ffcd32' }}
+								titleStyle={styles.title}
+								textStyle={styles.subtitle}
 								onPress={() =>
 									navigate('Timer', {
 										min: item.min,
 										int: item.int,
 										music: item.music,
-										title: item.title
+										title: item.title,
+										endBell: item.endBell,
+										intBell: item.intBell
 									})}
 							/>
 						</Swipeout>

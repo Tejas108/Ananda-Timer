@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Text, Slider, Header, CheckBox, FormLabel, FormInput } from 'react-native-elements';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Player } from 'react-native-audio-toolkit';
 import Images from 'assets/images';
 import styles from './styles';
@@ -11,6 +11,7 @@ import * as Animatable from 'react-native-animatable';
 import store from 'react-native-simple-store';
 import Modal from 'react-native-modal';
 import uuid from 'uuid';
+import RNPickerSelect from 'react-native-picker-select';
 import { moderateScale } from '../../styles/Utils';
 
 let mTimeout;
@@ -21,8 +22,12 @@ let iInterval;
 export default class Timer extends Component {
 	constructor(props) {
 		super(props);
+
+		this.inputRefs = {};
+		this.inputRefsInt = {};
+
 		this.state = {
-			minutes: 1,
+			minutes: 0,
 			interval: 0,
 			isTimer: false,
 			isInterval: false,
@@ -30,16 +35,54 @@ export default class Timer extends Component {
 			ambChecked: false,
 			isModal: false,
 			txtInput: '',
-			error: false
+			error: false,
+			endBell: undefined,
+			intBell: undefined,
+			bells: [
+				{
+					label: 'Moon Bowl',
+					value: 'moon.mp3'
+				},
+				{
+					label: 'Cymbal',
+					value: 'cymbal.mp3'
+				},
+				{
+					label: 'Bowl Gong',
+					value: 'bowl-gong.mp3'
+				},
+				{
+					label: 'Bell 1',
+					value: 'bell1.mp3'
+				},
+				{
+					label: 'Harmonia Bowl',
+					value: 'harmonia.mp3'
+				},
+				{
+					label: 'Bell 2',
+					value: 'bell2.mp3'
+				},
+				{
+					label: 'Low Bowl',
+					value: 'low-hit.mp3'
+				},
+				{
+					label: 'Bell 3',
+					value: 'bell3.mp3'
+				},
+				{
+					label: 'Neptune Bowl',
+					value: 'neptune.mp3'
+				}
+			]
 		};
 	}
 
 	componentDidMount = () => {
-		console.log('did mount');
 		this.subs = [
 			this.props.navigation.addListener('didBlur', () => {
 				this.handleTimerReset();
-				console.log('blurred');
 			})
 		];
 	};
@@ -47,6 +90,7 @@ export default class Timer extends Component {
 	componentWillMount() {
 		this.ambPlayer = null;
 		this.bellPlayer = null;
+		this.intBellPlayer = null;
 		this.reloadPlayer();
 		//this.reloadBellPlayer();
 	}
@@ -65,8 +109,19 @@ export default class Timer extends Component {
 			this.bellPlayer.destroy();
 		}
 		if (this.state.isTimer) {
-			this.bellPlayer = new Player('bell.mp3');
+			this.bellPlayer = new Player(this.state.endBell);
 			this.bellPlayer.play();
+		}
+	};
+
+	reloadIntBellPlayer = () => {
+		console.log('reloadIntBellPlayer called');
+		if (this.intBellPlayer) {
+			this.intBellPlayer.destroy();
+		}
+		if (this.state.isInterval) {
+			this.intBellPlayer = new Player(this.state.intBell);
+			this.intBellPlayer.play();
 		}
 	};
 
@@ -75,6 +130,14 @@ export default class Timer extends Component {
 			this.ambPlayer.destroy();
 		}
 		this.ambPlayer = new Player('ambientmp3.mp3');
+	};
+
+	sampleBellPlayer = v => {
+		if (this.bellPlayer) {
+			this.bellPlayer.destroy();
+		}
+		this.bellPlayer = new Player(v);
+		this.bellPlayer.play();
 	};
 
 	handleTimer = () => {
@@ -86,12 +149,17 @@ export default class Timer extends Component {
 			m = this.props.navigation.state.params.min;
 			ivl = this.props.navigation.state.params.int;
 			mus = this.props.navigation.state.params.music;
+			eBell = this.props.navigation.state.params.endBell;
+			iBell = this.props.navigation.state.params.intBell;
 		}
 
 		let currTimer = this.state.isTimer;
 
 		if (m > 0) {
-			this.setState({ isTimer: !currTimer, tick: m, interval: ivl, minutes: m, ambChecked: mus }, () => {});
+			this.setState(
+				{ isTimer: !currTimer, tick: m, interval: ivl, minutes: m, ambChecked: mus, endBell: eBell, intBell: iBell },
+				() => {}
+			);
 			time = m * 60000;
 			if (ivl > 0) {
 				this.setState({ isInterval: true });
@@ -132,18 +200,18 @@ export default class Timer extends Component {
 		console.log('handleInterval called');
 		this.setState({ isInterval: true });
 		let interval = this.state.interval * 60000;
-		iInterval = setInterval(this.handleIntBell, interval);
+		iInterval = setInterval(this.reloadIntBellPlayer, interval);
 	};
 
-	handleIntBell = () => {
-		if (this.state.interval > 0) {
-			let iBell = new Player('bell.mp3');
-			iBell.play();
-			//iBell.destroy();
-			//this.bellPlayer.play();
-			console.log('int ding!');
-		}
-	};
+	// handleIntBell = () => {
+	// 	if (this.state.interval > 0) {
+	// 		let iBell = new Player('bell.mp3');
+	// 		iBell.play();
+	// 		//iBell.destroy();
+	// 		//this.bellPlayer.play();
+	// 		console.log('int ding!');
+	// 	}
+	// };
 
 	handleTimerEnd = () => {
 		//let mBell = new Player('bell.mp3');
@@ -164,7 +232,9 @@ export default class Timer extends Component {
 			isTimer: false,
 			isInterval: false,
 			tick: 0,
-			ambChecked: false
+			ambChecked: false,
+			endBell: undefined,
+			intBell: undefined
 		});
 		clearInterval(ticker);
 		this.ambPlayer.stop();
@@ -182,7 +252,9 @@ export default class Timer extends Component {
 				title: this.state.txtInput,
 				min: this.state.minutes,
 				int: this.state.interval,
-				music: this.state.ambChecked
+				music: this.state.ambChecked,
+				endBell: this.state.endBell,
+				intBell: this.state.intBell
 			};
 			store.push('settings', preset);
 			setTimeout(() => {
@@ -223,21 +295,72 @@ export default class Timer extends Component {
 									{this.state.tick}
 								</Text>
 								<Text h4 style={styles.textRemaining}>
-									{' '}
 									minutes remaining
 								</Text>
 							</Animatable.View>
 						) : (
-							<View style={styles.logoWrap}>
-								<Animatable.Image animation="fadeIn" source={Images.logo} style={styles.logo} />
-							</View>
+							// <View style={styles.logoWrap}>
+							// 	<Animatable.Image animation="fadeIn" source={Images.logo} style={styles.logo} />
+							// </View>
+							<Animatable.View animation="fadeIn" style={{ flex: 1 }}>
+								<Text style={styles.selectLabel}>Choose Ending Sound</Text>
+								<RNPickerSelect
+									placeholder={{
+										label: 'Select a sound...',
+										value: null
+									}}
+									placeholderTextColor={'#3C3B85'}
+									items={this.state.bells}
+									onValueChange={value => {
+										this.setState({
+											endBell: value
+										});
+										console.log(this.state.endBell);
+										this.sampleBellPlayer(value);
+									}}
+									style={{
+										...pickerSelectStyles,
+										done: {
+											color: '#3C3B85'
+										}
+									}}
+									value={this.state.endBell}
+									ref={el => {
+										this.inputRefs.picker = el;
+									}}
+								/>
+
+								<Text style={styles.selectLabel}>Choose Interval Sound</Text>
+
+								<RNPickerSelect
+									placeholder={{
+										label: 'Select a sound...',
+										value: null
+									}}
+									placeholderTextColor={'#3C3B85'}
+									items={this.state.bells}
+									onValueChange={value => {
+										this.setState({
+											intBell: value
+										});
+									}}
+									style={{
+										...pickerSelectStyles,
+										done: {
+											color: '#3C3B85'
+										}
+									}}
+									value={this.state.intBell}
+									ref={el => {
+										this.inputRefsInt.picker = el;
+									}}
+								/>
+							</Animatable.View>
 						)}
 					</View>
 					<View style={styles.sliderWrap}>
 						{params ? (
-							<Text style={styles.sliderLabel} key={1}>
-								Meditation Time: {params.min} mins
-							</Text>
+							<Text style={styles.sliderLabel}>Meditation Time: {params.min} mins</Text>
 						) : (
 							<Text style={styles.sliderLabel}>Meditation Time: {this.state.minutes} mins</Text>
 						)}
@@ -251,7 +374,6 @@ export default class Timer extends Component {
 								thumbTintColor="#3C3B85"
 								thumbTouchSize={{ width: 60, height: 60 }}
 								style={styles.slider1}
-								// width={340}
 								height={40}
 								disabled={true}
 							/>
@@ -267,7 +389,6 @@ export default class Timer extends Component {
 								thumbTintColor="#3C3B85"
 								thumbTouchSize={{ width: 60, height: 60 }}
 								style={styles.slider1}
-								// width={340}
 								height={40}
 							/>
 						)}
@@ -291,7 +412,7 @@ export default class Timer extends Component {
 						) : (
 							<Slider
 								value={this.state.interval}
-								minimumValue={0}
+								minimumValue={1}
 								maximumValue={60}
 								step={5}
 								minimumTrackTintColor="#ffcd32"
@@ -345,7 +466,7 @@ export default class Timer extends Component {
 							/>
 						)}
 						{params ? (
-							<View style={{ flex: 1 }}>
+							<View style={{ flex: 3 }}>
 								<Button
 									buttonStyle={styles.presetButton}
 									rounded={true}
@@ -356,13 +477,15 @@ export default class Timer extends Component {
 								<Text style={styles.presetText}>Current Preset: {params.title}</Text>
 							</View>
 						) : (
-							<Button
-								buttonStyle={styles.presetButton}
-								rounded={true}
-								fontFamily={'Helvetica'}
-								title="Save These Settings"
-								onPress={this.handleModal}
-							/>
+							<View style={{ flex: 3 }}>
+								<Button
+									buttonStyle={styles.presetButton}
+									rounded={true}
+									fontFamily={'Helvetica'}
+									title="Save These Settings"
+									onPress={this.handleModal}
+								/>
+							</View>
 						)}
 					</View>
 				</View>
@@ -394,3 +517,17 @@ export default class Timer extends Component {
 Modal.propTypes = {
 	isVisible: PropTypes.bool
 };
+const pickerSelectStyles = StyleSheet.create({
+	inputIOS: {
+		fontSize: moderateScale(12),
+		paddingTop: moderateScale(13),
+		paddingHorizontal: moderateScale(10),
+		paddingBottom: moderateScale(12),
+		borderWidth: 1,
+		borderColor: '#3C3B85',
+		borderRadius: 4,
+		//backgroundColor: 'white',
+		color: '#3C3B85',
+		marginBottom: moderateScale(10)
+	}
+});

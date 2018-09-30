@@ -19,6 +19,7 @@
 		"react-native-elements": "^0.19.1",
 		"react-native-modal": "^6.5.0",
 		"react-native-offline-status": "^1.0.0",
+		"react-native-picker-select": "^4.4.0",
 		"react-native-progress-circle": "^2.0.0",
 		"react-native-render-html": "^3.10.0",
 		"react-native-responsive-fontsize": "^0.1.2",

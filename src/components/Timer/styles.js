@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: colors.secondary,
-		justifyContent: 'space-around',
+		// justifyContent: 'space-around',
 		alignContent: 'stretch',
 		paddingLeft: padding.md,
 		paddingRight: padding.md
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 	slider1: {
-		marginBottom: 40,
+		marginBottom: 20,
 		width: wp('80%')
 	},
 	slider: {
@@ -51,8 +51,9 @@ const styles = StyleSheet.create({
 		marginTop: -10
 	},
 	headerWrap: {
-		height: verticalScale(100),
-		marginTop: 40
+		flex: 1,
+		height: verticalScale(100)
+		// marginTop: 40
 	},
 	logoWrap: {
 		flex: 2,
@@ -86,6 +87,12 @@ const styles = StyleSheet.create({
 		color: colors.primary,
 		fontSize: moderateScale(fonts.sm)
 	},
+	selectLabel: {
+		color: colors.primary,
+		fontSize: moderateScale(fonts.sm),
+		fontWeight: 'bold',
+		marginBottom: 5
+	},
 	modalContent: {
 		backgroundColor: 'white',
 		padding: 22,
@@ -109,9 +116,20 @@ const styles = StyleSheet.create({
 	},
 	presetText: {
 		textAlign: 'center',
-		marginTop: margin.lg,
+		marginTop: margin.sm,
 		color: colors.primary,
 		fontSize: moderateScale(fonts.md)
+	},
+	inputIOS: {
+		fontSize: moderateScale(fonts.md),
+		paddingTop: 13,
+		paddingHorizontal: 10,
+		paddingBottom: 12,
+		borderWidth: 1,
+		borderColor: 'gray',
+		borderRadius: 4,
+		backgroundColor: 'white',
+		color: 'black'
 	}
 });
 
