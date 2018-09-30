@@ -331,7 +331,6 @@ export default class Timer extends Component {
 								/>
 
 								<Text style={styles.selectLabel}>Choose Interval Sound</Text>
-
 								<RNPickerSelect
 									placeholder={{
 										label: 'Select a sound...',
@@ -343,6 +342,7 @@ export default class Timer extends Component {
 										this.setState({
 											intBell: value
 										});
+										this.sampleBellPlayer(value);
 									}}
 									style={{
 										...pickerSelectStyles,
