@@ -9,7 +9,7 @@ export default Burger;
 
 const styles = StyleSheet.create({
 	icon: {
-		padding: 10,
-		marginLeft: 10
+		padding: moderateScale(10),
+		marginLeft: moderateScale(10)
 	}
 });
