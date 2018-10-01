@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation';
 import Home from '../src/components/Home/Home';
 import Presets from '../src/components/Presets/Presets';
-import Settings from '../src/components/Settings/Settings';
+import About from '../src/components/About/About';
 import Contact from '../src/components/Contact/Contact';
 import Timer from '../src/components/Timer/Timer';
 import Guided from '../src/components/Guided/Guided';
@@ -44,10 +44,10 @@ const StackNav = createStackNavigator(
 				title: 'Presets'
 			})
 		},
-		Settings: {
-			screen: Settings,
+		About: {
+			screen: About,
 			navigationOptions: props => ({
-				title: 'Settings'
+				title: 'About'
 			})
 		},
 		Contact: {

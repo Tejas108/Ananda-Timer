@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Header, Icon, Text } from 'react-native-elements';
+import { Header, Text } from 'react-native-elements';
 import { TouchableOpacity, View } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import Burger from '../Burger';
 import styles from './styles';
-import { scale, moderateScale, verticalScale } from '../../styles/Utils';
+import { moderateScale } from '../../styles/Utils';
 
 export default class Guided extends Component {
 	render() {
@@ -25,7 +25,7 @@ export default class Guided extends Component {
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>
 				</View>
-				{/* <Text>I'm guided meditation screen</Text> */}
+				<Text>I'm guided meditation screen. Coming soon.</Text>
 			</View>
 		);
 	}

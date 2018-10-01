@@ -5,7 +5,7 @@ import { DrawerActions, NavigationActions } from 'react-navigation';
 import styles from './styles';
 import Burger from '../Burger';
 import Images from 'assets/images';
-import { scale, moderateScale, verticalScale } from '../../styles/Utils';
+import { moderateScale } from '../../styles/Utils';
 
 export default class Contact extends Component {
 	constructor() {

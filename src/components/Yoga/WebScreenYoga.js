@@ -63,7 +63,6 @@ class WebScreenYoga extends Component {
 						ref={ref => (this.webview = ref)}
 						mixedContentMode={'compatibility'}
 						style={styles.webview}
-						// originWhitelist={['*']}
 						source={{
 							uri: url,
 							baseUrl: ''
@@ -75,7 +74,9 @@ class WebScreenYoga extends Component {
 						onError={console.error.bind(console, 'error')}
 					/>
 				) : (
-					<Text style={styles.netError}>No Network Connectivity.{'\n'}You need to be online to see Yoga schedule.</Text>
+					<Text style={styles.netError}>
+						No Network Connectivity.{'\n'}You need to be online to see the Yoga schedule.
+					</Text>
 				)}
 			</View>
 		);

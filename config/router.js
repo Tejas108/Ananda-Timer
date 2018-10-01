@@ -6,7 +6,7 @@ import Timer from '../src/components/Timer/Timer';
 import Guided from '../src/components/Guided/Guided';
 import Sidebar from '../src/components/Sidebar/Sidebar';
 import Presets from '../src/components/Presets/Presets';
-import Settings from '../src/components/Settings/Settings';
+import About from '../src/components/About/About';
 import Contact from '../src/components/Contact/Contact';
 import WebScreenEvents from '../src/components/Events/WebScreenEvents';
 import WebScreenYoga from '../src/components/Yoga/WebScreenYoga';
@@ -76,7 +76,7 @@ const AppNav = createDrawerNavigator(
 		Home: Home,
 		Timer: Timer,
 		Presets: Presets,
-		Settings: Settings,
+		About: About,
 		Contact: Contact,
 		WebScreenEvents: WebScreenEvents,
 		WebScreenYoga: WebScreenYoga,

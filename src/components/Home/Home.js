@@ -9,15 +9,10 @@ import Quotes from '../Quotes/Quotes';
 const dimensions = Dimensions.get('window');
 const deviceWidth = dimensions.width;
 import * as Animatable from 'react-native-animatable';
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 
 export default class Home extends Component {
 	componentDidMount = () => {
-		this.subs = [
-			this.props.navigation.addListener('willFocus', () => {
-				// console.log('focus');
-			})
-		];
+		this.subs = [this.props.navigation.addListener('willFocus', () => {})];
 	};
 
 	render() {

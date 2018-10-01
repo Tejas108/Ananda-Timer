@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Button, Text, Slider, Header, CheckBox, FormLabel, FormInput } from 'react-native-elements';
 import { View, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { Player } from 'react-native-audio-toolkit';
-import Images from 'assets/images';
 import styles from './styles';
 import { DrawerActions } from 'react-navigation';
 import Burger from '../Burger';
@@ -29,7 +28,7 @@ export default class Timer extends Component {
 		this.inputRefsInt = {};
 
 		this.state = {
-			minutes: 0,
+			minutes: 5,
 			interval: 0,
 			isTimer: false,
 			isInterval: false,
@@ -41,7 +40,7 @@ export default class Timer extends Component {
 			endBell: undefined,
 			intBell: undefined,
 			bells: data,
-			disableButton: true
+			disableButton: false
 		};
 	}
 
@@ -59,7 +58,6 @@ export default class Timer extends Component {
 		this.bellPlayer = null;
 		this.intBellPlayer = null;
 		this.reloadPlayer();
-		//this.reloadBellPlayer();
 	}
 
 	componentWillUnmount = () => {
@@ -121,42 +119,51 @@ export default class Timer extends Component {
 		}
 
 		let currTimer = this.state.isTimer;
-		if (this.state.endBell === undefined) {
+		if (this.state.endBell === undefined && !this.props.navigation.state.params) {
+			console.log('no bell defined');
 			Alert.alert('Ooops..', 'Remember to set your end bell!');
-		} else {
-			if (m > 0) {
-				this.setState(
-					{ isTimer: !currTimer, tick: m, interval: ivl, minutes: m, ambChecked: mus, endBell: eBell, intBell: iBell },
-					() => {}
-				);
-				time = m * 60000;
-				if (ivl > 0) {
-					this.setState({ isInterval: true });
-					let interval = ivl * 60000;
-					iInterval = setInterval(this.handleIntBell, interval);
-				} else {
-					clearInterval(iInterval);
-					this.setState({ isInterval: false, interval: 0 });
-				}
-			} else {
-				this.setState({ isTimer: !currTimer, tick: this.state.minutes }, () => {});
-				time = this.state.minutes * 60000;
-			}
-			mTimeout = setTimeout(this.handleTimerEnd, time);
-			ticker = setInterval(this.handleTicker, 60000);
-			if (this.state.ambChecked || mus === true) {
-				this.reloadPlayer();
-				this.ambPlayer.play();
-				this.ambPlayer.looping = true;
-				this.ambPlayer.volume = 0.5;
-			}
-
-			if (this.state.interval > 0) {
-				this.handleInterval();
-			}
-
-			this.forceUpdate();
+			return;
 		}
+		if (m > 0) {
+			this.setState(
+				{
+					isTimer: !currTimer,
+					tick: m,
+					interval: ivl,
+					minutes: m,
+					ambChecked: mus,
+					endBell: eBell,
+					intBell: iBell
+				},
+				() => {}
+			);
+			time = m * 60000;
+			if (ivl > 0) {
+				this.setState({ isInterval: true });
+				let interval = ivl * 60000;
+				iInterval = setInterval(this.handleIntBell, interval);
+			} else {
+				clearInterval(iInterval);
+				this.setState({ isInterval: false, interval: 0 });
+			}
+		} else {
+			this.setState({ isTimer: !currTimer, tick: this.state.minutes }, () => {});
+			time = this.state.minutes * 60000;
+		}
+		mTimeout = setTimeout(this.handleTimerEnd, time);
+		ticker = setInterval(this.handleTicker, 60000);
+		if (this.state.ambChecked || mus === true) {
+			this.reloadPlayer();
+			this.ambPlayer.play();
+			this.ambPlayer.looping = true;
+			this.ambPlayer.volume = 0.5;
+		}
+
+		if (this.state.interval > 0) {
+			this.handleInterval();
+		}
+
+		this.forceUpdate();
 	};
 
 	handleTicker = () => {
@@ -173,20 +180,7 @@ export default class Timer extends Component {
 		iInterval = setInterval(this.reloadIntBellPlayer, interval);
 	};
 
-	// handleIntBell = () => {
-	// 	if (this.state.interval > 0) {
-	// 		let iBell = new Player('bell.mp3');
-	// 		iBell.play();
-	// 		//iBell.destroy();
-	// 		//this.bellPlayer.play();
-	// 		console.log('int ding!');
-	// 	}
-	// };
-
 	handleTimerEnd = () => {
-		//let mBell = new Player('bell.mp3');
-		//mBell.play();
-		//mBell.destroy();
 		this.reloadBellPlayer();
 		this.handleTimerReset();
 		clearTimeout(mTimeout);
@@ -197,20 +191,18 @@ export default class Timer extends Component {
 	handleTimerReset = () => {
 		this.props.navigation.state.params = undefined;
 		this.setState({
-			minutes: 0,
+			minutes: 5,
 			interval: 0,
 			isTimer: false,
 			isInterval: false,
 			tick: 0,
 			ambChecked: false,
 			endBell: undefined,
-			intBell: undefined,
-			disableButton: true
+			intBell: undefined
 		});
 		clearInterval(ticker);
 		this.ambPlayer.stop();
 		this.reloadPlayer();
-		// this.reloadBellPlayer();
 		this.forceUpdate();
 	};
 
@@ -497,7 +489,6 @@ const pickerSelectStyles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: '#3C3B85',
 		borderRadius: 4,
-		//backgroundColor: 'white',
 		color: '#3C3B85',
 		marginBottom: moderateScale(10)
 	}

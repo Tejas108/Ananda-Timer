@@ -32,8 +32,8 @@ class Sidebar extends Component {
 				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('WebScreenMembers')}>
 					<Text style={styles.itemText}>Membership</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('Settings')}>
-					<Text style={styles.itemText}>Settings</Text>
+				<TouchableOpacity style={styles.item} onPress={this.navigateToScreen('About')}>
+					<Text style={styles.itemText}>About/Help</Text>
 				</TouchableOpacity>
 			</View>
 		);

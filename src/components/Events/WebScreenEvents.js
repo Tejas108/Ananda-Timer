@@ -63,7 +63,6 @@ class WebScreenEvents extends Component {
 						ref={ref => (this.webview = ref)}
 						mixedContentMode={'compatibility'}
 						style={styles.webview}
-						// originWhitelist={['*']}
 						source={{
 							uri: url,
 							baseUrl: ''
@@ -72,8 +71,6 @@ class WebScreenEvents extends Component {
 						injectedJavaScript={jsCode}
 						renderLoading={this.handleIndicator}
 						startInLoadingState={true}
-						// renderError={() => <Text style={styles.netError}>No network connectivity</Text>}
-						// onError={console.log(console.error)}
 					/>
 				) : (
 					<Text style={styles.netError}>No Network Connectivity.{'\n'}You need to be online to make reservations.</Text>
