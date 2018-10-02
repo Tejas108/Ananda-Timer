@@ -119,9 +119,8 @@ export default class Timer extends Component {
 		}
 
 		let currTimer = this.state.isTimer;
-		if (this.state.endBell === undefined && !this.props.navigation.state.params) {
-			console.log('no bell defined');
-			Alert.alert('Ooops..', 'Remember to set your end bell!');
+		if ((this.state.endBell === undefined || this.state.endBell === null) && !this.props.navigation.state.params) {
+			Alert.alert('Oops..', 'Remember to set your end bell!');
 			return;
 		}
 		if (m > 0) {
@@ -277,6 +276,7 @@ export default class Timer extends Component {
 										this.setState({
 											endBell: value
 										});
+
 										console.log(this.state.endBell);
 										this.sampleBellPlayer(value);
 									}}

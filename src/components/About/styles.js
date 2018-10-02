@@ -5,28 +5,26 @@ import { moderateScale } from '../../styles/Utils';
 const styles = StyleSheet.create({
 	copy: {
 		fontFamily: fonts.copy,
-		fontSize: moderateScale(fonts.sm),
+		fontSize: moderateScale(fonts.md),
 		color: colors.primary,
 		paddingHorizontal: padding.sm,
 		paddingVertical: padding.sm,
-		lineHeight: moderateScale(5),
+		lineHeight: moderateScale(22),
 		textAlign: 'center'
 	},
 	helpCopy: {
 		fontFamily: fonts.copy,
-		fontSize: moderateScale(fonts.sm),
+		fontSize: moderateScale(fonts.md),
 		color: colors.primary,
 		paddingHorizontal: padding.sm,
 		paddingVertical: padding.sm,
-		lineHeight: moderateScale(15)
+		lineHeight: moderateScale(22)
 	},
 	container: {
 		flex: 1,
 		backgroundColor: colors.secondary,
-		paddingHorizontal: padding.sm
-	},
-	img: {
-		alignSelf: 'center'
+		paddingHorizontal: padding.sm,
+		paddingVertical: padding.sm
 	}
 });
 
