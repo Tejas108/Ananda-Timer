@@ -70,7 +70,6 @@
 		C0731821FDCF4D0D801DF5F7 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D6C2C9FB0D460487A8E1B2 /* libSplashScreen.a */; };
 		C22F8194B6E942F6BBA557BA /* libReactNativeAudioToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4112A9382408483E9B53FC7F /* libReactNativeAudioToolkit.a */; };
 		C431AE8412524AF5A1D5AB9F /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2E7D592EF0C4662A65EE5BB /* FontAwesome.ttf */; };
-		C4CC20576CDC48F2A93F4D12 /* libRCTBEEPickerManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59DE9B5A83A7462CB9C29E6C /* libRCTBEEPickerManager.a */; };
 		D3FC3C5A8D6C4B5394211CF9 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E427D914CBF4CCCB6A66481 /* Foundation.ttf */; };
 		D4A30D2426104E35B2BC4DD8 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3285EB3B94C34D6E8E2459D4 /* Feather.ttf */; };
 		E330F79369C84BEABD91E3C1 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A649EDA654EC46DB98B8A1B4 /* libRNVectorIcons.a */; };
@@ -490,7 +489,6 @@
 				B928E6C99DC348E2A06CF5DF /* libRNSound.a in Frameworks */,
 				E330F79369C84BEABD91E3C1 /* libRNVectorIcons.a in Frameworks */,
 				C0731821FDCF4D0D801DF5F7 /* libSplashScreen.a in Frameworks */,
-				C4CC20576CDC48F2A93F4D12 /* libRCTBEEPickerManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

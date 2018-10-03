@@ -118,10 +118,20 @@ export default class Timer extends Component {
 		}
 
 		let currTimer = this.state.isTimer;
-		if ((this.state.endBell === undefined || this.state.endBell === null) && !this.props.navigation.state.params) {
-			Alert.alert('Oops..', 'Remember to set your end bell!');
-			return;
+
+		if (!this.props.navigation.state.params) {
+			if (this.state.endBell === undefined || this.state.endBell === null) {
+				Alert.alert('Oops..', 'Remember to set your end bell!');
+				return;
+			}
+			if (this.state.interval > 0) {
+				if (this.state.intBell === undefined || this.state.intBell === null) {
+					Alert.alert('Oops..', 'Remember to set your interval bell!');
+					return;
+				}
+			}
 		}
+
 		if (m > 0) {
 			this.setState(
 				{
