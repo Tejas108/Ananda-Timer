@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.secondary
 	},
 	guruHeading: {
-		marginTop: 10,
+		marginTop: moderateScale(10),
 		fontFamily: fonts.heading,
 		fontSize: fonts.lg,
 		color: colors.primary,

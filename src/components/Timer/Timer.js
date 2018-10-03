@@ -48,7 +48,6 @@ export default class Timer extends Component {
 		this.subs = [
 			this.props.navigation.addListener('didBlur', () => {
 				this.handleTimerReset();
-				this.setState({ disableButton: false });
 			})
 		];
 	};
@@ -188,6 +187,7 @@ export default class Timer extends Component {
 	};
 
 	handleTimerReset = () => {
+		console.log('reset');
 		this.props.navigation.state.params = undefined;
 		this.setState({
 			minutes: 5,
@@ -196,13 +196,21 @@ export default class Timer extends Component {
 			isInterval: false,
 			tick: 0,
 			ambChecked: false,
-			endBell: undefined,
-			intBell: undefined
+			endBell: null,
+			intBell: null,
+			disableButton: false,
+			txtInput: ''
 		});
 		clearInterval(ticker);
 		this.ambPlayer.stop();
 		this.reloadPlayer();
 		this.forceUpdate();
+		setTimeout(() => {
+			this.setState({
+				endBell: undefined,
+				intBell: undefined
+			});
+		}, 1000);
 	};
 
 	handleModalSubmit = () => {
@@ -276,17 +284,15 @@ export default class Timer extends Component {
 										this.setState({
 											endBell: value
 										});
-
-										console.log(this.state.endBell);
 										this.sampleBellPlayer(value);
 									}}
+									value={this.state.endBell}
 									style={{
 										...pickerSelectStyles,
 										done: {
 											color: '#3C3B85'
 										}
 									}}
-									value={this.state.endBell}
 									ref={el => {
 										this.inputRefs.picker = el;
 									}}
@@ -374,7 +380,7 @@ export default class Timer extends Component {
 						) : (
 							<Slider
 								value={this.state.interval}
-								minimumValue={1}
+								minimumValue={0}
 								maximumValue={60}
 								step={5}
 								minimumTrackTintColor="#ffcd32"
