@@ -65,10 +65,20 @@ export default class FourWeeks extends Component {
 						daily morning and evening meditation programs, ongoing Yoga and Sanskrit classes, cultural events and
 						evening lectures. Fees for other programs are additional.
 					</Text>
-					{/* WEEKLY RATES	Semi-Private	Dorm
-4 Weeks	
-$1,645
-$1,315 */}
+					<View style={styles.tableRow}>
+						<View style={styles.tableCol}>
+							<Text style={[styles.tableContent, styles.tableHeading]}>WEEKLY RATES</Text>
+							<Text style={styles.tableContent}>4 Weeks</Text>
+						</View>
+						<View style={styles.tableCol}>
+							<Text style={[styles.tableContent, styles.tableHeading]}>Semi-Private</Text>
+							<Text style={styles.tableContent}>$1,645</Text>
+						</View>
+						<View style={styles.tableCol}>
+							<Text style={[styles.tableContent, styles.tableHeading]}>Dorm</Text>
+							<Text style={styles.tableContent}>$1,315</Text>
+						</View>
+					</View>
 					<Text style={styles.paragraph}>
 						• January (after New Year) & February: Seasonal rates apply.{'\n'}
 						• Camping Rates available April-October.{'\n'}

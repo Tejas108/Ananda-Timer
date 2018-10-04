@@ -40,7 +40,8 @@ export default class Timer extends Component {
 			endBell: undefined,
 			intBell: undefined,
 			bells: data,
-			disableButton: false
+			disableButton: false,
+			showAlert: false
 		};
 	}
 
@@ -171,7 +172,7 @@ export default class Timer extends Component {
 			this.handleInterval();
 		}
 
-		this.forceUpdate();
+		//this.forceUpdate();
 	};
 
 	handleTicker = () => {
@@ -248,8 +249,21 @@ export default class Timer extends Component {
 		this.setState({ isModal: !this.state.isModal });
 	};
 
+	showAlert = () => {
+		this.setState({
+			showAlert: true
+		});
+	};
+
+	hideAlert = () => {
+		this.setState({
+			showAlert: false
+		});
+	};
+
 	render() {
 		const { params } = this.props.navigation.state;
+		const { showAlert } = this.state;
 		return (
 			<View style={{ flex: 1 }}>
 				<View style={{ alignSelf: 'stretch' }}>
@@ -468,6 +482,7 @@ export default class Timer extends Component {
 						)}
 					</View>
 				</View>
+
 				<Modal
 					isVisible={this.state.isModal}
 					style={{ flex: 1 }}

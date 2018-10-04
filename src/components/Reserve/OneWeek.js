@@ -56,36 +56,42 @@ export default class ThreeWeeks extends Component {
 								url: url
 							})}
 					/>
+					<Text style={styles.paragraph}>Come and relax and rejuvenate at Ananda Ashram.</Text>
 					<Text style={styles.paragraph}>
-						Realign yourself to your spiritual path with a month-long retreat at Ananda Ashram, Choose this option to
-						book stays of 28 nights or longer.
+						Choose this option to book stays of seven to thirteen nights. Our 24-hour guest rates are per person and
+						include room and board and the Ashram Core Program, consisting of daily morning and evening meditation
+						programs, ongoing Yoga and Sanskrit classes, cultural events and evening lectures. Fees for other programs
+						are additional.
 					</Text>
-					<Text style={styles.paragraph}>
-						Our 24-hour guest rates are per person and include room and board and the Ashram Core Program, consisting of
-						daily morning and evening meditation programs, ongoing Yoga and Sanskrit classes, cultural events and
-						evening lectures. Fees for other programs are additional.
-					</Text>
-					{/* WEEKLY RATES	Semi-Private	Dorm
-4 Weeks	
-$1,645
-$1,315 */}
+					<View style={styles.tableRow}>
+						<View style={styles.tableCol}>
+							<Text style={[styles.tableContent, styles.tableHeading]}>WEEKLY RATES</Text>
+							<Text style={styles.tableContent}>1 Week</Text>
+						</View>
+						<View style={styles.tableCol}>
+							<Text style={[styles.tableContent, styles.tableHeading]}>Semi-Private</Text>
+							<Text style={styles.tableContent}>$605</Text>
+						</View>
+						<View style={styles.tableCol}>
+							<Text style={[styles.tableContent, styles.tableHeading]}>Dorm</Text>
+							<Text style={styles.tableContent}>$485</Text>
+						</View>
+					</View>
 					<Text style={styles.paragraph}>
 						• January (after New Year) & February: Seasonal rates apply.{'\n'}
-						• Camping Rates available April-October.{'\n'}
-						{'\n'}
-						Guests wishing to stay longer than four weeks need to inquire with Management.
+						• Camping Rates available April-October.
 					</Text>
 					<Text style={styles.paragraph}>Flexible Dates</Text>
 					<Text style={styles.paragraph}>
-						Camping: Extended 4 Weeks – $37.57{'\n'}
-						Dorm Room: Extended - 4 Weeks – $46.96{'\n'}
-						Semi-Private: Extended - 4 Weeks – $58.75
+						Camping: Partial Volunteer Extended - 1 Week – $55.43{'\n'}
+						Dorm Room: Extended - 1 Week – $69.29{'\n'}
+						Semi-Private: Extended - 1 Week – $86.43
 					</Text>
 					<Text style={styles.paragraph}>
-						Guests wishing to stay longer than four weeks need to receive approval from the Ananda Management Council.
-						If you are staying overnight, meals and Yoga classes are included. If you are arriving early, be aware
-						Check-In is at 4:00 pm and check-out is at 2:00 pm. Payment for additional meals needs to be made through
-						the office. Additional Yoga Classes are paid at the Yoga Studio.
+						Above listed pro-rated PRICES apply when staying more than one week but less than two weeks. If you are
+						staying overnight, meals and Yoga classes are included. If you are arriving early, be aware Check-In is at
+						4:00 pm and check-out is at 2:00 pm. Payment for additional meals needs to be made through the office.
+						Additional Yoga Classes are paid at the Yoga Studio
 					</Text>
 					<Text style={styles.paragraph}>
 						Rates shown here are weekend rates. For Sunday through Thursday night stays, subtract fifteen dollars per

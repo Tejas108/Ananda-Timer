@@ -1,60 +1,57 @@
 import { StyleSheet } from 'react-native';
 import { colors, padding, fonts, margin } from '../../styles/base';
+import { moderateScale } from '../../styles/Utils';
 
 const styles = StyleSheet.create({
 	paragraph: {
 		fontFamily: fonts.copy,
 		color: colors.primary,
-		marginBottom: margin.sm,
-		paddingVertical: padding.sm,
+		marginBottom: moderateScale(margin.sm),
+		paddingVertical: moderateScale(padding.sm),
 		lineHeight: 22,
-		fontSize: fonts.md
+		fontSize: moderateScale(fonts.md)
 	},
 	container: {
 		flex: 1,
 		backgroundColor: colors.secondary,
-		paddingHorizontal: padding.sm
+		paddingHorizontal: moderateScale(padding.sm)
 	},
 	heading: {
-		// marginTop: margin.sm,
-		// marginBottom: margin.lg,
-		// fontFamily: fonts.heading,
-		fontSize: fonts.md,
+		fontSize: moderateScale(fonts.md),
 		fontWeight: 'bold',
 		color: colors.primary
-		// paddingHorizontal: padding.sm
 	},
 	headingInside: {
-		marginTop: margin.sm,
-		marginBottom: margin.md,
+		marginTop: moderateScale(margin.sm),
+		marginBottom: moderateScale(margin.md),
 		fontFamily: fonts.heading,
-		fontSize: fonts.lg,
+		fontSize: moderateScale(fonts.lg),
 		color: colors.primary
 	},
 	subheading: {
 		fontWeight: 'bold',
-		fontSize: fonts.md,
+		fontSize: moderateScale(fonts.md),
 		color: colors.primary,
-		marginBottom: margin.lg
+		marginBottom: moderateScale(margin.lg)
 	},
 	reservationItem: {
-		paddingHorizontal: padding.sm
+		paddingHorizontal: moderateScale(padding.sm)
 	},
 	image: {
-		marginBottom: margin.sm
+		marginBottom: moderateScale(margin.sm)
 	},
 	divider: {
 		backgroundColor: colors.light,
-		marginBottom: margin.md
+		marginBottom: moderateScale(margin.md)
 	},
 	button: {
 		borderRadius: 8,
-		marginBottom: margin.lg,
+		marginBottom: moderateScale(margin.lg),
 		backgroundColor: colors.highlight
 	},
 	backlink: {
 		color: colors.primary,
-		fontSize: fonts.sm,
+		fontSize: moderateScale(fonts.sm),
 		fontFamily: fonts.copy,
 		marginBottom: 3
 	},
@@ -75,6 +72,25 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap',
 		flexDirection: 'row',
 		justifyContent: 'center'
+	},
+	tableRow: {
+		flex: 1,
+		flexDirection: 'row',
+		alignSelf: 'stretch'
+	},
+	tableCol: {
+		flexDirection: 'column',
+		flex: 1,
+		alignSelf: 'stretch'
+	},
+	tableContent: {
+		fontFamily: fonts.copy,
+		color: colors.primary,
+		borderWidth: 1,
+		padding: moderateScale(5)
+	},
+	tableHeading: {
+		backgroundColor: colors.light
 	}
 });
 

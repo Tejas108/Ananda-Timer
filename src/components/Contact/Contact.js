@@ -6,6 +6,7 @@ import styles from './styles';
 import Burger from '../Burger';
 import Images from 'assets/images';
 import { moderateScale } from '../../styles/Utils';
+import Directions from './Directions';
 
 export default class Contact extends Component {
 	constructor() {
@@ -99,6 +100,7 @@ export default class Contact extends Component {
 								</Text>
 							</View>
 						)}
+						<Directions />
 					</View>
 				</ImageBackground>
 			</View>
