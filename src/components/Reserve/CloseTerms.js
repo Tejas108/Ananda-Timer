@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import styles from './styles';
+import PropTypes from 'prop-types';
 
 class CloseTerms extends Component {
 	render() {
@@ -14,5 +15,7 @@ class CloseTerms extends Component {
 		);
 	}
 }
-
+CloseTerms.propTypes = {
+	screen: PropTypes.string.isRequired
+};
 export default withNavigation(CloseTerms);

@@ -73,7 +73,7 @@ class WebScreenEvents extends Component {
 						startInLoadingState={true}
 					/>
 				) : (
-					<Text style={styles.netError}>No Network Connectivity.{'\n'}You need to be online to make reservations.</Text>
+					<Text style={styles.netError}>No Network Connectivity.{'\n'}You need to be online to view events.</Text>
 				)}
 			</View>
 		);

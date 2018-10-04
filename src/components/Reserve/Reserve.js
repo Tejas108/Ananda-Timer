@@ -8,6 +8,7 @@ import Images from 'assets/images';
 import LodgingType from './LodgingType';
 import { DrawerActions } from 'react-navigation';
 import GoBack from './GoBack';
+import { moderateScale } from '../../styles/Utils';
 
 export default class Reserve extends Component {
 	navigateToScreen = route => () => {
@@ -29,7 +30,7 @@ export default class Reserve extends Component {
 						}
 						centerComponent={{
 							text: 'Make Your Reservation',
-							style: { fontSize: 17, fontWeight: 'bold', color: '#3C3B85' }
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
 						}}
 						rightComponent={<GoBack screen={'Contact'} screenTitle={'Contact'} />}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}

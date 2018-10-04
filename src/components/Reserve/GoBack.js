@@ -9,7 +9,7 @@ class GoBack extends Component {
 		return (
 			<View>
 				<TouchableOpacity onPress={() => this.props.navigation.navigate(this.props.screen)}>
-					<Text style={styles.backlink}>Back To {this.props.screenTitle}</Text>
+					<Text style={styles.backlink}>&#60; {this.props.screenTitle}</Text>
 				</TouchableOpacity>
 			</View>
 		);
@@ -17,7 +17,8 @@ class GoBack extends Component {
 }
 
 GoBack.propTypes = {
-	screen: PropTypes.string
+	screen: PropTypes.string.isRequired,
+	screenTitle: PropTypes.string.isRequired
 };
 
 export default withNavigation(GoBack);

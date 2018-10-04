@@ -7,8 +7,7 @@ import { oneweek } from './reserve-landing-content';
 import Images from 'assets/images';
 import styles from './styles';
 import GoBack from './GoBack';
-
-//const url = 'https://anandaashram.secure.retreat.guru/program/extended-lodging-4-weeks/?form=1&lang=en';
+import { moderateScale } from '../../styles/Utils';
 
 export default class ThreeWeeks extends Component {
 	navigateToScreen = route => () => {
@@ -30,6 +29,10 @@ export default class ThreeWeeks extends Component {
 								<Burger />
 							</TouchableOpacity>
 						}
+						centerComponent={{
+							text: 'One Week',
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
+						}}
 						rightComponent={<GoBack screen={'Contact'} screenTitle={'Contact'} />}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>

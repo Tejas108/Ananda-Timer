@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
 	backlink: {
 		color: colors.primary,
 		fontSize: fonts.sm,
-		fontFamily: fonts.copy
+		fontFamily: fonts.copy,
+		marginBottom: 3
 	},
 	indicator: {
 		position: 'absolute',

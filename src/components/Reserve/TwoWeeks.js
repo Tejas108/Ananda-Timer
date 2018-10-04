@@ -7,6 +7,7 @@ import { twoweek } from './reserve-landing-content';
 import Images from 'assets/images';
 import styles from './styles';
 import GoBack from './GoBack';
+import { moderateScale } from '../../styles/Utils';
 
 export default class ThreeWeeks extends Component {
 	navigateToScreen = route => () => {
@@ -28,6 +29,10 @@ export default class ThreeWeeks extends Component {
 								<Burger />
 							</TouchableOpacity>
 						}
+						centerComponent={{
+							text: 'Two Weeks',
+							style: { fontSize: moderateScale(17), fontWeight: 'bold', color: '#3C3B85' }
+						}}
 						rightComponent={<GoBack screen={'Contact'} screenTitle={'Contact'} />}
 						outerContainerStyles={{ backgroundColor: '#c6d9eb', borderBottomWidth: 0 }}
 					/>

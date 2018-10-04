@@ -39,7 +39,6 @@ class WebScreenReserve extends Component {
 	}
 
 	render() {
-		// document.getElementById("rs-question-terms-row").remove()
 		const url = this.props.navigation.state.params.url;
 		const jsCode =
 			'(function(){return "Send me back!"}());document.getElementsByClassName("site-logo")[0].remove();document.getElementsByClassName("bg-white")[0].style.backgroundColor="#c6d9eb";';
