@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 		marginTop: moderateScale(margin.sm),
 		marginBottom: moderateScale(margin.md),
 		fontFamily: fonts.heading,
-		fontSize: moderateScale(fonts.lg),
+		fontSize: moderateScale(fonts.md),
 		color: colors.primary
 	},
 	subheading: {

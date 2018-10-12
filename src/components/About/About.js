@@ -34,6 +34,10 @@ export default class About extends Component {
 					<Text style={styles.copy}>
 						{'\u00A9'} 2018 Yoga Society of New York, Inc.{'\n'}
 					</Text>
+					<Text style={styles.copy}>
+						Guided meditations by{'\n'}Shri Brahmananda Saraswati{'\n'}
+						Baba Bhagavandas Publication Trust{'\n'}
+					</Text>
 					<Text style={styles.helpCopy}>
 						The lower icons are, from left to right, 'Home', 'Timer', 'Guided' and 'Presets'.
 					</Text>

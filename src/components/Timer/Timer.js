@@ -51,6 +51,9 @@ export default class Timer extends Component {
 				this.handleTimerReset();
 			})
 		];
+		if (this.state.endBell === undefined || this.state.endBell === null) {
+			this.setState({ disableButton: true });
+		}
 	};
 
 	componentWillMount() {
@@ -198,7 +201,6 @@ export default class Timer extends Component {
 	};
 
 	handleTimerReset = () => {
-		console.log('reset');
 		this.props.navigation.state.params = undefined;
 		this.setState({
 			minutes: 5,
@@ -209,7 +211,7 @@ export default class Timer extends Component {
 			ambChecked: false,
 			endBell: null,
 			intBell: null,
-			disableButton: false,
+			disableButton: true,
 			txtInput: ''
 		});
 		clearInterval(ticker);
@@ -306,7 +308,8 @@ export default class Timer extends Component {
 									items={this.state.bells}
 									onValueChange={value => {
 										this.setState({
-											endBell: value
+											endBell: value,
+											disableButton: false
 										});
 										this.sampleBellPlayer(value);
 									}}
@@ -375,7 +378,7 @@ export default class Timer extends Component {
 								minimumValue={5}
 								maximumValue={180}
 								step={5}
-								onValueChange={minutes => this.setState({ minutes: minutes, disableButton: false })}
+								onValueChange={minutes => this.setState({ minutes: minutes })}
 								minimumTrackTintColor="#ffcd32"
 								maximumTrackTintColor="#ffffff"
 								thumbTintColor="#3C3B85"
@@ -449,7 +452,7 @@ export default class Timer extends Component {
 							/>
 						) : (
 							<Button
-								disabled={this.state.disableButton}
+								// disabled={this.state.disableButton}
 								buttonStyle={styles.button}
 								rounded={true}
 								fontFamily={'Helvetica'}
@@ -472,6 +475,7 @@ export default class Timer extends Component {
 						) : (
 							<View style={{ flex: 3 }}>
 								<Button
+									disabled={this.state.disableButton}
 									buttonStyle={styles.presetButton}
 									rounded={true}
 									fontFamily={'Helvetica'}

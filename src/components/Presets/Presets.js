@@ -111,8 +111,8 @@ export default class Presets extends Component {
 											{item.min +
 												' minutes, ' +
 												item.int +
-												' interval, ' +
-												(item.music ? 'Ambiance' : 'No Ambiance') +
+												' minute interval, ' +
+												(item.music ? 'Ambiance On' : 'Ambiance Off') +
 												'\n' +
 												renameBell(item.endBell) +
 												' end sound, ' +
