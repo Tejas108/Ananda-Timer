@@ -16,8 +16,6 @@ const styles = StyleSheet.create({
 		fontFamily: fonts.copy,
 		fontSize: moderateScale(fonts.md),
 		color: colors.primary,
-		paddingHorizontal: padding.sm,
-		paddingVertical: padding.sm,
 		lineHeight: moderateScale(22)
 	},
 	container: {
@@ -25,6 +23,11 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.secondary,
 		paddingHorizontal: padding.sm,
 		paddingVertical: padding.sm
+	},
+	title: {
+		fontFamily: fonts.heading,
+		fontSize: moderateScale(fonts.lg),
+		color: colors.primary
 	}
 });
 

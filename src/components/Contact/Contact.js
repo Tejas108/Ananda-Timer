@@ -7,6 +7,7 @@ import Burger from '../Burger';
 import Images from 'assets/images';
 import { moderateScale } from '../../styles/Utils';
 import Directions from './Directions';
+import Hyperlink from 'react-native-hyperlink';
 
 export default class Contact extends Component {
 	constructor() {
@@ -61,13 +62,16 @@ export default class Contact extends Component {
 					<View style={styles.contentWrap}>
 						<Text style={styles.content}>
 							13 Sapphire Road{'\n'}
-							Monroe, NY 10950{'\n'}
-							{'\n'}
-							Web: http://anandaashram.org{'\n'}
-							Email: ananda@anandaashram.org
+							Monroe, NY 10950
 						</Text>
+						<Hyperlink linkDefault={'url'}>
+							<Text style={styles.content}>Web: http://anandaashram.org/viewmobile</Text>
+						</Hyperlink>
+						<TouchableOpacity onPress={() => Linking.openURL('mailto://ananda@anandaashram.org')}>
+							<Text style={styles.content}>Email: ananda@anandaashram.org</Text>
+						</TouchableOpacity>
 					</View>
-					<View style={{ flex: 2 }}>
+					<View style={{ flex: 1 }}>
 						<Button
 							rounded={true}
 							buttonStyle={styles.button}

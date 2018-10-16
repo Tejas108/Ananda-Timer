@@ -5,6 +5,7 @@ import { DrawerActions } from 'react-navigation';
 import styles from './styles';
 import { moderateScale } from '../../styles/Utils';
 import Burger from '../Burger';
+import Hyperlink from 'react-native-hyperlink';
 
 export default class About extends Component {
 	render() {
@@ -30,14 +31,17 @@ export default class About extends Component {
 					<Text style={styles.copy}>
 						Created by{'\n'}Tejas Monteverdi{'\n'}RainWorld Interactive
 					</Text>
-					<Text style={styles.copy}>Sitar music by Roop Verma, roopverma.com</Text>
+					<Hyperlink linkDefault={'url'}>
+						<Text style={styles.copy}>Sitar music by Roop Verma, roopverma.com</Text>
+					</Hyperlink>
 					<Text style={styles.copy}>
 						{'\u00A9'} 2018 Yoga Society of New York, Inc.{'\n'}
 					</Text>
-					<Text style={styles.copy}>
-						Guided meditations by{'\n'}Shri Brahmananda Saraswati{'\n'}
+					<Text style={styles.helpCopy}>
+						The quotations and guided meditations are by Shri Brahmananda Saraswati (Ramamurti S. Mishra) Courtesy of
 						Baba Bhagavandas Publication Trust{'\n'}
 					</Text>
+					<Text style={styles.title}>Help</Text>
 					<Text style={styles.helpCopy}>
 						The lower icons are, from left to right, 'Home', 'Timer', 'Guided' and 'Presets'.
 					</Text>

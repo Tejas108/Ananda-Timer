@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
 		marginBottom: margin.lg
 	},
 	contentWrap: {
-		paddingHorizontal: padding.sm
+		paddingHorizontal: padding.sm,
+		flex: 1
 	},
 	background: {
 		height: '100%'
