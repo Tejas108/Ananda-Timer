@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
 		fontFamily: fonts.copy,
 		fontSize: moderateScale(fonts.md),
 		color: colors.primary,
-		lineHeight: moderateScale(22)
+		lineHeight: moderateScale(22),
+		marginBottom: moderateScale(margin.sm)
 	},
 	container: {
 		flex: 1,

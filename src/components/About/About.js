@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Text } from 'react-native-elements';
+import { Header, Text, Divider } from 'react-native-elements';
 import { TouchableOpacity, View, ScrollView } from 'react-native';
 import { DrawerActions } from 'react-navigation';
 import styles from './styles';
@@ -28,20 +28,26 @@ export default class About extends Component {
 				</View>
 				<ScrollView>
 					<Text style={styles.copy}>Version 1.0.1</Text>
-					<Text style={styles.copy}>
-						Created by{'\n'}Tejas Monteverdi{'\n'}RainWorld Interactive
-					</Text>
-					<Hyperlink linkDefault={'url'}>
-						<Text style={styles.copy}>Sitar music by Roop Verma, roopverma.com</Text>
+					<Hyperlink>
+						<Text style={styles.copy}>
+							Created by{'\n'}Tejas Monteverdi{'\n'}RainWorld Interactive{'\n'}
+							tejas.monteverdi@gmail.com
+						</Text>
+						<Text style={styles.copy}>
+							Sitar music by Roop Verma, roopverma.com{'\n'}
+							App logo by Chelsea (Bhavani) Girton{'\n'}
+						</Text>
+						<Text style={styles.helpCopy}>
+							The Guided Meditation by Shri Brahmananda Sarasvati (Ramamurti S. Mishra) was recorded June 1980 at Ananda
+							Ashram. {'\u00A9'} Baba Bhagavandas Publication Trust{'\n'}
+						</Text>
 					</Hyperlink>
 					<Text style={styles.copy}>
 						{'\u00A9'} 2018 Yoga Society of New York, Inc.{'\n'}
 					</Text>
-					<Text style={styles.helpCopy}>
-						The quotations and guided meditations are by Shri Brahmananda Saraswati (Ramamurti S. Mishra) Courtesy of
-						Baba Bhagavandas Publication Trust{'\n'}
-					</Text>
-					<Text style={styles.title}>Help</Text>
+					<Divider style={{ backgroundColor: '#3C3B85' }} />
+
+					<Text style={styles.title}>{'\n'}Help</Text>
 					<Text style={styles.helpCopy}>
 						The lower icons are, from left to right, 'Home', 'Timer', 'Guided' and 'Presets'.
 					</Text>
@@ -53,7 +59,7 @@ export default class About extends Component {
 					<Text style={styles.helpCopy}>
 						On your Home screen, you can pull down and release the quote to get a new random quote.
 					</Text>
-					<Text style={styles.helpCopy}>On your Preset screen, swipe left on the preset to delete it.</Text>
+					<Text style={styles.helpCopy}>On your Preset screen, swipe right on the preset to delete it.</Text>
 				</ScrollView>
 			</View>
 		);
