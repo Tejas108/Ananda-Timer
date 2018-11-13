@@ -64,47 +64,48 @@ export default class Contact extends Component {
 							13 Sapphire Road{'\n'}
 							Monroe, NY 10950
 						</Text>
-						<Hyperlink linkDefault={'url'}>
-							<Text style={styles.content}>Web: http://anandaashram.org/viewmobile</Text>
+						<Hyperlink>
+							<Text style={styles.content}>
+								Phone: 845.782.5575{'\n'}
+								Web: http://anandaashram.org/viewmobile{'\n'}
+								Email: ananda@anandaashram.org
+							</Text>
 						</Hyperlink>
-						<TouchableOpacity onPress={() => Linking.openURL('mailto://ananda@anandaashram.org')}>
-							<Text style={styles.content}>Email: ananda@anandaashram.org</Text>
-						</TouchableOpacity>
-					</View>
-					<View style={{ flex: 1 }}>
-						<Button
-							rounded={true}
-							buttonStyle={styles.button}
-							fontFamily={'Helvetica'}
-							large={true}
-							title="Call Us At 845.782.5575"
-							onPress={() => Linking.openURL('tel://8457825575')}
-						/>
-						{this.state.isConnected ? (
+						<View>
 							<Button
 								rounded={true}
-								fontFamily={'Helvetica'}
 								buttonStyle={styles.button}
+								fontFamily={'Helvetica'}
 								large={true}
-								title="Make Your Reservation"
-								onPress={this.navigateToScreen('Reserve')}
+								title="Call Ananda Ashram"
+								onPress={() => Linking.openURL('tel://8457825575')}
 							/>
-						) : (
-							<View>
+							{this.state.isConnected ? (
 								<Button
-									disabled={true}
 									rounded={true}
 									fontFamily={'Helvetica'}
 									buttonStyle={styles.button}
 									large={true}
 									title="Make Your Reservation"
+									onPress={this.navigateToScreen('Reserve')}
 								/>
-								<Text style={styles.netError}>
-									No Network Connectivity.{'\n'}You need to be online to make reservations.
-								</Text>
-							</View>
-						)}
-						<Directions />
+							) : (
+								<View>
+									<Button
+										disabled={true}
+										rounded={true}
+										fontFamily={'Helvetica'}
+										buttonStyle={styles.button}
+										large={true}
+										title="Make Your Reservation"
+									/>
+									<Text style={styles.netError}>
+										No Network Connectivity.{'\n'}You need to be online to make reservations.
+									</Text>
+								</View>
+							)}
+						</View>
+						{/* <Directions /> */}
 					</View>
 				</ImageBackground>
 			</View>

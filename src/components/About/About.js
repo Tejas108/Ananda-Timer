@@ -33,13 +33,15 @@ export default class About extends Component {
 							Created by{'\n'}Tejas Monteverdi{'\n'}RainWorld Interactive{'\n'}
 							tejas.monteverdi@gmail.com
 						</Text>
-						<Text style={styles.copy}>
-							Sitar music by Roop Verma, roopverma.com{'\n'}
-							App logo by Chelsea (Bhavani) Girton{'\n'}
+						<Text style={styles.helpCopy}>
+							Sitar music: Roop Verma, roopverma.com{'\n'}
+							App logo/audio editing: Chelsea (Bhavani) Girton{'\n'}
+							Audio editing: Alex DuPre{'\n'}
 						</Text>
 						<Text style={styles.helpCopy}>
 							The Guided Meditation by Shri Brahmananda Sarasvati (Ramamurti S. Mishra) was recorded June 1980 at Ananda
-							Ashram. {'\u00A9'} Baba Bhagavandas Publication Trust{'\n'}
+							Ashram. {'\n'}
+							{'\u00A9'} Baba Bhagavandas Publication Trust{'\n'}
 						</Text>
 					</Hyperlink>
 					<Text style={styles.copy}>
@@ -57,7 +59,7 @@ export default class About extends Component {
 						'Presets', takes you to your presets and allows you to start your favorite meditation.
 					</Text>
 					<Text style={styles.helpCopy}>
-						On your Home screen, you can pull down and release the quote to get a new random quote.
+						On your Home screen, you can pull down and release the Guruji's quote to get a new, random quote.
 					</Text>
 					<Text style={styles.helpCopy}>On your Preset screen, swipe right on the preset to delete it.</Text>
 				</ScrollView>

@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -40,6 +41,7 @@
 		6F7DA8EA37014753921388DF /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 998AACC73E6A4534BECFD933 /* Zocial.ttf */; };
 		79F5C0C95E144B8BAAD358AD /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5C67448F7D248A382976B80 /* Octicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		965F89CA2188E7EA00278DFE /* guruji1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 965F89A02188E7EA00278DFE /* guruji1.mp3 */; };
 		966C3F93215FD612004CEAEF /* neptune.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 966C3F61215FD610004CEAEF /* neptune.mp3 */; };
 		966C3F94215FD612004CEAEF /* bell3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 966C3F8B215FD610004CEAEF /* bell3.mp3 */; };
 		966C3F95215FD612004CEAEF /* cymbal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 966C3F8C215FD610004CEAEF /* cymbal.mp3 */; };
@@ -423,6 +425,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7C2518038B3B41248FFD734C /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		965F89A02188E7EA00278DFE /* guruji1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = guruji1.mp3; sourceTree = "<group>"; };
 		966C3F61215FD610004CEAEF /* neptune.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = neptune.mp3; sourceTree = "<group>"; };
 		966C3F8B215FD610004CEAEF /* bell3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell3.mp3; sourceTree = "<group>"; };
 		966C3F8C215FD610004CEAEF /* cymbal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cymbal.mp3; sourceTree = "<group>"; };
@@ -738,7 +741,6 @@
 				A649EDA654EC46DB98B8A1B4 /* libRNVectorIcons.a */,
 				96D6C2C9FB0D460487A8E1B2 /* libSplashScreen.a */,
 				59DE9B5A83A7462CB9C29E6C /* libRCTBEEPickerManager.a */,
-				F79D9FEB189F402F83736057 /* libRNShare.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -789,6 +791,7 @@
 		9679D4112122796400B3E504 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				965F89A02188E7EA00278DFE /* guruji1.mp3 */,
 				966C3F8D215FD611004CEAEF /* bell1.mp3 */,
 				966C3F91215FD611004CEAEF /* bell2.mp3 */,
 				966C3F8B215FD610004CEAEF /* bell3.mp3 */,
@@ -1343,6 +1346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965F89CA2188E7EA00278DFE /* guruji1.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				966C3F94215FD612004CEAEF /* bell3.mp3 in Resources */,
 				9679D40721226A8D00B3E504 /* EvilIcons.ttf in Resources */,
@@ -1513,9 +1517,7 @@
 				INFOPLIST_FILE = AnandaTimerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1545,9 +1547,7 @@
 				INFOPLIST_FILE = AnandaTimerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1646,9 +1646,7 @@
 				);
 				INFOPLIST_FILE = "AnandaTimer-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1684,9 +1682,7 @@
 				);
 				INFOPLIST_FILE = "AnandaTimer-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1721,9 +1717,7 @@
 				);
 				INFOPLIST_FILE = "AnandaTimer-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1758,9 +1752,7 @@
 				);
 				INFOPLIST_FILE = "AnandaTimer-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",

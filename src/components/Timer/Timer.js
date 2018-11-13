@@ -452,7 +452,6 @@ export default class Timer extends Component {
 							/>
 						) : (
 							<Button
-								// disabled={this.state.disableButton}
 								buttonStyle={styles.button}
 								rounded={true}
 								fontFamily={'Helvetica'}

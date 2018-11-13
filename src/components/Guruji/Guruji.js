@@ -31,7 +31,7 @@ class Guruji extends React.Component {
 					<Animatable.View animation="fadeIn" View style={{ flex: 1 }}>
 						<Image source={Images.guruji} style={{ alignSelf: 'center' }} />
 					</Animatable.View>
-					<Text style={styles.guruHeading}>Shri Brahmananda Saraswati</Text>
+					<Text style={styles.guruHeading}>Shri Brahmananda Sarasvati</Text>
 					<Text style={styles.paragraph}>
 						Ashram Founder Shri Brahmananda Sarasvati, also known as Ramamurti S. Mishra, M.D., was a highly respected
 						spiritual teacher for countless students and devotees from all walks of life. A prolific author on the
