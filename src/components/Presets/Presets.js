@@ -41,18 +41,24 @@ export default class Presets extends Component {
 			});
 	};
 
-	handleDelete = index => {
+	handleDelete = () => {
+		let id = this.state.activeRow;
+		console.log('id: ' + id);
 		let newData = this.state.data.slice();
-		newData.splice(index, 1);
+		newData.splice(id, 1);
 		this.setState({ data: newData });
 		store.save('settings', newData);
 	};
 
-	onSwipeOpen = rowId => {
-		this.setState({ activeRow: rowId });
+	onSwipeOpen = index => {
+		this.setState({ activeRow: index });
+		console.log('open ' + this.state.activeRow);
 	};
-	onSwipeClose = rowId => {
-		this.setState({ activeRow: null });
+
+	onSwipeClose = index => {
+		if (index === this.state.activeRow) {
+			this.setState({ activeRow: null });
+		}
 	};
 
 	render() {
@@ -98,8 +104,18 @@ export default class Presets extends Component {
 				<FlatList
 					style={styles.list}
 					data={this.state.data}
-					renderItem={({ item, i }) => (
-						<Swipeout left={swipeoutBtns} style={styles.swipeout} autoClose={true} close={true} rowID={i} key={i}>
+					extraData={this.state.activeRow}
+					renderItem={({ item, index }) => (
+						<Swipeout
+							left={swipeoutBtns}
+							style={styles.swipeout}
+							autoClose={true}
+							close={this.state.activeRow !== index}
+							key={item.id}
+							sectionId={0}
+							onOpen={() => this.onSwipeOpen(index)}
+							onClose={() => this.onSwipeClose(index)}
+						>
 							<ListItem
 								key={item.id}
 								underlayColor={'#3C3B85'}

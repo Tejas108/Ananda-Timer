@@ -72,7 +72,6 @@ export default class Timer extends Component {
 	};
 
 	reloadBellPlayer = () => {
-		console.log('reloadBellPlayer called');
 		if (this.bellPlayer) {
 			this.bellPlayer.destroy();
 		}
@@ -83,7 +82,6 @@ export default class Timer extends Component {
 	};
 
 	reloadIntBellPlayer = () => {
-		console.log('reloadIntBellPlayer called');
 		if (this.intBellPlayer) {
 			this.intBellPlayer.destroy();
 		}
@@ -174,8 +172,6 @@ export default class Timer extends Component {
 		if (this.state.interval > 0) {
 			this.handleInterval();
 		}
-
-		//this.forceUpdate();
 	};
 
 	handleTicker = () => {
@@ -186,7 +182,6 @@ export default class Timer extends Component {
 	};
 
 	handleInterval = () => {
-		console.log('handleInterval called');
 		this.setState({ isInterval: true });
 		let interval = this.state.interval * 60000;
 		iInterval = setInterval(this.reloadIntBellPlayer, interval);
@@ -197,7 +192,6 @@ export default class Timer extends Component {
 		this.handleTimerReset();
 		clearTimeout(mTimeout);
 		clearInterval(iInterval);
-		console.log('timer end ding!');
 	};
 
 	handleTimerReset = () => {
@@ -493,7 +487,11 @@ export default class Timer extends Component {
 				>
 					<View style={styles.modalContent}>
 						<FormLabel labelStyle={styles.modalLabel}>Preset Name</FormLabel>
-						<FormInput inputStyle={styles.modalInput} onChangeText={input => this.setState({ txtInput: input })} />
+						<FormInput
+							autoFocus={true}
+							inputStyle={styles.modalInput}
+							onChangeText={input => this.setState({ txtInput: input })}
+						/>
 						{this.state.txtInput !== '' ? (
 							<Button buttonStyle={styles.button} rounded={true} title="Save" onPress={this.handleModalSubmit} />
 						) : (
