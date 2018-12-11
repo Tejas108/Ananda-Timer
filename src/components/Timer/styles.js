@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		borderRadius: 8,
-		marginBottom: margin.lg,
+		marginBottom: margin.md,
 		backgroundColor: colors.primary
 	},
 	presetButton: {
