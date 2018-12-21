@@ -6,7 +6,6 @@ import styles from './styles';
 import Burger from '../Burger';
 import Images from 'assets/images';
 import { moderateScale } from '../../styles/Utils';
-import Directions from './Directions';
 import Hyperlink from 'react-native-hyperlink';
 
 export default class Contact extends Component {

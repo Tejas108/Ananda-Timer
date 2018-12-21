@@ -62,9 +62,17 @@ export default class About extends Component {
 						On your Home screen, you can pull down and release the Guruji's quote to get a new, random quote.
 					</Text>
 					<Text style={styles.helpCopy}>On your Preset screen, swipe right on the preset to delete it.</Text>
+					<Text style={styles.title}>{'\n'}Support</Text>
+					<Hyperlink linkDefault={true}>
+						<Text style={styles.helpCopy}>
+							For support issues or feature requests: {'\n'}Email tejas.monteverdi@gmail.com
+						</Text>
+					</Hyperlink>
 					<Text style={styles.title}>{'\n'}Privacy</Text>
 					<Hyperlink linkDefault={true}>
-						<Text style={styles.helpCopy}>Tap to view our privacy policy: {'\n'}http://anandaashram.org/PrivacyPolicy</Text>
+						<Text style={styles.helpCopy}>
+							Tap to view our privacy policy: {'\n'}http://anandaashram.org/PrivacyPolicy
+						</Text>
 					</Hyperlink>
 				</ScrollView>
 			</View>

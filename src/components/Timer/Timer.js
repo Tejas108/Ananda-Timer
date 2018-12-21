@@ -119,6 +119,8 @@ export default class Timer extends Component {
 			iBell = this.props.navigation.state.params.intBell;
 		}
 
+		KeepAwake.activate();
+
 		let currTimer = this.state.isTimer;
 
 		if (!this.props.navigation.state.params) {
@@ -188,6 +190,7 @@ export default class Timer extends Component {
 	};
 
 	handleTimerEnd = () => {
+		KeepAwake.deactivate();
 		this.reloadBellPlayer();
 		this.handleTimerReset();
 		clearTimeout(mTimeout);

@@ -1,7 +1,7 @@
 {
 	"name": "AnandaTimer",
 	"displayName": "Ananda Ashram",
-	"version": "1.0.1",
+	"version": "1.0.4",
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
@@ -19,6 +19,7 @@
 		"react-native-easy-grid": "^0.2.0",
 		"react-native-elements": "^0.19.1",
 		"react-native-hyperlink": "0.0.14",
+		"react-native-keep-awake": "^3.2.0",
 		"react-native-modal": "^6.5.0",
 		"react-native-navigation-directions": "^1.0.3",
 		"react-native-offline-status": "^1.0.0",
