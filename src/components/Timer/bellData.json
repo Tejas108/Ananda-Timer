@@ -1,0 +1,47 @@
+[
+	{
+		"label": "Moon Bowl",
+		"value": "moon.mp3",
+		"key": "moon"
+	},
+	{
+		"label": "Cymbal",
+		"value": "cymbal.mp3",
+		"key": "cymbal"
+	},
+	{
+		"label": "Bowl Gong",
+		"value": "bowl-gong.mp3",
+		"key": "gong"
+	},
+	{
+		"label": "Bell 1",
+		"value": "bell1.mp3",
+		"key": "bell1"
+	},
+	{
+		"label": "Harmonia Bowl",
+		"value": "harmonia.mp3",
+		"key": "harmonia"
+	},
+	{
+		"label": "Bell 2",
+		"value": "bell2.mp3",
+		"key": "bell2"
+	},
+	{
+		"label": "Low Bowl",
+		"value": "low-hit.mp3",
+		"key": "lowbowl"
+	},
+	{
+		"label": "Bell 3",
+		"value": "bell3.mp3",
+		"key": "bell3"
+	},
+	{
+		"label": "Neptune Bowl",
+		"value": "neptune.mp3",
+		"key": "neptune"
+	}
+]
