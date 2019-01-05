@@ -55,8 +55,8 @@
 		9679D40821226A8D00B3E504 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9679D3FD21226A8D00B3E504 /* SimpleLineIcons.ttf */; };
 		9679D40921226A8D00B3E504 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9679D3FE21226A8D00B3E504 /* MaterialIcons.ttf */; };
 		9679D410212275AA00B3E504 /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9679D40F212275A900B3E504 /* bell.mp3 */; };
-		9686B95721DFC3EF00656C34 /* ambientmp3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9686B95621DFC3EF00656C34 /* ambientmp3.mp3 */; };
 		96BA0C2321225F9100F7AAAD /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		96D5486721E0D7F700731EA7 /* sitar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96D5486621E0D7F700731EA7 /* sitar.mp3 */; };
 		A222BA1FF1064EA6899F95A9 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C2518038B3B41248FFD734C /* MaterialCommunityIcons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B928E6C99DC348E2A06CF5DF /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F5E7E0303242F8981842F3 /* libRNSound.a */; };
@@ -438,7 +438,7 @@
 		9679D3FD21226A8D00B3E504 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		9679D3FE21226A8D00B3E504 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		9679D40F212275A900B3E504 /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
-		9686B95621DFC3EF00656C34 /* ambientmp3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambientmp3.mp3; sourceTree = "<group>"; };
+		96D5486621E0D7F700731EA7 /* sitar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sitar.mp3; sourceTree = "<group>"; };
 		96D6C2C9FB0D460487A8E1B2 /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		998AACC73E6A4534BECFD933 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		9B3C49718F1043B8B07F838C /* libKCKeepAwake.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libKCKeepAwake.a; sourceTree = "<group>"; };
@@ -785,8 +785,8 @@
 				966C3F90215FD611004CEAEF /* harmonia.mp3 */,
 				966C3F92215FD612004CEAEF /* low-hit.mp3 */,
 				966C3F8F215FD611004CEAEF /* moon.mp3 */,
-				9686B95621DFC3EF00656C34 /* ambientmp3.mp3 */,
 				966C3F61215FD610004CEAEF /* neptune.mp3 */,
+				96D5486621E0D7F700731EA7 /* sitar.mp3 */,
 				9679D40F212275A900B3E504 /* bell.mp3 */,
 			);
 			path = Audio;
@@ -1355,12 +1355,12 @@
 				966C3F95215FD612004CEAEF /* cymbal.mp3 in Resources */,
 				9679D40621226A8D00B3E504 /* Zocial.ttf in Resources */,
 				9679D410212275AA00B3E504 /* bell.mp3 in Resources */,
-				9686B95721DFC3EF00656C34 /* ambientmp3.mp3 in Resources */,
 				A222BA1FF1064EA6899F95A9 /* MaterialCommunityIcons.ttf in Resources */,
 				966C3F9B215FD612004CEAEF /* low-hit.mp3 in Resources */,
 				966C3F96215FD612004CEAEF /* bell1.mp3 in Resources */,
 				966C3F9A215FD612004CEAEF /* bell2.mp3 in Resources */,
 				9679D3FF21226A8D00B3E504 /* Octicons.ttf in Resources */,
+				96D5486721E0D7F700731EA7 /* sitar.mp3 in Resources */,
 				966C3F93215FD612004CEAEF /* neptune.mp3 in Resources */,
 				9679D40821226A8D00B3E504 /* SimpleLineIcons.ttf in Resources */,
 				966C3F98215FD612004CEAEF /* moon.mp3 in Resources */,

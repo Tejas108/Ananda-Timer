@@ -100,7 +100,7 @@ export default class Timer extends Component {
 		if (this.ambPlayer) {
 			this.ambPlayer.destroy();
 		} else {
-			this.ambPlayer = new Player('ambientmp3.mp3', {
+			this.ambPlayer = new Player('sitar.mp3', {
 				autoDestroy: false
 			}).prepare(err => {
 				if (err) {
@@ -111,7 +111,7 @@ export default class Timer extends Component {
 				}
 			});
 		}
-		// this.ambPlayer = new Player('ambientmp3.mp3');
+		// this.ambPlayer = new Player('sitar.mp3');
 		// this.ambPlayer.looping = true;
 	};
 
